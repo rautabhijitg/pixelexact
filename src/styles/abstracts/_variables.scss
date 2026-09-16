@@ -1,3 +1,27 @@
+// Typography — compile-time Sass variables (font-size in rem, base 16px = 1rem)
+// Font families are loaded once via next/font in app/layout.tsx and exposed as
+// CSS custom properties on <html>, so every stylesheet references the same load.
+$font-family-body: var(--font-body), "IBM Plex Sans", sans-serif;
+$font-family-display: var(--font-display), Orbitron, sans-serif;
+
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-md: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-lg: 1.0625rem; // 17px
+$font-size-xl: 1.125rem; // 18px
+$font-size-2xl: 1.25rem; // 20px
+$font-size-3xl: 1.3125rem; // 21px
+$font-size-4xl: 1.375rem; // 22px
+$font-size-5xl: 1.5rem; // 24px
+$font-size-6xl: 1.625rem; // 26px
+
+// Fluid display sizes: clamp(min, preferred-vw, max), all in rem
+$font-size-display-sm: clamp(1.5rem, 3vw, 2.375rem); // 24px -> 38px
+$font-size-display-md: clamp(2rem, 4vw, 3.25rem); // 32px -> 52px
+$font-size-display-lg: clamp(2.125rem, 5vw, 3.75rem); // 34px -> 60px
+$font-size-display-xl: clamp(2.625rem, 6vw, 4.625rem); // 42px -> 74px
+
 :root {
   // Colors
   --color-primary: #173963;

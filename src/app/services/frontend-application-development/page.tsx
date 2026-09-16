@@ -3,7 +3,7 @@ import ServicePage from "@/components/ServicePage/ServicePage";
 import { servicePages } from "@/components/ServicePage/serviceData";
 import { buildMetadata } from "@/lib/seo";
 
-const service = servicePages.consultancy;
+const service = servicePages["frontend-application-development"];
 
 export const metadata: Metadata = buildMetadata({
     title: `${service.title} Services`,
@@ -11,6 +11,6 @@ export const metadata: Metadata = buildMetadata({
     path: `/services/${service.slug}`,
 });
 
-export default function ConsultancyPage() {
-    return <ServicePage slug="consultancy" />;
+export default function FrontendApplicationDevelopmentPage() {
+    return <ServicePage slug="frontend-application-development" />;
 }

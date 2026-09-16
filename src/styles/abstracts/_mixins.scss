@@ -1,3 +1,5 @@
+@use "variables";
+
 @mixin container {
   width: min(
     100% - (var(--container-padding) * 2),
@@ -22,7 +24,7 @@
   padding: 0 21px;
   background: $background;
   color: $foreground;
-  font-size: 12px;
+  font-size: variables.$font-size-xs;
   font-weight: 700;
   transition: transform 0.2s ease, background 0.2s ease;
 

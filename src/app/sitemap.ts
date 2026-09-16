@@ -1,25 +1,34 @@
 import type { MetadataRoute } from "next";
+import { serviceOrder } from "@/components/ServicePage/serviceData";
+import { articles } from "@/data/articles";
+import { caseStudies } from "@/data/caseStudies";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const routes = [
+    const staticRoutes = [
         "",
         "/about",
-        "/blog",
-        "/case-studies",
-        "/contact",
         "/services",
-        "/services/ux-product-design",
-        "/services/ui-design-systems",
-        "/services/frontend-development",
-        "/services/consultancy",
-        "/services/design-toolkit",
+        ...serviceOrder.map((slug) => `/services/${slug}`),
         "/services/how-we-deliver",
         "/work",
+        "/insights",
+        "/contact",
     ];
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-    return routes.map((route) => ({
-        url: `${siteUrl}${route}`,
-        lastModified: new Date(),
+    const workRoutes = caseStudies.map((entry) => ({
+        url: `${SITE_URL}/work/${entry.slug}`,
+        lastModified: entry.publishedAt,
     }));
+
+    const insightsRoutes = articles.map((entry) => ({
+        url: `${SITE_URL}/insights/${entry.slug}`,
+        lastModified: entry.publishedAt,
+    }));
+
+    return [
+        ...staticRoutes.map((route) => ({ url: `${SITE_URL}${route}` })),
+        ...workRoutes,
+        ...insightsRoutes,
+    ];
 }

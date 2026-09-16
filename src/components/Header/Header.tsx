@@ -60,10 +60,10 @@ export default function Header({
                     <Link href="/work">Work</Link>
                     <Link href="/services/design-toolkit">Design Toolkit</Link>
                     <Link href="/about">About</Link>
-                    <Link href="/blog">Insights</Link>
+                    <Link href="/insights">Insights</Link>
                 </div>
                 <div className="site-header__actions">
-                    {backHref ? <Link className="site-header__back-link" href={backHref}>{backLabel ?? "Back home"} <ArrowUpRight aria-hidden="true" size={16} /></Link> : <Link className="site-header__button" href="/#contact">Book a consultation <ArrowUpRight aria-hidden="true" size={16} /></Link>}
+                    {backHref ? <Link className="site-header__back-link" href={backHref}>{backLabel ?? "Back home"} <ArrowUpRight aria-hidden="true" size={16} /></Link> : <Link className="site-header__button" href="/contact">Book a consultation <ArrowUpRight aria-hidden="true" size={16} /></Link>}
                     <button className="site-header__settings-button" type="button" aria-expanded={settingsOpen} aria-controls="settings-panel" aria-label={settingsOpen ? "Close settings" : "Open settings"} onClick={() => setSettingsOpen((current) => !current)}><Settings aria-hidden="true" size={20} /></button>
                     <button className="site-header__menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? "Close menu" : "Open menu"} onClick={() => setMenuOpen((current) => !current)}>{menuOpen ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}</button>
                 </div>
@@ -73,7 +73,8 @@ export default function Header({
                 <Link href="/work" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Work</Link>
                 <Link href="/services/design-toolkit" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Design Toolkit</Link>
                 <Link href="/about" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>About</Link>
-                <Link href="/blog" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Insights</Link>
+                <Link href="/insights" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Insights</Link>
+                <Link className="site-header__mobile-cta" href="/contact" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Book a consultation <ArrowUpRight aria-hidden="true" size={16} /></Link>
             </div>
             <div className={`site-header__settings${settingsOpen ? " site-header__settings--open" : ""}`} id="settings-panel" role="dialog" aria-label="Site settings" aria-hidden={!settingsOpen}>
                 <div className="site-header__settings-header"><h2>Settings</h2><button type="button" aria-label="Close settings" onClick={() => setSettingsOpen(false)}><X aria-hidden="true" size={20} /></button></div>
