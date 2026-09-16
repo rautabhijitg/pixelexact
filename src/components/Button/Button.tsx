@@ -1,29 +1,34 @@
-import "./Button.scss";
+import Link from "next/link";
+import type { ReactNode } from "react";
 
 type ButtonProps = {
     children: React.ReactNode;
     href?: string;
-    variant?: "primary" | "secondary" | "text";
+    variant?: "primary" | "secondary" | "text" | "ghost" | "accent";
+    className?: string;
+    icon?: ReactNode;
 };
 
 export default function Button({
     children,
     href,
     variant = "primary",
+    className = "",
+    icon,
 }: ButtonProps) {
-    const className = `button button--${variant}`;
+    const classes = `button button--${variant} ${className}`.trim();
 
     if (href) {
         return (
-            <a className={className} href={href}>
-                {children}
-            </a>
+            <Link className={classes} href={href}>
+                {children}{icon}
+            </Link>
         );
     }
 
     return (
-        <button className={className} type="button">
-            {children}
+        <button className={classes} type="button">
+            {children}{icon}
         </button>
     );
 }

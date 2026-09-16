@@ -1,3 +1,5 @@
+@use "../../styles/abstracts/mixins";
+
 .button {
   display: inline-flex;
   align-items: center;
@@ -19,7 +21,7 @@
     transform: translateY(-2px);
   }
 
-  @include focus-visible;
+  @include mixins.focus-visible;
 }
 
 .button--primary {
@@ -30,6 +32,12 @@
 .button--secondary {
   color: var(--color-text);
   background: var(--color-background-secondary);
+}
+
+.button--ghost {
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  background: transparent;
 }
 
 .button--text {

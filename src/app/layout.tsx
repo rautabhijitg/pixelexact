@@ -3,8 +3,8 @@ import "./globals.scss";
 
 export const metadata: Metadata = {
   title: {
-    default: "PixelExact",
-    template: "%s | PixelExact",
+    default: "Pixel Exact | UX, UI and frontend implementation",
+    template: "%s | Pixel Exact",
   },
   description:
     "Pixel-perfect UX, UI and frontend development for digital products.",
