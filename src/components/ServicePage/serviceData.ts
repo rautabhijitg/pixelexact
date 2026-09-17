@@ -11,6 +11,7 @@ export type ServicePageData = {
     process: [string, string][];
     faqs: [string, string][];
     relatedServices: string[];
+    art?: "ux" | "ui" | "frontend" | "consultancy" | "toolkit";
 };
 
 export const servicePages: Record<string, ServicePageData> = {
@@ -37,6 +38,7 @@ export const servicePages: Record<string, ServicePageData> = {
             ["What if we already have some research?", "We build on what exists rather than repeating it. The goal is a validated direction, not a fixed research process."],
         ],
         relatedServices: ["ui-design-systems", "consultancy"],
+        art: "ux",
     },
     "ui-design-systems": {
         slug: "ui-design-systems",
@@ -61,6 +63,7 @@ export const servicePages: Record<string, ServicePageData> = {
             ["What is actually included in a design system?", "Design tokens, a component library, documented interaction and responsive states, and governance notes on when and how to extend it."],
         ],
         relatedServices: ["ux-product-design", "frontend-application-development"],
+        art: "ui",
     },
     "frontend-application-development": {
         slug: "frontend-application-development",
@@ -85,6 +88,7 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Do you only build in React and Next.js?", "That's our default stack for production interfaces. If your product runs on something else, tell us and we'll scope accordingly."],
         ],
         relatedServices: ["ui-design-systems", "design-toolkit"],
+        art: "frontend",
     },
     consultancy: {
         slug: "consultancy",
@@ -109,6 +113,7 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Do you need full project access to give a useful review?", "No. We scope the review to what you can share, whether that's a live product, a design file, or a codebase."],
         ],
         relatedServices: ["ux-product-design", "frontend-application-development"],
+        art: "consultancy",
     },
     "design-toolkit": {
         slug: "design-toolkit",
@@ -133,6 +138,7 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Can we try it before committing to anything?", "Yes, that's the point. Explore the components first, then talk to us if you want it adapted to your product."],
         ],
         relatedServices: ["ui-design-systems", "frontend-application-development"],
+        art: "toolkit",
     },
     "how-we-deliver": {
         slug: "how-we-deliver",

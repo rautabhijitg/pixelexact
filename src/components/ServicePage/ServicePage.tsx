@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, CircleArrowRight } from "lucide-react";
+import Reveal from "../animations/Reveal";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
+import ServiceArt from "../visuals/ServiceArt";
 import { absoluteUrl, SITE_NAME } from "@/lib/seo";
 import { servicePages } from "./serviceData";
 
@@ -59,46 +61,54 @@ export default function ServicePage({ slug }: ServicePageProps) {
                     </div>
                 </section>
 
+                {service.art && (
+                    <section className="service-page__section">
+                        <div className="service-page__wrap">
+                            <Reveal><ServiceArt variant={service.art} /></Reveal>
+                        </div>
+                    </section>
+                )}
+
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">IS THIS YOU?</p><h2>Situations we typically step into.</h2></div>
-                        <div className="service-page__situations">{service.situations.map((situation, index) => <div className="service-page__situation" key={situation}><span>0{index + 1}</span><p>{situation}</p></div>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">IS THIS YOU?</p><h2>Situations we typically step into.</h2></div></Reveal>
+                        <div className="service-page__situations">{service.situations.map((situation, index) => <Reveal className="service-page__situation" key={situation} index={index}><span>0{index + 1}</span><p>{situation}</p></Reveal>)}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap service-page__intro-grid">
-                        <p className="service-page__intro">{service.intro}</p>
-                        <div className="service-page__outcomes"><p className="service-page__label">What this unlocks</p>{service.outcomes.map((outcome) => <p key={outcome}><Check aria-hidden="true" size={18} />{outcome}</p>)}</div>
+                        <Reveal><p className="service-page__intro">{service.intro}</p></Reveal>
+                        <Reveal index={1}><div className="service-page__outcomes"><p className="service-page__label">What this unlocks</p>{service.outcomes.map((outcome) => <p key={outcome}><Check aria-hidden="true" size={18} />{outcome}</p>)}</div></Reveal>
                     </div>
                 </section>
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">THE WORK</p><h2>Built for the details that matter.</h2></div>
-                        <div className="service-page__deliverables">{service.deliverables.map((deliverable, index) => <div className="service-page__deliverable" key={deliverable}><span>0{index + 1}</span><h3>{deliverable}</h3></div>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE WORK</p><h2>Built for the details that matter.</h2></div></Reveal>
+                        <div className="service-page__deliverables">{service.deliverables.map((deliverable, index) => <Reveal className="service-page__deliverable" key={deliverable} index={index}><span>0{index + 1}</span><h3>{deliverable}</h3></Reveal>)}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">OUR APPROACH</p><h2>Clear at every turn.</h2></div>
-                        <div className="service-page__process">{service.process.map(([title, description], index) => <article className="service-page__process-step" key={title}><span>0{index + 1}</span><h3><CircleArrowRight aria-hidden="true" size={22} />{title}</h3><p>{description}</p></article>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">OUR APPROACH</p><h2>Clear at every turn.</h2></div></Reveal>
+                        <div className="service-page__process">{service.process.map(([title, description], index) => <Reveal className="service-page__process-step" key={title} index={index}><span>0{index + 1}</span><h3><CircleArrowRight aria-hidden="true" size={22} />{title}</h3><p>{description}</p></Reveal>)}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">COMMON QUESTIONS</p><h2>What clients usually ask first.</h2></div>
-                        <div className="service-page__faqs">{service.faqs.map(([question, answer]) => <details className="service-page__faq" key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">COMMON QUESTIONS</p><h2>What clients usually ask first.</h2></div></Reveal>
+                        <div className="service-page__faqs">{service.faqs.map(([question, answer], index) => <Reveal key={question} index={index}><details className="service-page__faq"><summary>{question}</summary><p>{answer}</p></details></Reveal>)}</div>
                     </div>
                 </section>
 
                 {related.length > 0 && (
                     <section className="service-page__section">
                         <div className="service-page__wrap">
-                            <div className="service-page__section-head"><p className="service-page__eyebrow">RELATED SERVICES</p><h2>Often paired with this work.</h2></div>
-                            <div className="service-page__related">{related.map((entry) => <Link className="service-page__related-card" href={`/services/${entry.slug}`} key={entry.slug}><h3>{entry.title}</h3><p>{entry.summary}</p><ArrowUpRight aria-hidden="true" size={18} /></Link>)}</div>
+                            <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">RELATED SERVICES</p><h2>Often paired with this work.</h2></div></Reveal>
+                            <div className="service-page__related">{related.map((entry, index) => <Reveal key={entry.slug} index={index}><Link className="service-page__related-card" href={`/services/${entry.slug}`}><h3>{entry.title}</h3><p>{entry.summary}</p><ArrowUpRight aria-hidden="true" size={18} /></Link></Reveal>)}</div>
                         </div>
                     </section>
                 )}

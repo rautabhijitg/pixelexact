@@ -13,12 +13,24 @@
 
   font-weight: 600;
 
+  gap: 8px;
+
   transition:
     transform var(--transition-fast),
     background-color var(--transition-fast);
 
   &:hover {
     transform: translateY(-2px);
+  }
+
+  svg {
+    transition: transform var(--transition-fast);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover svg {
+      transform: translate(3px, -3px);
+    }
   }
 
   @include mixins.focus-visible;

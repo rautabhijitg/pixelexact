@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
+import Reveal from "@/components/animations/Reveal";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import { servicePages } from "@/components/ServicePage/serviceData";
+import CaseStudyArt from "@/components/visuals/CaseStudyArt";
 import { caseStudies } from "@/data/caseStudies";
 import { buildMetadata } from "@/lib/seo";
 
@@ -58,21 +60,29 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                     </div>
                 </section>
 
+                <section className="service-page__section">
+                    <div className="service-page__wrap">
+                        <Reveal><CaseStudyArt variant={entry.art} className="case-art--hero" /></Reveal>
+                    </div>
+                </section>
+
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">THE APPROACH</p><h2>What this kind of engagement typically includes.</h2></div>
-                        <div className="service-page__outcomes">{entry.focus.map((item) => <p key={item}><Check aria-hidden="true" size={18} />{item}</p>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE APPROACH</p><h2>What this kind of engagement typically includes.</h2></div></Reveal>
+                        <Reveal index={1}><div className="service-page__outcomes">{entry.focus.map((item) => <p key={item}><Check aria-hidden="true" size={18} />{item}</p>)}</div></Reveal>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap service-page__intro-grid">
-                        <p className="service-page__intro">This entry describes the kind of engagement, not a finished case study. Full write-up, screenshots, and outcome data for this project are pending and will replace this notice once confirmed.</p>
+                        <Reveal><p className="service-page__intro">This entry describes the kind of engagement, not a finished case study. Full write-up, screenshots, and outcome data for this project are pending and will replace this notice once confirmed.</p></Reveal>
                         {relatedService && (
-                            <div className="service-page__outcomes">
-                                <p className="service-page__label">Related service</p>
-                                <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
-                            </div>
+                            <Reveal index={1}>
+                                <div className="service-page__outcomes">
+                                    <p className="service-page__label">Related service</p>
+                                    <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
+                                </div>
+                            </Reveal>
                         )}
                     </div>
                 </section>

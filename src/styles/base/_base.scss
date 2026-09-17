@@ -1,0 +1,42 @@
+html {
+  scroll-behavior: smooth;
+}
+
+// Shared hero entrance sequence. Referenced from page.scss (.pe__hero) and
+// _service-page.scss (.service-page__hero) so every page gets the same feel.
+@keyframes hero-reveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Scroll reveal: elements start hidden only once JS has "armed" them
+// (data-reveal-state="hidden"), so content is fully visible by default —
+// no-JS and pre-hydration states never hide real content.
+.reveal[data-reveal-state="hidden"] {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+
+.reveal[data-reveal-state="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-reveal), transform var(--transition-reveal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal[data-reveal-state="hidden"] {
+    opacity: 1;
+    transform: none;
+  }
+}

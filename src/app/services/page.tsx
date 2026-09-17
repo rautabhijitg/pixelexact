@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/animations/Reveal";
 import { serviceOrder, servicePages } from "@/components/ServicePage/serviceData";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
@@ -43,25 +44,25 @@ export default function ServicesPage() {
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">THE MODEL</p><h2>Not a hand-off. A team.</h2></div>
-                        <div className="service-page__text-grid">{differentiators.map(([title, text]) => <div className="service-page__text-grid-item" key={title}><h3>{title}</h3><p>{text}</p></div>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE MODEL</p><h2>Not a hand-off. A team.</h2></div></Reveal>
+                        <div className="service-page__text-grid">{differentiators.map(([title, text], index) => <Reveal className="service-page__text-grid-item" key={title} index={index}><h3>{title}</h3><p>{text}</p></Reveal>)}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Five ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div>
-                        <div className="service-page__service-index">{serviceOrder.map((slug, index) => { const service = servicePages[slug]; const isLast = index === serviceOrder.length - 1; return <Link className={`service-page__service-card${isLast ? " service-page__service-card--wide" : ""}`} href={`/services/${service.slug}`} key={service.slug}><span>0{index + 1}</span><h2>{service.title}</h2><p>{service.summary}</p><ArrowUpRight aria-hidden="true" size={22} /></Link>; })}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Five ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div></Reveal>
+                        <div className="service-page__service-index">{serviceOrder.map((slug, index) => { const service = servicePages[slug]; const isLast = index === serviceOrder.length - 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={service.slug} index={index}><Link className="service-page__service-card" href={`/services/${service.slug}`}><span>0{index + 1}</span><h2>{service.title}</h2><p>{service.summary}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">THE ENGINE BEHIND ALL FIVE</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">Every service above runs on the same operating model.</p></div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE ENGINE BEHIND ALL FIVE</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">Every service above runs on the same operating model.</p></div></Reveal>
                         <div className="service-page__process">
-                            <article className="service-page__process-step"><span>01</span><h3>Senior involvement</h3><p>You work directly with the people doing the work, not an account manager relaying it to a bench of juniors. Every decision is owned by someone who has done this before.</p></article>
-                            <article className="service-page__process-step"><span>02</span><h3>AI-enabled execution</h3><p>AI accelerates research, exploration, production, and iteration throughout the process. It doesn&apos;t replace judgment, it removes the busywork around it.</p></article>
-                            <article className="service-page__process-step"><span>03</span><h3>Speed, without the asterisk</h3><p>Work that would normally hand off between separate research, design, and development teams happens inside one connected process. That&apos;s the source of the speed, not fewer reviews.</p></article>
+                            <Reveal index={0}><article className="service-page__process-step"><span>01</span><h3>Senior involvement</h3><p>You work directly with the people doing the work, not an account manager relaying it to a bench of juniors. Every decision is owned by someone who has done this before.</p></article></Reveal>
+                            <Reveal index={1}><article className="service-page__process-step"><span>02</span><h3>AI-enabled execution</h3><p>AI accelerates research, exploration, production, and iteration throughout the process. It doesn&apos;t replace judgment, it removes the busywork around it.</p></article></Reveal>
+                            <Reveal index={2}><article className="service-page__process-step"><span>03</span><h3>Speed, without the asterisk</h3><p>Work that would normally hand off between separate research, design, and development teams happens inside one connected process. That&apos;s the source of the speed, not fewer reviews.</p></article></Reveal>
                         </div>
                         <p className="service-page__index-summary">{howWeDeliver.intro} <Link className="service-page__inline-link" href={`/services/${howWeDeliver.slug}`}>More on how we deliver <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
                     </div>
@@ -69,8 +70,8 @@ export default function ServicesPage() {
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">WHO THIS IS FOR</p><h2>Built for two kinds of teams.</h2></div>
-                        <div className="service-page__text-grid">{audiences.map(([title, text, href, linkLabel]) => <div className="service-page__text-grid-item" key={title}><h3>{title}</h3><p>{text}</p><Link href={href}>{linkLabel} <ArrowUpRight aria-hidden="true" size={14} /></Link></div>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHO THIS IS FOR</p><h2>Built for two kinds of teams.</h2></div></Reveal>
+                        <div className="service-page__text-grid">{audiences.map(([title, text, href, linkLabel], index) => <Reveal className="service-page__text-grid-item" key={title} index={index}><h3>{title}</h3><p>{text}</p><Link href={href}>{linkLabel} <ArrowUpRight aria-hidden="true" size={14} /></Link></Reveal>)}</div>
                     </div>
                 </section>
 

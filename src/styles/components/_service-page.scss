@@ -11,6 +11,7 @@
   h1, h2, h3, p { margin: 0; }
   h1, h2, h3 { color: var(--color-primary); font-family: variables.$font-family-display; font-weight: 600; line-height: 1.12; }
   a { color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
   &__wrap { width: min(100% - 64px, 1200px); margin-inline: auto; }
   &__header { border-bottom: 1px solid var(--color-border); }
   &__nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; }
@@ -30,6 +31,14 @@
   &__eyebrow { color: var(--color-acid); font-size: variables.$font-size-xs; font-weight: 600; letter-spacing: .14em; }
   &__hero h1 { max-width: 12ch; margin-top: 22px; font-size: variables.$font-size-display-xl; }
   &__summary { max-width: 28ch; color: var(--color-primary); font-family: variables.$font-family-display; font-size: variables.$font-size-display-sm; line-height: 1.2; }
+  &__hero .service-page__eyebrow,
+  &__hero h1,
+  &__summary {
+    animation: hero-reveal 500ms var(--ease-out) both;
+  }
+  &__hero .service-page__eyebrow { animation-delay: 0ms; }
+  &__hero h1 { animation-delay: 70ms; }
+  &__summary { animation-delay: 140ms; }
   &__section { padding: 96px 0; }
   &__section--alt { background: var(--color-background-secondary); }
   &__intro-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 64px; }
@@ -51,15 +60,25 @@
   &__cta h2 { max-width: 15ch; margin-top: 18px; color: var(--color-white); font-size: variables.$font-size-display-lg; }
   &__cta > .service-page__wrap > p:not(.service-page__eyebrow) { max-width: 36ch; margin-top: 18px; color: #b7cce0; font-size: variables.$font-size-xl; }
   &__button { @include mixins.interactive-button(var(--color-acid), var(--color-white)); min-height: 48px; margin-top: 32px; padding: 0 22px; border: 1px solid var(--color-acid); }
+  &__button svg, &__inline-link svg { transition: transform var(--transition-fast); }
+  @media (hover: hover) and (pointer: fine) {
+    &__button:hover svg, &__inline-link:hover svg { transform: translate(3px, -3px); }
+  }
   &__footer { padding: 32px 0; border-top: 1px solid var(--color-border); color: var(--color-text-secondary); font-size: variables.$font-size-xs; }
   &__footer .service-page__wrap { display: flex; justify-content: space-between; gap: 16px; }
   &__service-index { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid var(--color-border); background: var(--color-border); }
-  &__service-card { position: relative; min-height: 240px; padding: 28px; background: var(--color-paper); transition: background var(--transition-fast), color var(--transition-fast); &:hover { background: var(--color-primary); color: var(--color-white); } }
+  &__service-card { display: block; position: relative; min-height: 240px; padding: 28px; background: var(--color-paper); transition: background var(--transition-fast), color var(--transition-fast); &:hover { background: var(--color-primary); color: var(--color-white); } }
   &__service-card > span { color: var(--color-acid); font-family: variables.$font-family-display; font-size: variables.$font-size-sm; }
+  &__service-card-topic { display: inline-flex; align-items: center; gap: 6px; }
   &__service-card h2 { max-width: 14ch; margin-top: 48px; color: var(--color-text); font-size: variables.$font-size-6xl; }
   &__service-card p { max-width: 36ch; margin-top: 12px; color: var(--color-text-secondary); }
-  &__service-card > svg { position: absolute; right: 28px; bottom: 28px; color: var(--color-acid); }
+  &__service-card > svg { position: absolute; right: 28px; bottom: 28px; color: var(--color-acid); transition: transform var(--transition-fast); }
   &__service-card:hover h2, &__service-card:hover p { color: var(--color-white); }
+  @media (hover: hover) and (pointer: fine) {
+    &__service-card:hover > svg { transform: translate(3px, -3px); }
+    &__service-card:hover h2 { transform: translateX(2px); }
+  }
+  &__service-card h2 { transition: transform var(--transition-fast); }
   &__service-card--wide { grid-column: 1 / -1; }
   &__service-card--wide p { max-width: 60ch; }
   &__index-summary { margin-top: 20px; color: var(--color-text-secondary); font-size: variables.$font-size-2xl; }
@@ -88,11 +107,16 @@
   &__faq[open] summary::before { content: "\2212"; }
   &__faq p { max-width: 68ch; margin-top: 14px; color: var(--color-text-secondary); font-size: variables.$font-size-base; line-height: 1.6; }
   &__related { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid var(--color-border); background: var(--color-border); }
-  &__related-card { position: relative; padding: 28px; background: var(--color-paper); transition: background var(--transition-fast), color var(--transition-fast); &:hover { background: var(--color-primary); color: var(--color-white); } }
+  &__related-card { display: block; position: relative; padding: 28px; background: var(--color-paper); transition: background var(--transition-fast), color var(--transition-fast); &:hover { background: var(--color-primary); color: var(--color-white); } }
   &__related-card h3 { max-width: 20ch; color: var(--color-text); font-size: variables.$font-size-3xl; }
   &__related-card p { max-width: 36ch; margin-top: 10px; color: var(--color-text-secondary); }
-  &__related-card > svg { position: absolute; right: 24px; bottom: 24px; color: var(--color-acid); }
+  &__related-card > svg { position: absolute; right: 24px; bottom: 24px; color: var(--color-acid); transition: transform var(--transition-fast); }
   &__related-card:hover h3, &__related-card:hover p { color: var(--color-white); }
+  &__related-card h3 { transition: transform var(--transition-fast); }
+  @media (hover: hover) and (pointer: fine) {
+    &__related-card:hover > svg { transform: translate(3px, -3px); }
+    &__related-card:hover h3 { transform: translateX(2px); }
+  }
 }
 
 :root[data-theme="dark"] .service-page__cta { background: var(--color-primary-dark); }

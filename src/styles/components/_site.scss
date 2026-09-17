@@ -18,7 +18,16 @@
 .site-header__logo-mark i:nth-child(5), .site-footer__logo-mark i:nth-child(5) { inset: 11px 0 auto auto; width: 9px; height: 9px; }
 .site-header__logo-mark i:nth-child(6), .site-footer__logo-mark i:nth-child(6) { inset: auto auto 0 11px; width: 18px; height: 8px; }
 .site-header__links, .site-header__actions, .site-header__grid-toggle, .site-header__back-link, .site-header__button { display: flex; align-items: center; gap: 8px; }
-.site-header__links a { padding: 4px 0; font-size: 0.9375rem; transition: color var(--transition-fast); &:hover { color: var(--color-acid); } }
+.site-header__links a { position: relative; padding: 4px 0; font-size: 0.9375rem; transition: color var(--transition-fast); &:hover { color: var(--color-acid); } }
+.site-header__links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: currentColor; transition: right var(--transition-normal) var(--ease-out); }
+.site-header__links {gap: 20px;}
+@media (hover: hover) and (pointer: fine) {
+  .site-header__links a:hover::after { right: 0; }
+}
+.site-header__back-link svg, .site-header__button svg, .site-header__mobile-cta svg { transition: transform var(--transition-fast); }
+@media (hover: hover) and (pointer: fine) {
+  .site-header__back-link:hover svg, .site-header__button:hover svg { transform: translate(3px, -3px); }
+}
 .site-header__grid-toggle { padding: 8px 14px; border: 1px solid var(--color-line); border-radius: 100px; background: transparent; color: var(--color-muted); cursor: pointer; font-size: variables.$font-size-sm; &:hover, &[aria-pressed="true"] { border-color: var(--color-primary); color: var(--color-primary); } &[aria-pressed="true"] { background: var(--color-primary); color: var(--color-white); } }
 .site-header__settings-button { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border: 1px solid var(--color-line); border-radius: 50%; background: transparent; color: var(--color-primary); cursor: pointer; &:hover, &[aria-expanded="true"] { background: var(--color-primary); color: var(--color-white); } }
 .site-header__back-link { color: var(--color-primary); font-size: variables.$font-size-md; font-weight: 600; }

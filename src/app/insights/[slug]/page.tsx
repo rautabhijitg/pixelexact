@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/animations/Reveal";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
@@ -72,16 +73,20 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
                 <section className="service-page__section">
                     <div className="service-page__wrap service-page__intro-grid">
-                        {isPublished ? (
-                            <div>{entry.body!.map((paragraph) => <p className="service-page__intro" key={paragraph}>{paragraph}</p>)}</div>
-                        ) : (
-                            <p className="service-page__intro">This article is in progress. The summary above reflects what it will cover; the full write-up isn&apos;t published yet.</p>
-                        )}
+                        <Reveal>
+                            {isPublished ? (
+                                <div>{entry.body!.map((paragraph) => <p className="service-page__intro" key={paragraph}>{paragraph}</p>)}</div>
+                            ) : (
+                                <p className="service-page__intro">This article is in progress. The summary above reflects what it will cover; the full write-up isn&apos;t published yet.</p>
+                            )}
+                        </Reveal>
                         {relatedService && (
-                            <div className="service-page__outcomes">
-                                <p className="service-page__label">Related service</p>
-                                <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
-                            </div>
+                            <Reveal index={1}>
+                                <div className="service-page__outcomes">
+                                    <p className="service-page__label">Related service</p>
+                                    <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
+                                </div>
+                            </Reveal>
                         )}
                     </div>
                 </section>

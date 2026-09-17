@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Reveal from "@/components/animations/Reveal";
 import ContactForm from "@/components/ContactForm/ContactForm";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
@@ -27,14 +28,16 @@ export default function ContactPage() {
 
                 <section className="service-page__section">
                     <div className="service-page__wrap service-page__intro-grid">
-                        <ContactForm />
-                        <div className="contact-next">
-                            <p className="service-page__label">What happens next</p>
-                            <p><strong>1. We read it.</strong> A senior person reviews what you send, not a queue.</p>
-                            <p><strong>2. We reply directly.</strong> Usually with a question or two, or a straight answer.</p>
-                            <p><strong>3. We scope it together.</strong> If it&apos;s a fit, we agree what the first weeks look like.</p>
-                            <p className="contact-next__alt">Prefer email? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
-                        </div>
+                        <Reveal><ContactForm /></Reveal>
+                        <Reveal index={1}>
+                            <div className="contact-next">
+                                <p className="service-page__label">What happens next</p>
+                                <p><strong>1. We read it.</strong> A senior person reviews what you send, not a queue.</p>
+                                <p><strong>2. We reply directly.</strong> Usually with a question or two, or a straight answer.</p>
+                                <p><strong>3. We scope it together.</strong> If it&apos;s a fit, we agree what the first weeks look like.</p>
+                                <p className="contact-next__alt">Prefer email? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+                            </div>
+                        </Reveal>
                     </div>
                 </section>
             </main>

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/animations/Reveal";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import BrandPattern from "@/components/visuals/BrandPattern";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -35,22 +37,28 @@ export default function AboutPage() {
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">HOW WE WORK</p><h2>One team, from research to production.</h2><p className="service-page__index-summary">Most studios hand off a Figma file between separate research, design, and engineering teams and hope nothing gets lost. We take a product through every stage ourselves.</p></div>
-                        <div className="service-page__text-grid">{principles.map(([title, text]) => <div className="service-page__text-grid-item" key={title}><h3>{title}</h3><p>{text}</p></div>)}</div>
+                        <Reveal><BrandPattern /></Reveal>
                     </div>
                 </section>
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">WHO WE WORK WITH</p><h2>Startup founders and product &amp; engineering leaders.</h2><p className="service-page__index-summary">Founders come to us for senior product and design expertise without staffing a full team before validating anything. Product and engineering leaders bring us in for a specific gap: a design system that&apos;s drifted, a legacy interface that needs modernizing, or additional senior capacity for a stretch of work.</p></div>
-                        <p className="service-page__index-summary"><Link className="service-page__inline-link" href="/services">See how we can work together <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">HOW WE WORK</p><h2>One team, from research to production.</h2><p className="service-page__index-summary">Most studios hand off a Figma file between separate research, design, and engineering teams and hope nothing gets lost. We take a product through every stage ourselves.</p></div></Reveal>
+                        <div className="service-page__text-grid">{principles.map(([title, text], index) => <Reveal className="service-page__text-grid-item" key={title} index={index}><h3>{title}</h3><p>{text}</p></Reveal>)}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <div className="service-page__section-head"><p className="service-page__eyebrow">THE MODEL</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">The full explanation of how senior involvement and AI-enabled workflows combine to compress timelines lives on its own page.</p></div>
-                        <p className="service-page__index-summary"><Link className="service-page__inline-link" href="/services/how-we-deliver">Read how we deliver <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHO WE WORK WITH</p><h2>Startup founders and product &amp; engineering leaders.</h2><p className="service-page__index-summary">Founders come to us for senior product and design expertise without staffing a full team before validating anything. Product and engineering leaders bring us in for a specific gap: a design system that&apos;s drifted, a legacy interface that needs modernizing, or additional senior capacity for a stretch of work.</p></div></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary"><Link className="service-page__inline-link" href="/services">See how we can work together <ArrowUpRight aria-hidden="true" size={14} /></Link></p></Reveal>
+                    </div>
+                </section>
+
+                <section className="service-page__section service-page__section--alt">
+                    <div className="service-page__wrap">
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE MODEL</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">The full explanation of how senior involvement and AI-enabled workflows combine to compress timelines lives on its own page.</p></div></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary"><Link className="service-page__inline-link" href="/services/how-we-deliver">Read how we deliver <ArrowUpRight aria-hidden="true" size={14} /></Link></p></Reveal>
                     </div>
                 </section>
 

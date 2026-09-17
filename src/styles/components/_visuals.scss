@@ -1,0 +1,189 @@
+@use "../abstracts/variables";
+
+// Shared frame for every interface-artifact visual: a thin browser-chrome
+// treatment so abstract SVG compositions read as "product interface" rather
+// than decoration. Pure CSS/SVG — no raster assets, zero extra requests.
+.artifact {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-paper);
+}
+
+.artifact__chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.artifact__chrome span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.artifact__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+// Case study thumbnails (homepage + /work cards)
+.case-art {
+  aspect-ratio: 4 / 3;
+}
+
+// When a case-art thumbnail sits in a full-row "wide" card (odd count in a
+// 2-col grid — see service-page__service-card--wide), 4:3 stretches far too
+// tall for the doubled width. Widen it to match.
+.service-page__service-card--wide .case-art {
+  aspect-ratio: 21 / 9;
+}
+
+.case-art--hero {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+// Service-page hero artifacts
+.service-art {
+  aspect-ratio: 16 / 11;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.service-art--compact {
+  aspect-ratio: 16 / 7;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.service-art__toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--color-border);
+
+  .component-swatch {
+    border: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-art__toolkit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Design Toolkit component previews
+.component-swatch {
+  display: flex;
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--color-line, var(--color-border));
+  background: var(--color-paper);
+  transition: border-color var(--transition-fast);
+}
+
+.component-swatch span {
+  color: var(--color-muted-dark, var(--color-text-secondary));
+  font-size: 0.6875rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .component-swatch:hover {
+    border-color: var(--color-red, var(--color-acid));
+  }
+}
+
+// /work index cards — thumbnail + text, distinct from the shared numbered
+// service-card (used on /services, related-services, and /insights) since
+// the layouts genuinely differ once a thumbnail is involved.
+.work-card {
+  display: block;
+  position: relative;
+  border: 1px solid var(--color-border);
+  background: var(--color-paper);
+  transition: border-color var(--transition-fast);
+}
+
+.work-card .artifact {
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.work-card__body {
+  position: relative;
+  padding: 20px 24px 28px;
+}
+
+.work-card__body > span {
+  color: var(--color-acid);
+  font-family: variables.$font-family-display;
+  font-size: variables.$font-size-sm;
+}
+
+.work-card__body h2 {
+  margin-top: 12px;
+  max-width: 22ch;
+  color: var(--color-text);
+  font-size: variables.$font-size-4xl;
+  transition: transform var(--transition-fast);
+}
+
+.work-card__body p {
+  max-width: 40ch;
+  margin-top: 10px;
+  color: var(--color-text-secondary);
+}
+
+.work-card__arrow {
+  position: absolute;
+  right: 24px;
+  bottom: 28px;
+  color: var(--color-acid);
+  transition: transform var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .work-card:hover {
+    border-color: var(--color-acid);
+  }
+  .work-card:hover .work-card__arrow {
+    transform: translate(3px, -3px);
+  }
+  .work-card:hover .work-card__body h2 {
+    transform: translateX(2px);
+  }
+}
+
+// About page brand pattern (built from the same geometry as the wordmark)
+.brand-pattern {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  border: 1px solid var(--color-border);
+  background: var(--color-background-secondary);
+}
+
+.brand-pattern__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(to right, var(--color-border) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(to bottom, var(--color-border) 0 1px, transparent 1px 40px);
+  opacity: 0.6;
+}
+
+.brand-pattern__mark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

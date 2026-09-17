@@ -70,8 +70,14 @@ $font-size-display-xl: clamp(2.625rem, 6vw, 4.625rem); // 42px -> 74px
   --radius-pill: 999px;
 
   // Motion
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --transition-fast: 160ms ease;
   --transition-normal: 240ms ease;
+  --transition-reveal: 600ms var(--ease-out);
+  --transition-slow: 800ms var(--ease-out);
+  --reveal-distance: 16px;
+  --stagger-step: 70ms;
 }
 
 :root[data-theme="dark"] {

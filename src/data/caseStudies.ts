@@ -1,3 +1,5 @@
+export type CaseStudyArtVariant = "dashboard" | "mobile" | "modernization";
+
 export type CaseStudy = {
     slug: string;
     tag: string;
@@ -6,6 +8,7 @@ export type CaseStudy = {
     relatedService: string;
     focus: string[];
     publishedAt: string;
+    art: CaseStudyArtVariant;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -15,6 +18,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Dashboard redesign & design system",
         summary: "Rebuilt a legacy dashboard's UX and UI, then implemented the frontend component by component.",
         relatedService: "ui-design-systems",
+        art: "dashboard",
         focus: [
             "Audit the existing dashboard's UX and identify where navigation and information density were slowing users down",
             "Redesign the interface and extract a reusable design system from the result",
@@ -28,6 +32,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Research-led product launch",
         summary: "Took an early-stage product from user research to a launch-ready, validated interface in weeks.",
         relatedService: "ux-product-design",
+        art: "mobile",
         focus: [
             "Run early research to pressure-test the product direction before committing to a build",
             "Design and prototype the core flows, validated with usability testing",
@@ -41,6 +46,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Presentation-layer modernization",
         summary: "Modernized a legacy application's interface with a decoupled architecture.",
         relatedService: "frontend-application-development",
+        art: "modernization",
         focus: [
             "Separate the presentation layer from legacy business logic without disrupting what already works",
             "Rebuild the interface on a modern, component-based frontend architecture",
