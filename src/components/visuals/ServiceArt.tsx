@@ -1,7 +1,7 @@
 import BrowserChrome from "./BrowserChrome";
 import ComponentSwatch, { toolkitItems } from "./ComponentSwatch";
 
-type ServiceArtVariant = "ux" | "ui" | "frontend" | "consultancy" | "toolkit";
+type ServiceArtVariant = "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit";
 
 /**
  * One distinct visual per service — never the same artifact reused across
@@ -28,6 +28,7 @@ export default function ServiceArt({ variant }: { variant: ServiceArtVariant }) 
             {variant === "ux" && <UxArt />}
             {variant === "ui" && <UiArt />}
             {variant === "frontend" && <FrontendArt />}
+            {variant === "website" && <WebsiteArt />}
             {variant === "consultancy" && <ConsultancyArt />}
         </div>
     );
@@ -113,6 +114,60 @@ function FrontendArt() {
             {[[280, 34, 120], [280, 48, 90], [296, 62, 70], [280, 76, 110], [296, 90, 60], [280, 104, 130], [296, 118, 50], [280, 132, 95]].map(([x, y, w], i) => (
                 <rect key={i} x={x} y={y} width={w} height="6" fill={i === 3 ? "var(--color-acid)" : "var(--color-primary)"} opacity={i === 3 ? 1 : 0.55} />
             ))}
+        </svg>
+    );
+}
+
+function WebsiteArt() {
+    const radius = 20;
+    const circumference = 2 * Math.PI * radius;
+    return (
+        <svg className="artifact__canvas" viewBox="0 0 480 300" role="presentation">
+            {/* site nav */}
+            <rect x="20" y="16" width="440" height="24" fill="none" stroke="var(--color-border)" />
+            <circle cx="34" cy="28" r="4" fill="var(--color-acid)" />
+            {[356, 384, 412].map((x) => (
+                <rect key={x} x={x} y="25" width="16" height="4" fill="var(--color-border)" />
+            ))}
+
+            {/* hero */}
+            <rect x="20" y="54" width="270" height="76" fill="var(--color-background-secondary)" />
+            <rect x="308" y="64" width="150" height="12" fill="var(--color-primary)" />
+            <rect x="308" y="84" width="130" height="5" fill="var(--color-border)" />
+            <rect x="308" y="94" width="110" height="5" fill="var(--color-border)" opacity="0.6" />
+            <rect x="308" y="110" width="76" height="18" rx="4" fill="var(--color-acid)" />
+
+            {/* content cards */}
+            {[20, 178, 336].map((x) => (
+                <g key={x}>
+                    <rect x={x} y="146" width="124" height="72" fill="none" stroke="var(--color-border)" />
+                    <rect x={x + 12} y="160" width="60" height="6" fill="var(--color-border)" />
+                    <rect x={x + 12} y="174" width="90" height="4" fill="var(--color-border)" opacity="0.6" />
+                    <rect x={x + 12} y="184" width="70" height="4" fill="var(--color-border)" opacity="0.6" />
+                </g>
+            ))}
+
+            {/* footer bar */}
+            <rect x="20" y="234" width="440" height="16" fill="var(--color-border)" opacity="0.35" />
+
+            {/* performance score ring */}
+            <circle cx="404" cy="270" r={radius} fill="none" stroke="var(--color-border)" strokeWidth="3" />
+            <circle
+                cx="404"
+                cy="270"
+                r={radius}
+                fill="none"
+                stroke="var(--color-acid)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeDasharray={`${circumference * 0.94} ${circumference}`}
+                transform="rotate(-90 404 270)"
+            />
+            <text x="404" y="274" textAnchor="middle" fontSize="13" fill="var(--color-primary)" fontFamily="sans-serif">98</text>
+
+            {/* search / seo glyph */}
+            <circle cx="60" cy="264" r="9" fill="none" stroke="var(--color-primary)" strokeWidth="2" />
+            <line x1="67" y1="271" x2="76" y2="280" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" />
         </svg>
     );
 }

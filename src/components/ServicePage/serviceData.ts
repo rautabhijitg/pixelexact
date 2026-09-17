@@ -11,7 +11,9 @@ export type ServicePageData = {
     process: [string, string][];
     faqs: [string, string][];
     relatedServices: string[];
-    art?: "ux" | "ui" | "frontend" | "consultancy" | "toolkit";
+    art?: "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit";
+    /** Short, scannable one-liner for the Services mega menu (nav), distinct from the hero summary. */
+    menuDescription: string;
 };
 
 export const servicePages: Record<string, ServicePageData> = {
@@ -39,6 +41,7 @@ export const servicePages: Record<string, ServicePageData> = {
         ],
         relatedServices: ["ui-design-systems", "consultancy"],
         art: "ux",
+        menuDescription: "Research, UX strategy, and usability testing that validate your product before you build.",
     },
     "ui-design-systems": {
         slug: "ui-design-systems",
@@ -62,8 +65,9 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Will our team be able to maintain the system after you leave?", "That's the point of the documentation and governance deliverable: rules your team can apply to new screens without us in the room."],
             ["What is actually included in a design system?", "Design tokens, a component library, documented interaction and responsive states, and governance notes on when and how to extend it."],
         ],
-        relatedServices: ["ux-product-design", "frontend-application-development"],
+        relatedServices: ["ux-product-design", "frontend-application-development", "website-design-development"],
         art: "ui",
+        menuDescription: "Interface design and design systems that keep your product consistent as it scales.",
     },
     "frontend-application-development": {
         slug: "frontend-application-development",
@@ -87,12 +91,39 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Can you work with an existing engineering team?", "Yes. We work inside your codebase and conventions where that makes sense, and hand off component-driven architecture your team can extend on its own."],
             ["Do you only build in React and Next.js?", "That's our default stack for production interfaces. If your product runs on something else, tell us and we'll scope accordingly."],
         ],
-        relatedServices: ["ui-design-systems", "design-toolkit"],
+        relatedServices: ["ui-design-systems", "design-toolkit", "website-design-development"],
         art: "frontend",
+        menuDescription: "Pixel-accurate frontend builds and application development that match your design exactly.",
+    },
+    "website-design-development": {
+        slug: "website-design-development",
+        eyebrow: "SERVICE / 04",
+        title: "Website Design & Development",
+        summary: "A website that looks right, loads fast, and is built to be found.",
+        metaDescription: "Website design and development as one engagement: UX, UI, frontend implementation, performance, accessibility, and technical SEO foundations.",
+        intro: "We design and build the whole website, structure, interface, frontend code, and the performance and SEO foundations underneath it, as one engagement instead of three separate ones.",
+        situations: [
+            "Your website doesn't reflect the quality of the product or business behind it.",
+            "You need a new site and don't want to coordinate a designer, a developer, and an SEO consultant separately.",
+            "Your current site is slow, hard to maintain, or falls short on accessibility.",
+            "You're launching something new and need a site that's ready for real traffic and real search visibility from day one.",
+        ],
+        outcomes: ["A website designed and built by one team", "Fast, accessible pages that hold up under real traffic", "A technical foundation search engines can actually index"],
+        deliverables: ["Website UX and information architecture", "Interface design and responsive layouts", "Production frontend build, performance-tuned", "Technical SEO and accessibility foundations"],
+        process: [["Plan", "We define the site's structure, content needs, and technical requirements before design starts."], ["Design & Build", "We design the interface and build the frontend in the same process, so nothing drifts between them."], ["Launch & Tune", "We test performance, accessibility, and search fundamentals, then ship."]],
+        faqs: [
+            ["How is this different from UI & Design Systems or Frontend & Application Development?", "Those services go deep on interface design or frontend engineering, usually for an existing product. Website Design & Development bundles both, plus performance and SEO groundwork, as one engagement for a standalone website."],
+            ["Do you handle SEO as part of this?", "We build the technical foundations search engines depend on: semantic structure, performance, and crawlability. We're not an ongoing SEO or content marketing service."],
+            ["Can you work within our existing brand?", "Yes. We design within an existing brand system, or help establish one if you don't have it yet."],
+            ["What do you build the site on?", "Production React and Next.js by default, the same stack we use for application frontends. If you need a different platform, tell us and we'll scope accordingly."],
+        ],
+        relatedServices: ["ui-design-systems", "frontend-application-development"],
+        art: "website",
+        menuDescription: "Website design and development built for performance, accessibility, and search visibility.",
     },
     consultancy: {
         slug: "consultancy",
-        eyebrow: "SERVICE / 04",
+        eyebrow: "SERVICE / 05",
         title: "Consultancy",
         summary: "Senior judgment, without a full project commitment.",
         metaDescription: "Senior UX, UI, accessibility, and frontend consultancy: focused reviews, audits, and second opinions without committing to a full project.",
@@ -114,10 +145,11 @@ export const servicePages: Record<string, ServicePageData> = {
         ],
         relatedServices: ["ux-product-design", "frontend-application-development"],
         art: "consultancy",
+        menuDescription: "Senior UX, UI, and frontend expertise on demand, without a full project.",
     },
     "design-toolkit": {
         slug: "design-toolkit",
-        eyebrow: "SERVICE / 05",
+        eyebrow: "SERVICE / 06",
         title: "Design Toolkit",
         summary: "A growing library of 40+ production-ready UI components, and proof of how we build.",
         metaDescription: "Design Toolkit: a growing library of 40+ production-ready UI components, buttons, forms, navigation, tables, and more, built to speed up your next interface.",
@@ -139,10 +171,11 @@ export const servicePages: Record<string, ServicePageData> = {
         ],
         relatedServices: ["ui-design-systems", "frontend-application-development"],
         art: "toolkit",
+        menuDescription: "40+ production-ready components that speed up your next interface.",
     },
     "how-we-deliver": {
         slug: "how-we-deliver",
-        eyebrow: "THE ENGINE BEHIND ALL FIVE",
+        eyebrow: "THE ENGINE BEHIND ALL SIX",
         title: "How We Deliver",
         summary: "AI-enabled workflows that ship in weeks, not months.",
         metaDescription: "How Pixel Exact delivers: senior involvement and AI-enabled workflows that compress timelines across research, design, and frontend development without cutting quality.",
@@ -161,6 +194,7 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Does moving faster mean less review or lower quality?", "No. The speed comes from removing hand-off friction, not from skipping review. Senior involvement stays constant throughout."],
         ],
         relatedServices: ["ux-product-design", "frontend-application-development"],
+        menuDescription: "Senior involvement and AI-enabled workflows, explained.",
     },
 };
 
@@ -168,6 +202,7 @@ export const serviceOrder = [
     "ux-product-design",
     "ui-design-systems",
     "frontend-application-development",
+    "website-design-development",
     "consultancy",
     "design-toolkit",
 ] as const;

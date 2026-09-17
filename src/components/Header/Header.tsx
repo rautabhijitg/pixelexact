@@ -3,7 +3,9 @@
 import { startTransition, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Grid3X3, Menu, Minus, Plus, Settings, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Grid3X3, Menu, Minus, Plus, Settings, X } from "lucide-react";
+import { serviceOrder, servicePages } from "@/components/ServicePage/serviceData";
+import ServicesMegaMenu from "./ServicesMegaMenu";
 
 type HeaderProps = {
     precisionView?: boolean;
@@ -19,6 +21,7 @@ export default function Header({
     backLabel,
 }: HeaderProps) {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
     const [darkTheme, setDarkTheme] = useState(false);
     const [fontScale, setFontScale] = useState(1);
@@ -45,7 +48,10 @@ export default function Header({
         window.localStorage.setItem("pixel-exact-theme", darkTheme ? "dark" : "light");
     }, [darkTheme, fontScale]);
 
-    const closeMenu = () => setMenuOpen(false);
+    const closeMenu = () => {
+        setMenuOpen(false);
+        setMobileServicesOpen(false);
+    };
 
     return (
         <header className="site-header">
@@ -56,7 +62,7 @@ export default function Header({
                     <Image className="site-header__logo site-header__logo--white" src="/images/pixelexact-logo-white.png" alt="" width={699} height={119} priority />
                 </Link>
                 <div className="site-header__links">
-                    <Link href="/services">Services</Link>
+                    <ServicesMegaMenu />
                     <Link href="/work">Work</Link>
                     <Link href="/services/design-toolkit">Design Toolkit</Link>
                     <Link href="/about">About</Link>
@@ -69,7 +75,35 @@ export default function Header({
                 </div>
             </nav>
             <div className={`site-header__mobile-menu${menuOpen ? " site-header__mobile-menu--open" : ""}`} id="mobile-navigation" aria-hidden={!menuOpen}>
-                <Link href="/services" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Services</Link>
+                <div className="mobile-services">
+                    <button
+                        type="button"
+                        className="mobile-services__trigger"
+                        aria-expanded={mobileServicesOpen}
+                        aria-controls="mobile-services-panel"
+                        tabIndex={menuOpen ? 0 : -1}
+                        onClick={() => setMobileServicesOpen((current) => !current)}
+                    >
+                        Services
+                        <ChevronDown aria-hidden="true" size={18} className="mobile-services__chevron" />
+                    </button>
+                    <div id="mobile-services-panel" className={`mobile-services__panel${mobileServicesOpen ? " mobile-services__panel--open" : ""}`}>
+                        <div className="mobile-services__inner">
+                            {serviceOrder.map((slug) => {
+                                const service = servicePages[slug];
+                                return (
+                                    <Link key={slug} href={`/services/${slug}`} tabIndex={menuOpen && mobileServicesOpen ? 0 : -1} onClick={closeMenu}>
+                                        <span className="mobile-services__item-title">{service.title}</span>
+                                        <span className="mobile-services__item-desc">{service.menuDescription}</span>
+                                    </Link>
+                                );
+                            })}
+                            <Link className="mobile-services__all" href="/services" tabIndex={menuOpen && mobileServicesOpen ? 0 : -1} onClick={closeMenu}>
+                                View all services <ArrowUpRight aria-hidden="true" size={14} />
+                            </Link>
+                        </div>
+                    </div>
+                </div>
                 <Link href="/work" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Work</Link>
                 <Link href="/services/design-toolkit" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>Design Toolkit</Link>
                 <Link href="/about" tabIndex={menuOpen ? 0 : -1} onClick={closeMenu}>About</Link>

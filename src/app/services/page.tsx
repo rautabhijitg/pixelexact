@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
     title: "Services",
-    description: "UX & product design, UI & design systems, frontend & application development, consultancy, and Design Toolkit, from one senior, AI-enabled team.",
+    description: "UX & product design, UI & design systems, frontend & application development, website design & development, consultancy, and Design Toolkit, from one senior, AI-enabled team.",
     path: "/services",
 });
 
@@ -51,14 +51,14 @@ export default function ServicesPage() {
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Five ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div></Reveal>
-                        <div className="service-page__service-index">{serviceOrder.map((slug, index) => { const service = servicePages[slug]; const isLast = index === serviceOrder.length - 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={service.slug} index={index}><Link className="service-page__service-card" href={`/services/${service.slug}`}><span>0{index + 1}</span><h2>{service.title}</h2><p>{service.summary}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Six ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div></Reveal>
+                        <div className="service-page__service-index">{serviceOrder.map((slug, index) => { const service = servicePages[slug]; const isLast = index === serviceOrder.length - 1 && serviceOrder.length % 2 === 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={service.slug} index={index}><Link className="service-page__service-card" href={`/services/${service.slug}`}><span>0{index + 1}</span><h2>{service.title}</h2><p>{service.summary}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE ENGINE BEHIND ALL FIVE</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">Every service above runs on the same operating model.</p></div></Reveal>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE ENGINE BEHIND ALL SIX</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">Every service above runs on the same operating model.</p></div></Reveal>
                         <div className="service-page__process">
                             <Reveal index={0}><article className="service-page__process-step"><span>01</span><h3>Senior involvement</h3><p>You work directly with the people doing the work, not an account manager relaying it to a bench of juniors. Every decision is owned by someone who has done this before.</p></article></Reveal>
                             <Reveal index={1}><article className="service-page__process-step"><span>02</span><h3>AI-enabled execution</h3><p>AI accelerates research, exploration, production, and iteration throughout the process. It doesn&apos;t replace judgment, it removes the busywork around it.</p></article></Reveal>

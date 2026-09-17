@@ -108,7 +108,7 @@ export default function ServicePage({ slug }: ServicePageProps) {
                     <section className="service-page__section">
                         <div className="service-page__wrap">
                             <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">RELATED SERVICES</p><h2>Often paired with this work.</h2></div></Reveal>
-                            <div className="service-page__related">{related.map((entry, index) => <Reveal key={entry.slug} index={index}><Link className="service-page__related-card" href={`/services/${entry.slug}`}><h3>{entry.title}</h3><p>{entry.summary}</p><ArrowUpRight aria-hidden="true" size={18} /></Link></Reveal>)}</div>
+                            <div className="service-page__related">{related.map((entry, index) => { const isLast = index === related.length - 1 && related.length % 2 === 1; return <Reveal className={isLast ? "service-page__related-card--wide" : undefined} key={entry.slug} index={index}><Link className="service-page__related-card" href={`/services/${entry.slug}`}><h3>{entry.title}</h3><p>{entry.summary}</p><ArrowUpRight aria-hidden="true" size={18} /></Link></Reveal>; })}</div>
                         </div>
                     </section>
                 )}

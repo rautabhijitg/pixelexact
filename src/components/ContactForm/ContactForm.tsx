@@ -4,14 +4,15 @@ import { useState, type FormEvent } from "react";
 import { CONTACT_EMAIL } from "@/lib/seo";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
+type Status = "idle" | "submitting" | "success" | "error";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function ContactForm() {
-    const [status, setStatus] = useState<"idle" | "success">("idle");
+    const [status, setStatus] = useState<Status>("idle");
     const [errors, setErrors] = useState<Errors>({});
 
-    function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -36,19 +37,27 @@ export default function ContactForm() {
         setErrors(nextErrors);
         if (Object.keys(nextErrors).length > 0) return;
 
-        const subject = `Consultation request from ${name}`;
-        const bodyLines = [message, "", `Name: ${name}`, `Email: ${email}`, company ? `Company: ${company}` : null].filter(Boolean);
-        const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+        setStatus("submitting");
 
-        setStatus("success");
-        window.location.href = mailto;
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, company, message }),
+            });
+
+            if (!response.ok) throw new Error("Request failed");
+            setStatus("success");
+        } catch {
+            setStatus("error");
+        }
     }
 
     if (status === "success") {
         return (
             <div className="contact-form__success" role="status">
-                <p>Thanks, that&apos;s opening in your email client now.</p>
-                <p>If nothing opens, email us directly at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+                <p>Thanks, that&apos;s sent.</p>
+                <p>We reply directly, usually within a day or two. If you don&apos;t hear back, email us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
             </div>
         );
     }
@@ -83,7 +92,15 @@ export default function ContactForm() {
                 {errors.message && <p className="contact-form__error" id="message-error">{errors.message}</p>}
             </div>
 
-            <button className="contact-form__submit" type="submit">Book a Consultation</button>
+            {status === "error" && (
+                <p className="contact-form__error" role="alert">
+                    Something went wrong sending that. Please try again, or email us directly at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+                </p>
+            )}
+
+            <button className="contact-form__submit" type="submit" disabled={status === "submitting"}>
+                {status === "submitting" ? "Sending…" : "Book a Consultation"}
+            </button>
         </form>
     );
 }
