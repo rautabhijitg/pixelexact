@@ -1,7 +1,19 @@
 import { NextResponse } from "next/server";
+import { SITE_NAME } from "@/lib/seo";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
+
+const MAX_CONTENT_LENGTH_BYTES = 20_000;
+const MIN_SUBMIT_MS = 1_200; // faster than this and it's almost certainly a bot filling the form programmatically.
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
+const RATE_LIMIT_MAX_REQUESTS = 5;
+
+const NAME_MAX_LENGTH = 100;
+const EMAIL_MAX_LENGTH = 254;
+const COMPANY_MAX_LENGTH = 100;
+const MESSAGE_MIN_LENGTH = 10;
+const MESSAGE_MAX_LENGTH = 5_000;
 
 type ContactPayload = {
     name?: unknown;
@@ -9,9 +21,116 @@ type ContactPayload = {
     company?: unknown;
     message?: unknown;
     company_website?: unknown; // honeypot
+    startedAt?: unknown; // client-side form-render timestamp, used for a timing-based bot check
 };
 
+// In-memory, per-server-instance fixed-window limiter. Good enough as a first line of
+// defense without adding an external store; on serverless deployments with multiple
+// warm instances an attacker distributed across instances could exceed this. If that
+// becomes a real problem in practice, replace with a shared store (e.g. Upstash Redis).
+const submissionsByIp = new Map<string, { count: number; windowStart: number }>();
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const entry = submissionsByIp.get(ip);
+
+    if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {
+        submissionsByIp.set(ip, { count: 1, windowStart: now });
+        return false;
+    }
+
+    entry.count += 1;
+    return entry.count > RATE_LIMIT_MAX_REQUESTS;
+}
+
+function getClientIp(request: Request): string {
+    const forwardedFor = request.headers.get("x-forwarded-for");
+    if (forwardedFor) return forwardedFor.split(",")[0]!.trim();
+    return request.headers.get("x-real-ip") ?? "unknown";
+}
+
+function isTrustedOrigin(request: Request): boolean {
+    const origin = request.headers.get("origin");
+    if (!origin) return true; // some proxies/clients omit it; we don't hard-fail on absence alone.
+
+    try {
+        // Compared against the request's own Host header rather than a configured site
+        // URL, so this can't be defeated (or accidentally broken) by a missing/incorrect
+        // NEXT_PUBLIC_SITE_URL value in any given environment.
+        return new URL(origin).host === new URL(request.url).host;
+    } catch {
+        return false;
+    }
+}
+
+function cleanText(value: unknown, maxLength: number): string {
+    if (typeof value !== "string") return "";
+    return value.replace(/[\r\n\t]+/g, " ").replace(/\s+/g, " ").trim().slice(0, maxLength);
+}
+
+function escapeHtml(value: string): string {
+    return value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+type EmailMessage = {
+    to: string;
+    subject: string;
+    html: string;
+    text: string;
+    replyTo?: string;
+};
+
+async function sendEmail(apiKey: string, fromEmail: string, message: EmailMessage): Promise<boolean> {
+    try {
+        const response = await fetch(RESEND_ENDPOINT, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${apiKey}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                from: fromEmail,
+                to: [message.to],
+                reply_to: message.replyTo,
+                subject: message.subject,
+                html: message.html,
+                text: message.text,
+            }),
+        });
+
+        if (!response.ok) {
+            const errorBody = await response.text().catch(() => "");
+            console.error("Contact form: Resend API error.", response.status, errorBody);
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        console.error("Contact form: network error calling Resend.", error);
+        return false;
+    }
+}
+
 export async function POST(request: Request) {
+    const contentLength = Number(request.headers.get("content-length") ?? 0);
+    if (contentLength > MAX_CONTENT_LENGTH_BYTES) {
+        return NextResponse.json({ error: "Request is too large." }, { status: 413 });
+    }
+
+    if (!isTrustedOrigin(request)) {
+        return NextResponse.json({ error: "Invalid request." }, { status: 403 });
+    }
+
+    const clientIp = getClientIp(request);
+    if (isRateLimited(clientIp)) {
+        return NextResponse.json({ error: "Too many requests. Please try again later." }, { status: 429 });
+    }
+
     let payload: ContactPayload;
     try {
         payload = await request.json();
@@ -24,58 +143,103 @@ export async function POST(request: Request) {
         return NextResponse.json({ ok: true });
     }
 
-    const name = typeof payload.name === "string" ? payload.name.trim() : "";
-    const email = typeof payload.email === "string" ? payload.email.trim() : "";
-    const company = typeof payload.company === "string" ? payload.company.trim() : "";
-    const message = typeof payload.message === "string" ? payload.message.trim() : "";
+    // Timing check: submissions faster than a human could plausibly fill the form
+    // out get the same fake success, and are silently dropped.
+    const startedAt = Number(payload.startedAt);
+    if (Number.isFinite(startedAt) && Date.now() - startedAt < MIN_SUBMIT_MS) {
+        return NextResponse.json({ ok: true });
+    }
 
-    if (!name || !email || !message || !EMAIL_PATTERN.test(email)) {
-        return NextResponse.json({ error: "Missing or invalid fields." }, { status: 400 });
+    const name = cleanText(payload.name, NAME_MAX_LENGTH);
+    const email = typeof payload.email === "string" ? payload.email.trim().toLowerCase().slice(0, EMAIL_MAX_LENGTH) : "";
+    const company = cleanText(payload.company, COMPANY_MAX_LENGTH);
+    const message = typeof payload.message === "string" ? payload.message.trim().slice(0, MESSAGE_MAX_LENGTH) : "";
+
+    const errors: Record<string, string> = {};
+    if (!name) errors.name = "Enter your name.";
+    if (!email || !EMAIL_PATTERN.test(email) || email.length > EMAIL_MAX_LENGTH) errors.email = "Enter a valid email address.";
+    if (!message || message.length < MESSAGE_MIN_LENGTH) errors.message = `Tell us a bit more about what you're working on (at least ${MESSAGE_MIN_LENGTH} characters).`;
+
+    if (Object.keys(errors).length > 0) {
+        return NextResponse.json({ error: "Missing or invalid fields.", fieldErrors: errors }, { status: 400 });
     }
 
     const apiKey = process.env.RESEND_API_KEY;
-    const toEmail = process.env.CONTACT_TO_EMAIL;
+    const toEmail = process.env.CONTACT_RECEIVER_EMAIL;
     const fromEmail = process.env.RESEND_FROM_EMAIL || "Pixel Exact <onboarding@resend.dev>";
 
     if (!apiKey || !toEmail) {
-        console.error("Contact form: RESEND_API_KEY and/or CONTACT_TO_EMAIL is not configured.");
+        console.error("Contact form: RESEND_API_KEY and/or CONTACT_RECEIVER_EMAIL is not configured.");
         return NextResponse.json({ error: "Email delivery is not configured yet." }, { status: 500 });
     }
 
-    const subject = `New consultation request from ${name}`;
-    const text = [
+    const submittedAt = new Date();
+    const submittedAtDisplay = `${submittedAt.toLocaleString("en-US", { dateStyle: "full", timeStyle: "short", timeZone: "UTC" })} UTC`;
+
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeCompany = escapeHtml(company);
+    const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
+
+    const businessHtml = `
+        <div style="font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #1a1a1a;">
+            <h2 style="margin: 0 0 20px; color: #173963;">New contact form submission</h2>
+            <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+                <tr><td style="padding: 10px 16px 10px 0; border-bottom: 1px solid #e5e5e5; font-weight: 600; white-space: nowrap; vertical-align: top;">Name</td><td style="padding: 10px 0; border-bottom: 1px solid #e5e5e5;">${safeName}</td></tr>
+                <tr><td style="padding: 10px 16px 10px 0; border-bottom: 1px solid #e5e5e5; font-weight: 600; white-space: nowrap; vertical-align: top;">Email</td><td style="padding: 10px 0; border-bottom: 1px solid #e5e5e5;"><a href="mailto:${safeEmail}" style="color: #173963;">${safeEmail}</a></td></tr>
+                ${company ? `<tr><td style="padding: 10px 16px 10px 0; border-bottom: 1px solid #e5e5e5; font-weight: 600; white-space: nowrap; vertical-align: top;">Company</td><td style="padding: 10px 0; border-bottom: 1px solid #e5e5e5;">${safeCompany}</td></tr>` : ""}
+                <tr><td style="padding: 10px 16px 10px 0; border-bottom: 1px solid #e5e5e5; font-weight: 600; white-space: nowrap; vertical-align: top;">Message</td><td style="padding: 10px 0; border-bottom: 1px solid #e5e5e5;">${safeMessage}</td></tr>
+                <tr><td style="padding: 10px 16px 10px 0; font-weight: 600; white-space: nowrap; vertical-align: top;">Submitted</td><td style="padding: 10px 0;">${submittedAtDisplay}</td></tr>
+            </table>
+        </div>
+    `.trim();
+
+    const businessText = [
+        "New contact form submission",
+        "",
         `Name: ${name}`,
         `Email: ${email}`,
         company ? `Company: ${company}` : null,
+        `Submitted: ${submittedAtDisplay}`,
         "",
         message,
     ].filter((line): line is string => line !== null).join("\n");
 
-    let resendResponse: Response;
-    try {
-        resendResponse = await fetch(RESEND_ENDPOINT, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${apiKey}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                from: fromEmail,
-                to: [toEmail],
-                reply_to: email,
-                subject,
-                text,
-            }),
-        });
-    } catch (error) {
-        console.error("Contact form: network error calling Resend.", error);
-        return NextResponse.json({ error: "Could not send email." }, { status: 502 });
+    const businessSent = await sendEmail(apiKey, fromEmail, {
+        to: toEmail,
+        subject: `New contact form submission from ${name}`,
+        html: businessHtml,
+        text: businessText,
+        replyTo: email,
+    });
+
+    if (!businessSent) {
+        return NextResponse.json({ error: "Could not send your message. Please try again." }, { status: 502 });
     }
 
-    if (!resendResponse.ok) {
-        const errorBody = await resendResponse.text().catch(() => "");
-        console.error("Contact form: Resend API error.", resendResponse.status, errorBody);
-        return NextResponse.json({ error: "Could not send email." }, { status: 502 });
+    const confirmationHtml = `
+        <div style="font-family: -apple-system, Segoe UI, Roboto, sans-serif; max-width: 480px; margin: 0 auto; color: #1a1a1a;">
+            <h2 style="margin: 0 0 16px; color: #173963;">Thanks for getting in touch.</h2>
+            <p style="margin: 0 0 12px; line-height: 1.6;">Hi ${safeName},</p>
+            <p style="margin: 0 0 12px; line-height: 1.6;">Thanks for reaching out to ${SITE_NAME}. We've received your message and will connect with you shortly.</p>
+            <p style="margin: 0; line-height: 1.6;">Best,<br />${SITE_NAME}</p>
+        </div>
+    `.trim();
+
+    const confirmationText = `Hi ${name},\n\nThanks for reaching out to ${SITE_NAME}. We've received your message and will connect with you shortly.\n\nBest,\n${SITE_NAME}`;
+
+    const confirmationSent = await sendEmail(apiKey, fromEmail, {
+        to: email,
+        subject: `We've received your message — ${SITE_NAME}`,
+        html: confirmationHtml,
+        text: confirmationText,
+        replyTo: toEmail,
+    });
+
+    if (!confirmationSent) {
+        // The business already has the lead, which is the part that matters most, so we
+        // still report success to the visitor. Logged (without message content) for follow-up.
+        console.warn("Contact form: business notification sent, but user confirmation email failed to send.");
     }
 
     return NextResponse.json({ ok: true });

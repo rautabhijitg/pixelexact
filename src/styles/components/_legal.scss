@@ -1,0 +1,40 @@
+@use "../abstracts/variables";
+
+.legal-meta {
+  margin-top: 18px;
+  color: var(--color-text-secondary);
+  font-size: variables.$font-size-md;
+}
+
+.legal-content {
+  max-width: 72ch;
+
+  section {
+    margin-top: 56px;
+
+    &:first-child { margin-top: 0; }
+  }
+
+  h2 { font-size: variables.$font-size-3xl; }
+  h3 { margin-top: 28px; color: var(--color-text); font-size: variables.$font-size-xl; }
+
+  p, ul, ol {
+    margin-top: 16px;
+    color: var(--color-text-secondary);
+    font-size: variables.$font-size-base;
+    line-height: 1.65;
+  }
+
+  h2 + p, h2 + ul, h2 + ol, h3 + p, h3 + ul, h3 + ol { margin-top: 14px; }
+
+  ul, ol { padding-left: 1.2em; }
+  li + li { margin-top: 8px; }
+
+  a { color: var(--color-acid); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+  strong { color: var(--color-text); }
+}
+
+@media (max-width: 760px) {
+  .legal-content { max-width: none; }
+}

@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/work",
         "/insights",
         "/contact",
+        "/privacy-policy",
+        "/disclaimer",
     ];
 
     const workRoutes = caseStudies.map((entry) => ({

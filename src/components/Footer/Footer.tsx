@@ -16,7 +16,14 @@ export default function Footer() {
                 <div><h3>Services</h3><Link href="/services">All services</Link><Link href="/services/ux-product-design">UX &amp; Product Design</Link><Link href="/services/ui-design-systems">UI &amp; Design Systems</Link><Link href="/services/frontend-application-development">Development</Link><Link href="/services/website-design-development">Website Design &amp; Development</Link></div>
                 <div><h3>Contact</h3><p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p><p><Link href="/contact">Book a consultation</Link></p></div>
             </div>
-            <div className="site-container site-footer__bottom"><span>© {COPYRIGHT_YEAR} Pixel Exact. All rights reserved.</span><span>Designed and built by Pixel Exact.</span></div>
+            <div className="site-container site-footer__bottom">
+                <span>© {COPYRIGHT_YEAR} Pixel Exact. All rights reserved.</span>
+                <nav className="site-footer__legal" aria-label="Legal">
+                    <Link href="/privacy-policy">Privacy Policy</Link>
+                    <Link href="/disclaimer">Disclaimer</Link>
+                </nav>
+                <span>Designed and built by Pixel Exact.</span>
+            </div>
         </footer>
     );
 }

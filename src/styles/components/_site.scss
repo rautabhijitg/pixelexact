@@ -117,7 +117,10 @@
 .site-footer__grid > div > p { max-width: 32ch; margin-top: 14px; font-size: variables.$font-size-md; }
 .site-footer__grid h3 { margin: 0 0 14px; color: var(--color-text); font-size: variables.$font-size-md; }
 .site-footer__grid a:not(.site-footer__wordmark) { display: block; margin-bottom: 10px; font-size: variables.$font-size-md; }
-.site-footer__bottom { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; font-size: variables.$font-size-sm; }
+.site-footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; margin-top: 48px; font-size: variables.$font-size-sm; }
+.site-footer__legal { display: flex; flex-wrap: wrap; gap: 20px; }
+.site-footer__legal a { transition: color var(--transition-fast); }
+.site-footer__legal a:hover { color: var(--color-primary); }
 
 :root[data-theme="dark"] .site-header { background: rgba(16, 26, 35, .94); }
 :root[data-theme="dark"] .site-header__logo:not(.site-header__logo--white),
