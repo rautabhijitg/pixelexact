@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
     title: "Services",
-    description: "UX & product design, UI & design systems, frontend & application development, website design & development, consultancy, and Design Toolkit, from one senior, AI-enabled team.",
+    description: "UX & product design, UI & design systems, frontend & application development, website design & development, consultancy, Design Toolkit, and legacy application modernization, from one senior, AI-enabled team.",
     path: "/services",
 });
 
@@ -51,7 +51,7 @@ export default function ServicesPage() {
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Six ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div></Reveal>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Seven ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div></Reveal>
                         <div className="service-page__service-index">{serviceOrder.map((slug, index) => { const service = servicePages[slug]; const isLast = index === serviceOrder.length - 1 && serviceOrder.length % 2 === 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={service.slug} index={index}><Link className="service-page__service-card" href={`/services/${service.slug}`}><span>0{index + 1}</span><h2>{service.title}</h2><p>{service.summary}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
                     </div>
                 </section>

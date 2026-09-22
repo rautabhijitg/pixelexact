@@ -58,8 +58,8 @@ export default function Header({
             <a className="site-header__skip-link" href="#main-content">Skip to main content</a>
             <nav className="site-header__nav site-container" aria-label="Primary navigation">
                 <Link className="site-header__wordmark" href="/" aria-label="Pixel Exact home" onClick={closeMenu}>
-                    <Image className="site-header__logo" src="/images/pixelexact-logo-color.png" alt="Pixel Exact" width={699} height={119} priority />
-                    <Image className="site-header__logo site-header__logo--white" src="/images/pixelexact-logo-white.png" alt="" width={699} height={119} priority />
+                    <Image className="site-header__logo" src="/images/pixelexact-logo-color.svg" alt="Pixel Exact" width={699} height={119} priority />
+                    <Image className="site-header__logo site-header__logo--white" src="/images/pixelexact-logo-white.svg" alt="" width={699} height={119} priority />
                 </Link>
                 <div className="site-header__links">
                     <ServicesMegaMenu />

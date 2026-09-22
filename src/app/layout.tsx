@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans, Orbitron } from "next/font/google";
+import { Inter, Orbitron, Montserrat } from "next/font/google";
 import { organizationJsonLd, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo";
 import "./globals.scss";
 
-const ibmPlexSans = IBM_Plex_Sans({
+const inter = Inter({
     subsets: ["latin"],
     weight: ["400", "500", "600"],
     variable: "--font-body",
@@ -14,6 +14,13 @@ const orbitron = Orbitron({
     subsets: ["latin"],
     weight: ["500", "600", "700"],
     variable: "--font-display",
+    display: "swap",
+});
+
+const montserrat = Montserrat({
+    subsets: ["latin"],
+    weight: ["400", "500", "600"],
+    variable: "--font-secondary",
     display: "swap",
 });
 
@@ -38,7 +45,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${ibmPlexSans.variable} ${orbitron.variable}`}>
+        <html lang="en" className={`${inter.variable} ${orbitron.variable} ${montserrat.variable}`}>
             <body>
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }} />

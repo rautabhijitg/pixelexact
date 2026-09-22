@@ -1,8 +1,9 @@
 // Typography — compile-time Sass variables (font-size in rem, base 16px = 1rem)
 // Font families are loaded once via next/font in app/layout.tsx and exposed as
 // CSS custom properties on <html>, so every stylesheet references the same load.
-$font-family-body: var(--font-body), "IBM Plex Sans", sans-serif;
+$font-family-body: var(--font-body), "Inter", sans-serif;
 $font-family-display: var(--font-display), Orbitron, sans-serif;
+$font-family-secondary: var(--font-secondary), "Montserrat", sans-serif;
 
 $font-size-xs: 0.75rem; // 12px
 $font-size-sm: 0.8125rem; // 13px

@@ -11,9 +11,11 @@ export type ServicePageData = {
     process: [string, string][];
     faqs: [string, string][];
     relatedServices: string[];
-    art?: "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit";
+    art?: "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit" | "modernization";
     /** Short, scannable one-liner for the Services mega menu (nav), distinct from the hero summary. */
     menuDescription: string;
+    /** Optional photographic hero background (path under /public). Most service pages have none and use the plain hero. */
+    heroImage?: string;
 };
 
 export const servicePages: Record<string, ServicePageData> = {
@@ -42,6 +44,7 @@ export const servicePages: Record<string, ServicePageData> = {
         relatedServices: ["ui-design-systems", "consultancy"],
         art: "ux",
         menuDescription: "Research, UX strategy, and usability testing that validate your product before you build.",
+        heroImage: "/images/services/ux_services.webp",
     },
     "ui-design-systems": {
         slug: "ui-design-systems",
@@ -68,6 +71,7 @@ export const servicePages: Record<string, ServicePageData> = {
         relatedServices: ["ux-product-design", "frontend-application-development", "website-design-development"],
         art: "ui",
         menuDescription: "Interface design and design systems that keep your product consistent as it scales.",
+        heroImage: "/images/services/Design_System.webp",
     },
     "frontend-application-development": {
         slug: "frontend-application-development",
@@ -91,9 +95,10 @@ export const servicePages: Record<string, ServicePageData> = {
             ["Can you work with an existing engineering team?", "Yes. We work inside your codebase and conventions where that makes sense, and hand off component-driven architecture your team can extend on its own."],
             ["Do you only build in React and Next.js?", "That's our default stack for production interfaces. If your product runs on something else, tell us and we'll scope accordingly."],
         ],
-        relatedServices: ["ui-design-systems", "design-toolkit", "website-design-development"],
+        relatedServices: ["ui-design-systems", "design-toolkit", "website-design-development", "legacy-application-modernization"],
         art: "frontend",
         menuDescription: "Pixel-accurate frontend builds and application development that match your design exactly.",
+        heroImage: "/images/services/Frontend.webp",
     },
     "website-design-development": {
         slug: "website-design-development",
@@ -120,6 +125,7 @@ export const servicePages: Record<string, ServicePageData> = {
         relatedServices: ["ui-design-systems", "frontend-application-development"],
         art: "website",
         menuDescription: "Website design and development built for performance, accessibility, and search visibility.",
+        heroImage: "/images/services/website-design.webp",
     },
     consultancy: {
         slug: "consultancy",
@@ -146,6 +152,7 @@ export const servicePages: Record<string, ServicePageData> = {
         relatedServices: ["ux-product-design", "frontend-application-development"],
         art: "consultancy",
         menuDescription: "Senior UX, UI, and frontend expertise on demand, without a full project.",
+        heroImage: "/images/services/Consultancy.webp",
     },
     "design-toolkit": {
         slug: "design-toolkit",
@@ -153,25 +160,53 @@ export const servicePages: Record<string, ServicePageData> = {
         title: "Design Toolkit",
         summary: "A growing library of 40+ production-ready UI components, and proof of how we build.",
         metaDescription: "Design Toolkit: a growing library of 40+ production-ready UI components, buttons, forms, navigation, tables, and more, built to speed up your next interface.",
-        intro: "Design Toolkit shortens the distance between idea and interface with thoughtfully designed components that are ready to explore, adapt, and build, less a service to buy than evidence of the standard behind everything else we do.",
+        intro: "Design Toolkit shortens the distance between idea and interface with thoughtfully designed, production-ready components — accessible by default, responsive across breakpoints, and proven on enterprise-scale builds. Less a service to buy than evidence of the standard behind everything else we do.",
         situations: [
             "You want proof of build quality before committing to a larger engagement.",
             "You need to move fast on a new interface without starting from a blank canvas.",
             "You want a foundation your team can adapt instead of building a design system from zero.",
             "You're comparing studios and want to see the work, not just hear about it.",
         ],
-        outcomes: ["Faster product exploration", "Consistent patterns across teams", "Production-minded components from day one"],
-        deliverables: ["Buttons, forms, navigation, and feedback patterns", "Tables, charts, cards, and layout primitives", "Accessible states and responsive behavior", "A living library that keeps growing"],
-        process: [["Explore", "Start with a library of patterns shaped by real product work."], ["Adapt", "Fit components to your brand, content, and product constraints."], ["Extend", "Add new patterns while keeping the system coherent."]],
+        outcomes: ["Faster product exploration", "Consistent patterns across teams", "Production-minded components from day one", "Accessible and compliant by default — WCAG 2.1/2.2, full keyboard and screen-reader support", "Responsive across breakpoints, with fluid layouts and touch-friendly interactions", "Works with your stack — React, Angular, Vue, or Java, no lock-in"],
+        deliverables: ["Buttons, forms, navigation, and feedback patterns — including multi-step flows, data grids, and modals", "Tables, charts, cards, and layout primitives built for data-dense screens", "Accessible states and responsive behavior across desktop, tablet, and mobile — with light/dark theming and RTL support", "A living library that keeps growing, versioned as new patterns are proven in real product work"],
+        process: [["Explore", "Start with a library of patterns shaped by real, enterprise-scale product work."], ["Adapt", "Fit components to your brand, tokens, and product constraints."], ["Extend", "Add new patterns while keeping the system coherent and backward compatible."]],
         faqs: [
             ["Can we use Design Toolkit components in our own codebase?", "Yes, components are built to be adapted to your brand, content, and stack rather than locked to ours."],
             ["Is Design Toolkit a replacement for a custom design system?", "No. It's a starting foundation and a demonstration of our production standard, not a substitute for a system built around your product."],
+            ["Does this lock us into one framework?", "No — the same pattern library ships for React/Next.js, Angular, Vue, and Java-based stacks, so adopting it doesn't mean re-platforming."],
             ["How often is the library updated?", "It's an actively maintained, growing library. New patterns are added as they're built and proven in real product work."],
             ["Can we try it before committing to anything?", "Yes, that's the point. Explore the components first, then talk to us if you want it adapted to your product."],
         ],
         relatedServices: ["ui-design-systems", "frontend-application-development"],
         art: "toolkit",
         menuDescription: "40+ production-ready components that speed up your next interface.",
+        heroImage: "/images/services/Toolkit.webp",
+    },
+    "legacy-application-modernization": {
+        slug: "legacy-application-modernization",
+        eyebrow: "SERVICE / 07",
+        title: "Legacy Application Modernization",
+        summary: "A modern experience for your legacy application, without rewriting a single line of backend logic.",
+        metaDescription: "Presentation-layer modernization for legacy applications: a modern, on-brand interface delivered without rewriting backend logic, frameworks, or business-critical systems.",
+        intro: "We offer a non-disruptive modernization service focused exclusively on the presentation layer, the part of your application your users actually see and feel. Backend logic, workflows, and existing HTML stay untouched, while the interface is fully rebuilt around a modern design system.",
+        situations: [
+            "Your application still works, but its interface looks and feels dated next to where your brand is headed.",
+            "A full rebuild feels too risky, costly, or disruptive to the business-critical systems it would touch.",
+            "You want a modern, on-brand interface without rewriting backend logic or workflows.",
+            "Leadership wants proof the transformation works before committing to a full rollout.",
+        ],
+        outcomes: ["A modernized UI without backend or framework rewrites", "A cleaner, faster experience for users", "Executive buy-in before a full rollout"],
+        deliverables: ["Presentation-layer overhaul, zero functional risk", "Parallel rollout with zero downtime", "A complete, modern design system", "Scalable, maintainable frontend architecture", "Controlled, incremental migration"],
+        process: [["Assess", "We audit the current UI, design-system gaps, and technical constraints of your legacy application."], ["Demonstrate", "We build a working proof of concept on a real screen, so stakeholders see the transformation before committing to the full engagement."], ["Modernize", "We roll out the new presentation layer incrementally, component by component, alongside the existing UI."], ["Hand Off", "You're left with a scalable, documented frontend architecture your team can extend independently."]],
+        faqs: [
+            ["Does this replace our backend or framework?", "No. This service rebuilds only the presentation layer, the part of the application your users see and feel. Backend logic, workflows, and existing HTML stay untouched."],
+            ["Will this disrupt our existing UI while it's in progress?", "No. A parallel styling system lets the old and new UI run side by side, so you can migrate screen by screen with isolated testing and no breaking changes to existing HTML or CSS."],
+            ["How do we know this will work before committing to a full rollout?", "We build a working proof of concept on one of your real screens first, so stakeholders can see the transformation before committing to the full engagement."],
+        ],
+        relatedServices: ["frontend-application-development", "consultancy"],
+        art: "modernization",
+        menuDescription: "A modern interface for your legacy application, without rebuilding the backend underneath it.",
+        heroImage: "/images/services/Legacy_Modernisation.webp",
     },
     "how-we-deliver": {
         slug: "how-we-deliver",
@@ -205,4 +240,5 @@ export const serviceOrder = [
     "website-design-development",
     "consultancy",
     "design-toolkit",
+    "legacy-application-modernization",
 ] as const;

@@ -24,8 +24,8 @@
   padding: 0 21px;
   background: $background;
   color: $foreground;
-  font-size: variables.$font-size-xs;
-  font-weight: 700;
+  font-size: variables.$font-size-base;
+  font-weight: 500;
   transition: transform 0.2s ease, background 0.2s ease;
 
   &:hover {

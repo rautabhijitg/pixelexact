@@ -45,7 +45,7 @@ export const caseStudies: CaseStudy[] = [
         tag: "Legacy modernization",
         title: "Presentation-layer modernization",
         summary: "Modernized a legacy application's interface with a decoupled architecture.",
-        relatedService: "frontend-application-development",
+        relatedService: "legacy-application-modernization",
         art: "modernization",
         focus: [
             "Separate the presentation layer from legacy business logic without disrupting what already works",

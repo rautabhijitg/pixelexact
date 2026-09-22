@@ -1,7 +1,7 @@
 import BrowserChrome from "./BrowserChrome";
 import ComponentSwatch, { toolkitItems } from "./ComponentSwatch";
 
-type ServiceArtVariant = "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit";
+type ServiceArtVariant = "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit" | "modernization";
 
 /**
  * One distinct visual per service — never the same artifact reused across
@@ -23,14 +23,20 @@ export default function ServiceArt({ variant }: { variant: ServiceArtVariant }) 
     }
 
     return (
-        <div className={`artifact ${variant === "consultancy" ? "service-art--compact" : "service-art"}`} aria-hidden="true">
-            <BrowserChrome />
-            {variant === "ux" && <UxArt />}
-            {variant === "ui" && <UiArt />}
-            {variant === "frontend" && <FrontendArt />}
-            {variant === "website" && <WebsiteArt />}
-            {variant === "consultancy" && <ConsultancyArt />}
-        </div>
+        <>
+            <div className={`artifact ${variant === "consultancy" ? "service-art--compact" : "service-art"}`} aria-hidden="true">
+                <BrowserChrome />
+                {variant === "ux" && <UxArt />}
+                {variant === "ui" && <UiArt />}
+                {variant === "frontend" && <FrontendArt />}
+                {variant === "website" && <WebsiteArt />}
+                {variant === "consultancy" && <ConsultancyArt />}
+                {variant === "modernization" && <ModernizationArt />}
+            </div>
+            {variant === "modernization" && (
+                <p className="service-art__caption">Conceptual example — illustrates the legacy-to-modern transformation, not an actual client screenshot.</p>
+            )}
+        </>
     );
 }
 
@@ -168,6 +174,47 @@ function WebsiteArt() {
             {/* search / seo glyph */}
             <circle cx="60" cy="264" r="9" fill="none" stroke="var(--color-primary)" strokeWidth="2" />
             <line x1="67" y1="271" x2="76" y2="280" stroke="var(--color-primary)" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+    );
+}
+
+function ModernizationArt() {
+    return (
+        <svg className="artifact__canvas" viewBox="0 0 480 300" role="presentation">
+            {/* legacy panel */}
+            <rect x="20" y="20" width="8" height="8" fill="var(--color-border)" />
+            <text x="36" y="27" fontSize="10" letterSpacing="1" fill="var(--color-muted-dark, var(--color-text-secondary))" fontFamily="sans-serif">LEGACY</text>
+            <rect x="20" y="40" width="200" height="10" fill="var(--color-border)" opacity="0.6" />
+            {[62, 84, 104, 122, 140, 160].map((y, i) => (
+                <rect key={y} x={20 + (i % 2) * 4} y={y} width={190 - (i % 3) * 20} height="14" fill="none" stroke="var(--color-border)" />
+            ))}
+            <rect x="20" y="186" width="70" height="18" fill="none" stroke="var(--color-border)" />
+            <rect x="98" y="186" width="70" height="18" fill="none" stroke="var(--color-border)" />
+            <rect x="20" y="220" width="200" height="8" fill="var(--color-border)" opacity="0.4" />
+            <rect x="20" y="238" width="140" height="8" fill="var(--color-border)" opacity="0.4" />
+
+            {/* divider + transformation arrow */}
+            <line x1="240" y1="10" x2="240" y2="290" stroke="var(--color-border)" strokeDasharray="4 6" />
+            <path d="M222 150 L236 150 M230 143 L238 150 L230 157" fill="none" stroke="var(--color-acid)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+
+            {/* modern panel */}
+            <rect x="260" y="20" width="8" height="8" rx="2" fill="var(--color-acid)" />
+            <text x="276" y="27" fontSize="10" letterSpacing="1" fill="var(--color-primary)" fontFamily="sans-serif">MODERN</text>
+            <rect x="260" y="44" width="200" height="20" rx="5" fill="var(--color-primary)" />
+            <rect x="260" y="78" width="150" height="9" rx="4" fill="var(--color-border)" opacity="0.6" />
+            <rect x="260" y="94" width="110" height="7" rx="3" fill="var(--color-border)" opacity="0.4" />
+
+            {[260, 340, 420].map((x) => (
+                <g key={x}>
+                    <rect x={x} y="120" width="60" height="54" rx="6" fill="none" stroke="var(--color-border)" />
+                    <rect x={x + 10} y="132" width="24" height="24" rx="5" fill="var(--color-background-secondary)" />
+                </g>
+            ))}
+
+            <rect x="260" y="192" width="130" height="24" rx="12" fill="var(--color-acid)" />
+            <rect x="260" y="234" width="200" height="1" stroke="none" fill="var(--color-border)" opacity="0.5" />
+            <rect x="260" y="246" width="180" height="7" rx="3" fill="var(--color-border)" opacity="0.4" />
+            <rect x="260" y="262" width="140" height="7" rx="3" fill="var(--color-border)" opacity="0.4" />
         </svg>
     );
 }

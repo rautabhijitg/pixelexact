@@ -15,7 +15,7 @@ export const articles: Article[] = [
         topic: "Legacy modernization",
         title: "Modernizing a legacy UI without touching your business logic",
         dek: "How a decoupled presentation layer lets you rebuild the interface without putting the rest of the system at risk.",
-        relatedService: "frontend-application-development",
+        relatedService: "legacy-application-modernization",
         status: "coming-soon",
     },
     {

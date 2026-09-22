@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 export const SITE_NAME = "Pixel Exact";
 export const CONTACT_EMAIL = "hello@pixelexact.com";
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/pixelexact-logo-color.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/pixelexact-logo-color.svg`;
 
 type BuildMetadataOptions = {
     title: string;

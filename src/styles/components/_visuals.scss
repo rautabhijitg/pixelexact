@@ -60,6 +60,19 @@
   margin-inline: auto;
 }
 
+.service-art__caption {
+  max-width: 720px;
+  margin: 12px auto 0;
+  color: var(--color-text-secondary);
+  font-size: variables.$font-size-sm;
+  text-align: center;
+}
+
+// Design Toolkit "See It In Action" gallery panels
+.gallery-art {
+  aspect-ratio: 300 / 190;
+}
+
 .service-art__toolkit-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -109,10 +109,11 @@ export default function ServicesMegaMenu() {
                         </Link>
                     </div>
                     <ul className="services-menu__list">
-                        {serviceOrder.map((slug) => {
+                        {serviceOrder.map((slug, index) => {
                             const service = servicePages[slug];
+                            const isTrailingSingle = index === serviceOrder.length - 1 && serviceOrder.length % 3 === 1;
                             return (
-                                <li key={slug}>
+                                <li key={slug} className={isTrailingSingle ? "services-menu__item--wide" : undefined}>
                                     <Link href={`/services/${slug}`} tabIndex={open ? 0 : -1} onClick={closeAndNavigate}>
                                         <span className="services-menu__item-title">{service.title}</span>
                                         <span className="services-menu__item-desc">{service.menuDescription}</span>

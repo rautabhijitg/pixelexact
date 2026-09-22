@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check, CircleArrowRight } from "lucide-react";
 import Reveal from "../animations/Reveal";
@@ -51,7 +52,13 @@ export default function ServicePage({ slug }: ServicePageProps) {
             <Breadcrumb items={[{ name: "Home", path: "/" }, { name: "Services", path: "/services" }, { name: service.title, path: `/services/${service.slug}` }]} />
 
             <main id="main-content">
-                <section className="service-page__hero">
+                <section className={`service-page__hero${service.heroImage ? " service-page__hero--photo" : ""}`}>
+                    {service.heroImage && (
+                        <div className="service-page__hero-media" aria-hidden="true">
+                            <Image src={service.heroImage} alt="" fill priority sizes="100vw" className="service-page__hero-image" />
+                            <div className="service-page__hero-scrim" />
+                        </div>
+                    )}
                     <div className="service-page__wrap service-page__hero-grid">
                         <div>
                             <p className="service-page__eyebrow">{service.eyebrow}</p>
