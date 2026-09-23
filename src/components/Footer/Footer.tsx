@@ -12,9 +12,9 @@ export default function Footer() {
                     <Link className="site-footer__wordmark" href="/" aria-label="Pixel Exact home"><Image className="site-footer__logo" src="/images/pixelexact-logo-color.svg" alt="Pixel Exact" width={699} height={119} /><Image className="site-footer__logo site-footer__logo--white" src="/images/pixelexact-logo-white.svg" alt="" width={699} height={119} /></Link>
                     <p>Pixel-perfect design and pixel-perfect frontend, from one senior, AI-enabled team.</p>
                 </div>
-                <div><h3>Company</h3><Link href="/about">About</Link><Link href="/work">Work</Link><Link href="/insights">Insights</Link></div>
-                <div><h3>Services</h3><Link href="/services">All services</Link><Link href="/services/ux-product-design">UX &amp; Product Design</Link><Link href="/services/ui-design-systems">UI &amp; Design Systems</Link><Link href="/services/frontend-application-development">Development</Link><Link href="/services/website-design-development">Website Design &amp; Development</Link><Link href="/services/legacy-application-modernization">Legacy Application Modernization</Link></div>
-                <div><h3>Contact</h3><p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p><p><Link href="/contact">Book a consultation</Link></p></div>
+                <div><h2>Company</h2><Link href="/about">About</Link><Link href="/work">Work</Link><Link href="/insights">Insights</Link></div>
+                <div><h2>Services</h2><Link href="/services">All services</Link><Link href="/services/ux-product-design">UX &amp; Product Design</Link><Link href="/services/ui-design-systems">UI &amp; Design Systems</Link><Link href="/services/frontend-application-development">Development</Link><Link href="/services/website-design-development">Website Design &amp; Development</Link><Link href="/services/legacy-application-modernization">Legacy Application Modernization</Link></div>
+                <div><h2>Contact</h2><p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p><p><Link href="/contact">Book a consultation</Link></p></div>
             </div>
             <div className="site-container site-footer__bottom">
                 <span>© {COPYRIGHT_YEAR} Pixel Exact. All rights reserved.</span>

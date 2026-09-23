@@ -14,8 +14,14 @@ type ArticlePageProps = {
     params: Promise<{ slug: string }>;
 };
 
+// "design-to-development-handoff-checklist" has its own bespoke page at
+// src/app/insights/design-to-development-handoff-checklist/page.tsx (its content
+// doesn't fit this generic flat-paragraph template) — exclude it here so this
+// route doesn't try to statically generate the same path.
 export function generateStaticParams() {
-    return articles.map((entry) => ({ slug: entry.slug }));
+    return articles
+        .filter((entry) => entry.slug !== "design-to-development-handoff-checklist")
+        .map((entry) => ({ slug: entry.slug }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
@@ -27,9 +33,12 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     }
 
     return buildMetadata({
-        title: entry.title,
-        description: entry.dek,
+        title: entry.seoTitle ?? entry.title,
+        description: entry.metaDescription ?? entry.dek,
         path: `/insights/${entry.slug}`,
+        // Not published yet — this is a "coming soon" stub, not real content;
+        // keep it out of search results until the full article is written.
+        noIndex: entry.status !== "published",
     });
 }
 

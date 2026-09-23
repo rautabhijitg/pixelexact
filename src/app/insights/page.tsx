@@ -32,7 +32,9 @@ export default function InsightsPage() {
                 <section className="service-page__section">
                     <div className="service-page__wrap">
                         <div className="service-page__service-index">{articles.map((entry, index) => { const isLast = index === articles.length - 1 && articles.length % 2 === 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={entry.slug} index={index}><Link className="service-page__service-card" href={`/insights/${entry.slug}`}><span className="service-page__service-card-topic"><TopicIcon topic={entry.topic} />{entry.topic}</span><h2>{entry.title}</h2><p>{entry.dek}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
-                        <p className="service-page__index-summary">Full articles are in progress. Each entry above outlines what&apos;s coming rather than a finished piece.</p>
+                        {articles.some((entry) => entry.status !== "published") && (
+                            <p className="service-page__index-summary">Some pieces below are still in progress. Their entry outlines what&apos;s coming rather than a finished write-up.</p>
+                        )}
                     </div>
                 </section>
 

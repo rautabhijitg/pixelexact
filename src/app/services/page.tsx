@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/animations/Reveal";
-import { serviceOrder, servicePages } from "@/components/ServicePage/serviceData";
+import { servicePages } from "@/components/ServicePage/serviceData";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import { buildMetadata } from "@/lib/seo";
+import Button from "@/components/Button/Button";
 
 export const metadata: Metadata = buildMetadata({
     title: "Services",
@@ -14,15 +15,32 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const differentiators = [
-    ["One senior team", "The people who research your users are the people who decide the interface, and the people who build it."],
-    ["Design and code, connected", "Decisions get made by people who know exactly how they'll be implemented, because they're the ones implementing them."],
-    ["AI-enabled, senior-judged", "AI accelerates research, iteration, and production. Every decision is still made and owned by an experienced practitioner."],
-    ["Engage for the whole thing, or just the gap", "A full product build, or a few weeks of one specialist's time. Same team, same standard."],
+    ["Single-Team Continuity", "The senior specialists who analyze your users are the exact people designing your design systems and writing your production frontend code. Nothing gets lost in translation."],
+    ["Design & Engineering in Direct Lockstep", "Architectural and design decisions are formed by practitioners who know how they will be rendered, because they are the ones writing the code."],
+    ["AI-Native Velocity, Senior Human Governance", "Intelligent automation accelerates research analysis, token generation, boilerplate scaffolding, and accessibility audits. Senior judgment ensures architectural integrity, security, and WCAG compliance."],
+    ["Modular Engagement Flexibility", "Engage our complete unit for an end-to-end product rollout, or deploy a senior specialist for targeted intervention. The quality bar and accountability remain identical."],
+] as const;
+
+const capabilities = [
+    ["UX Architecture & Product Strategy", "Uncover behavioral truth before placing pixels.", "Comprehensive user research, interactive wireframing, friction-free journey mapping, and accessibility auditing to build products users understand intuitively.", "/services/ux-product-design"],
+    ["High-Fidelity UI & Governed Design Systems", "Scale interface aesthetics without design drift.", "Comprehensive visual design, design token architecture, centralized UI variables, and component governance that unify enterprise brands across multi-platform experiences.", "/services/ui-design-systems"],
+    ["Frontend & Web Application Development", "Pixel-accurate interfaces backed by clean, maintainable code.", "Production-grade frontend development utilizing modern frameworks. We specialize in decoupled presentation layers to modernize legacy UI without disrupting core backend logic.", "/services/frontend-application-development"],
+    ["End-to-End Website Design & Development", "High-converting, accessible, and fast web platforms.", "Turnkey web solutions uniting bespoke brand design, technical SEO, lightning-fast Core Web Vitals performance, and CMS architecture in a single, cohesive build cycle.", "/services/website-design-development"],
+    ["Strategic Advisory & Technical Consulting", "Senior architectural oversight without vendor lock-in.", "On-demand access to 40+ years of collective expertise for UX teardowns, WCAG accessibility reviews, frontend code audits, and technical stack roadmapping.", "/services/consultancy"],
+    ["Proprietary Design Toolkit", "40+ production-ready UI components built for extreme velocity.", "An actively maintained, themeable, and accessible component library featuring RTL/LTR support, dark mode toggles, and decoupled layout flexibility.", "/services/design-toolkit"],
+    ["Legacy Application Modernization", "A modern experience for your legacy application, without redevelopment.", "We offer a non-disruptive modernization service focused exclusively on the presentation layer, the part of your application your users actually see and feel.", "/services/legacy-application-modernization"],
+] as const;
+
+const pillars = [
+    ["Direct Access to Senior Practitioners", "No junior bench, no account manager middlemen, and no game of telephone. You communicate directly with the senior architects and designers doing the actual work."],
+    ["AI-Enabled Efficiency, Zero Fluff", "We utilize AI tooling to automate repetitive scaffolding, synthesize qualitative user data, and catch syntax inconsistencies, freeing our team to focus entirely on product strategy, UX nuance, and code performance."],
+    ["Single-Pipeline Execution (Speed Without the Asterisk)", "Traditional timelines balloon because teams wait on cross-department handoffs and revisions. Our research, design, and code exist in one unbroken, iterative feedback loop."],
 ] as const;
 
 const audiences = [
-    ["Startup founders", "You need product decisions made well the first time, without staffing a research team, a design team, and an engineering team before you've validated anything. One senior team gives you that range without the overhead.", "/services/ux-product-design", "See UX & Product Design"],
-    ["Product & engineering leaders", "You already have a team. What you need is additional senior capacity, a design system that stops the drift, a legacy interface modernized without touching the backend, or a specialist opinion you can trust.", "/services/consultancy", "See Consultancy"],
+    ["Early-Stage & Scaling Founders", "Go to market with an institutional-grade product from day one.", "Build clean UX and enterprise-grade frontend code without the financial drag and risk of hiring separate research, design, and development teams before validating your product-market fit.", "/services/ux-product-design", "See UX & Product Strategy"],
+    ["Product & Engineering Leaders", "Expand senior capacity, eliminate technical debt, and enforce design consistency.", "Get high-impact senior execution when you need to modernize legacy frontends without touching monolithic backend services, unify fragmented systems, or audit accessibility.", "/services/consultancy", "Explore Technical Advisory & Engineering"],
+    ["Digital & Creative Agencies", "A discreet, reliable white-label UI and frontend execution partner.", "Expand billable bandwidth and deliver complex digital applications on time without the operational burden of recruiting full-time engineering or specialized UX staff.", "/contact", "Learn About White-Label Partnerships"],
 ] as const;
 
 const howWeDeliver = servicePages["how-we-deliver"];
@@ -36,42 +54,45 @@ export default function ServicesPage() {
                     <div className="service-page__wrap service-page__hero-grid">
                         <div>
                             <p className="service-page__eyebrow">PIXEL EXACT / SERVICES</p>
-                            <h1>One senior team from first question to final commit.</h1>
+                            <h1>One Senior Team from First Discovery to Final Commit</h1>
+                            <div className="service-page__hero-cta">
+                                <Link className="service-page__button" href="/contact">Book an Architecture Discovery Call <ArrowUpRight aria-hidden="true" size={18} /></Link>
+                                <Button href="#what-we-do" variant="ghost" className="pe__button" icon={<ArrowDown aria-hidden="true" size={18} />}>Explore Flexible Engagement Models</Button>
+
+                            </div>
                         </div>
-                        <p className="service-page__summary">Research, design, and frontend development, held together by the same people from day one. Engage us for the whole product or the one part that&apos;s stuck.</p>
+                        <p className="service-page__summary">End-to-end user research, UX/UI architecture, and production frontend engineering—delivered by the same senior specialists from day one. Partner with us for a complete product lifecycle or target the exact operational bottleneck slowing you down.</p>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE MODEL</p><h2>Not a hand-off. A team.</h2></div></Reveal>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE ARCHITECTURE OF COLLABORATION</p><h2>Not a Handoff. A Unified Delivery Engine.</h2><p className="service-page__index-summary">Traditional agency handoffs create miscommunication, design drift, and technical debt. We replace fractured departmental handoffs with a cohesive, cross-functional delivery model.</p></div></Reveal>
                         <div className="service-page__text-grid">{differentiators.map(([title, text], index) => <Reveal className="service-page__text-grid-item" key={title} index={index}><h3>{title}</h3><p>{text}</p></Reveal>)}</div>
                     </div>
                 </section>
 
-                <section className="service-page__section service-page__section--alt">
+                <section className="service-page__section service-page__section--alt" id="what-we-do">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHAT WE DO</p><h2>Seven ways to work with us.</h2><p className="service-page__index-summary">Choose the kind of clarity your product needs next.</p></div></Reveal>
-                        <div className="service-page__service-index">{serviceOrder.map((slug, index) => { const service = servicePages[slug]; const isLast = index === serviceOrder.length - 1 && serviceOrder.length % 2 === 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={service.slug} index={index}><Link className="service-page__service-card" href={`/services/${service.slug}`}><span>0{index + 1}</span><h2>{service.title}</h2><p>{service.summary}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">CORE CAPABILITIES</p><h2>Seven Ways to Partner With Pixel Exact</h2><p className="service-page__index-summary">Deploy our senior team across your entire development lifecycle or engage us to solve a focused technical hurdle.</p></div></Reveal>
+                        <div className="service-page__service-index">{capabilities.map(([title, tagline, description, href], index) => { const isLast = index === capabilities.length - 1 && capabilities.length % 2 === 1; return <Reveal className={isLast ? "service-page__service-card--wide" : undefined} key={title} index={index}><Link className="service-page__service-card" href={href}><span>0{index + 1}</span><h2>{title}</h2><p className="service-page__service-card-tagline">{tagline}</p><p>{description}</p><ArrowUpRight aria-hidden="true" size={22} /></Link></Reveal>; })}</div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">THE ENGINE BEHIND ALL SIX</p><h2>Why this moves faster without moving worse.</h2><p className="service-page__index-summary">Every service above runs on the same operating model.</p></div></Reveal>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">OUR OPERATING SYSTEM</p><h2>How We Move Faster Without Sacrificing Quality</h2><p className="service-page__index-summary">Every engagement runs on three fundamental operational pillars that keep delivery measured in weeks, not months.</p></div></Reveal>
                         <div className="service-page__process">
-                            <Reveal index={0}><article className="service-page__process-step"><span>01</span><h3>Senior involvement</h3><p>You work directly with the people doing the work, not an account manager relaying it to a bench of juniors. Every decision is owned by someone who has done this before.</p></article></Reveal>
-                            <Reveal index={1}><article className="service-page__process-step"><span>02</span><h3>AI-enabled execution</h3><p>AI accelerates research, exploration, production, and iteration throughout the process. It doesn&apos;t replace judgment, it removes the busywork around it.</p></article></Reveal>
-                            <Reveal index={2}><article className="service-page__process-step"><span>03</span><h3>Speed, without the asterisk</h3><p>Work that would normally hand off between separate research, design, and development teams happens inside one connected process. That&apos;s the source of the speed, not fewer reviews.</p></article></Reveal>
+                            {pillars.map(([title, text], index) => <Reveal className="service-page__process-step" key={title} index={index}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></Reveal>)}
                         </div>
-                        <p className="service-page__index-summary">{howWeDeliver.intro} <Link className="service-page__inline-link" href={`/services/${howWeDeliver.slug}`}>More on how we deliver <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
+                        <p className="service-page__index-summary"><strong>Our Commitment to Delivery Integrity:</strong> We use AI to accelerate research synthesis, UI iteration, documentation, and component builds, while keeping human senior practitioners accountable for every technical architecture decision, security review, and WCAG standard across every deliverable. <Link className="service-page__inline-link" href={`/services/${howWeDeliver.slug}`}>Explore Our Delivery Framework <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
                     </div>
                 </section>
 
                 <section className="service-page__section service-page__section--alt">
                     <div className="service-page__wrap">
-                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">WHO THIS IS FOR</p><h2>Built for two kinds of teams.</h2></div></Reveal>
-                        <div className="service-page__text-grid">{audiences.map(([title, text, href, linkLabel], index) => <Reveal className="service-page__text-grid-item" key={title} index={index}><h3>{title}</h3><p>{text}</p><Link href={href}>{linkLabel} <ArrowUpRight aria-hidden="true" size={14} /></Link></Reveal>)}</div>
+                        <Reveal><div className="service-page__section-head"><p className="service-page__eyebrow">AUDIENCE ALIGNMENT</p><h2>Tailored for High-Velocity Product Teams</h2></div></Reveal>
+                        <div className="service-page__text-grid">{audiences.map(([title, tagline, description, href, linkLabel], index) => { const isLast = index === audiences.length - 1 && audiences.length % 2 === 1; return <Reveal className={`service-page__text-grid-item${isLast ? " service-page__text-grid-item--wide" : ""}`} key={title} index={index}><h3>{title}</h3><p className="service-page__service-card-tagline">{tagline}</p><p>{description}</p><Link href={href}>{linkLabel} <ArrowUpRight aria-hidden="true" size={14} /></Link></Reveal>; })}</div>
                     </div>
                 </section>
 

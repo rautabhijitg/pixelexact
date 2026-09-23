@@ -40,8 +40,9 @@
     background: var(--color-primary);
     color: var(--color-white);
     cursor: pointer;
-    font-weight: 700;
-    font-size: variables.$font-size-xs;
+    font-weight: 500;
+    font-size: variables.$font-size-lg;
+    border-radius: var(--radius-md);
     transition: transform var(--transition-fast), background var(--transition-fast);
 
     &:hover { transform: translateY(-2px); background: var(--color-primary-dark); }

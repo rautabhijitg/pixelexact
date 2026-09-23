@@ -18,6 +18,7 @@ $font-size-5xl: 1.5rem; // 24px
 $font-size-6xl: 1.625rem; // 26px
 
 // Fluid display sizes: clamp(min, preferred-vw, max), all in rem
+$font-size-display-xs: clamp(1rem, 2.5vw, 1.625rem); // 16px -> 26px
 $font-size-display-sm: clamp(1.5rem, 3vw, 2.375rem); // 24px -> 38px
 $font-size-display-md: clamp(2rem, 4vw, 3.25rem); // 32px -> 52px
 $font-size-display-lg: clamp(2.125rem, 5vw, 3.75rem); // 34px -> 60px
@@ -27,6 +28,8 @@ $font-size-display-xl: clamp(2.625rem, 6vw, 4.625rem); // 42px -> 74px
   // Colors
   --color-primary: #173963;
   --color-primary-dark: #003663;
+  --color-secondary: #d72831;
+  --color-secondary-dark: #b81f27;
   --color-ink: #173b67;
   --color-paper: #ffffff;
   --color-blue: #173b67;
@@ -84,6 +87,7 @@ $font-size-display-xl: clamp(2.625rem, 6vw, 4.625rem); // 42px -> 74px
 :root[data-theme="dark"] {
   --color-primary: #8db8df;
   --color-primary-dark: #003663;
+  --color-secondary: #ed9ca0;
   --color-ink: #d9e7f2;
   --color-paper: #101a23;
   --color-blue: #8db8df;

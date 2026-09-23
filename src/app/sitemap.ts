@@ -23,10 +23,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: entry.publishedAt,
     }));
 
-    const insightsRoutes = articles.map((entry) => ({
-        url: `${SITE_URL}/insights/${entry.slug}`,
-        lastModified: entry.publishedAt,
-    }));
+    // Exclude articles that aren't published yet — they're marked noindex
+    // (thin "coming soon" placeholder content) so they shouldn't appear here either.
+    const insightsRoutes = articles
+        .filter((entry) => entry.status === "published")
+        .map((entry) => ({
+            url: `${SITE_URL}/insights/${entry.slug}`,
+            lastModified: entry.publishedAt,
+        }));
 
     return [
         ...staticRoutes.map((route) => ({ url: `${SITE_URL}${route}` })),

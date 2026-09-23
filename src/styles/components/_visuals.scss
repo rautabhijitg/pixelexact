@@ -101,6 +101,10 @@
   border: 1px solid var(--color-line, var(--color-border));
   background: var(--color-paper);
   transition: border-color var(--transition-fast);
+  svg {
+    width: 64px;
+    height: 64px;
+  }
 }
 
 .component-swatch span {
