@@ -85,8 +85,8 @@ export default function DesignToolkitPage() {
                             <p className="service-page__eyebrow">{service.eyebrow}</p>
                             <h1>{service.title}</h1>
                             <div className="service-page__hero-cta">
-                                <Link className="service-page__button" href="https://uimagic-497ae.web.app/" target="_blank" rel="noreferrer">Explore the Interactive Component Demo <ArrowUpRight aria-hidden="true" size={18} /></Link>
-                                <Link className="service-page__inline-link" href="/contact">Request Multi-Tenant Architecture Review <ArrowUpRight aria-hidden="true" size={14} /></Link>
+                                <Link className="service-page__button" href="/contact"  >Request Multi-Tenant Architecture Review <ArrowUpRight aria-hidden="true" size={18} /></Link>
+
                             </div>
                         </div>
                         <p className="service-page__summary">{service.summary}</p>

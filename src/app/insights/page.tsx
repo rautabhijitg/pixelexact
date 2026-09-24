@@ -16,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default function InsightsPage() {
     return (
-        <div className="service-page service-page--index">
+        <div className="insight-page insight-page--index">
             <Header backHref="/" backLabel="Back home" />
             <main id="main-content">
                 <section className="service-page__hero">

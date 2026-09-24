@@ -1,0 +1,39 @@
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+
+// Insights (articles/blog) pages use this as their top-level wrapper class,
+// instead of .service-page, so this section can diverge independently later
+// without touching the Services template. The shared content components
+// (hero, wrap, section, outcomes, table, list, process, text-grid, cta, etc.)
+// are still the same service-page__* classes defined in
+// components/_service-page.scss — those are flat BEM classes, not scoped to
+// an ancestor, so they work the same regardless of which wrapper contains
+// them. Only the container-level rules below (previously provided by
+// .service-page itself) need restating here.
+.insight-page {
+  min-height: 100vh;
+  background: var(--color-paper);
+  color: var(--color-text);
+  font-family: variables.$font-family-body;
+  font-size: variables.$font-size-base;
+
+  h1, h2, h3 { margin: 0; }
+  h1 { color: var(--color-primary); font-family: variables.$font-family-display; font-weight: 600; line-height: 1.12; }
+  h2, h3 { color: var(--color-primary); font-family: variables.$font-family-secondary; font-weight: 500; line-height: 1.12; }
+  a { text-decoration: none; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
+
+  .service-page{
+    &__hero {
+        &-grid { grid-template-columns: 1fr; gap: 24px; }
+            h1{font-size: variables.$font-size-display-sm; max-width: 100ch;}
+    .service-page__summary { font-size: variables.$font-size-2xl; max-width: 100ch; }
+    }
+    &__process-step h3 { margin-top: 1rem; }
+    &__checklist-block {margin-top: 1.5rem;}
+   }
+     &__intro { font-family: var(--font-secondary), "Montserrat", sans-serif; max-width: 100ch; color: var(--color-text); margin-bottom: 1rem; font-size: variables.$font-size-2xl; line-height: 1.4; }
+
+     &__cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+

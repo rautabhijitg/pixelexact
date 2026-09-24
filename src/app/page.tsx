@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import Button from "@/components/Button/Button";
 import Reveal from "@/components/animations/Reveal";
+import Faq from "@/components/Faq/Faq";
 import Footer from "@/components/Footer/Footer";
 import HomeChrome from "@/components/Home/HomeChrome";
 import BrowserChrome from "@/components/visuals/BrowserChrome";
@@ -11,11 +12,12 @@ import ComponentSwatch, { toolkitItems } from "@/components/visuals/ComponentSwa
 import TopicIcon from "@/components/visuals/TopicIcon";
 import { caseStudies } from "@/data/caseStudies";
 import { articles } from "@/data/articles";
+import { homeFaqs, homeFaqPlainAnswer } from "@/data/homeFaqs";
 import { buildMetadata } from "@/lib/seo";
 import "./page.scss";
 
 export const metadata: Metadata = buildMetadata({
-    title: "Senior-led UX, UI, and Frontend Development",
+    title: "Pixel Exact | Pixel Perfect Senior-led UX, UI, and frontend development",
     description: "UX design, UI design, and frontend development from one senior, AI-enabled team. Pixel-accurate execution, design and code held together, delivered fast.",
     path: "/",
 });
@@ -47,8 +49,19 @@ const services = [
 ] as const;
 
 export default function Home() {
+    const faqJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: homeFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: homeFaqPlainAnswer(faq) },
+        })),
+    };
+
     return (
         <HomeChrome>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
             <main id="main-content">
                 <section className="pe__hero"><div className="pe__wrap pe__hero-grid"><div><p className="section-head__eyebrow">UX Design & FrontEnd Engineering by Senior Specialists</p><h1>Pixel-Perfect Design. Production-Ready Code.</h1><p className="pe__hero-sub">Pixel Exact designs and builds end-to-end digital products with senior engineering rigor. By integrating AI-accelerated workflows with over 40 years of combined design and frontend expertise, we ship production-grade web interfaces in weeks—not months. </p><div className="pe__hero-cta"><Button href="/contact" className="pe__button" icon={<ArrowUpRight aria-hidden="true" size={18} />}>Book a consultation</Button><Button href="#work" variant="ghost" className="pe__button" icon={<ArrowDown aria-hidden="true" size={18} />}>View case studies</Button></div></div><div className="artifact pe__ruler-frame"><BrowserChrome /><div className="pe__ruler">{["Unified Delivery: Research, UX architecture, and UI design led by one dedicated senior team.", "Zero-Fidelity Loss: Frontend engineering built to match design specifications down to the exact pixel. ", "AI-Accelerated Pipeline: AI-enabled efficiency embedded across every stage to compress delivery cycles. ", "Decoupled UI Modernization: Transform legacy frontends and design systems without disrupting your core backend architecture. "].map((label, index) => <div className="pe__ruler-line" key={label}><span className="pe__ruler-number">0{index + 1}</span><span>{label}</span></div>)}</div></div></div></section>
 
@@ -72,6 +85,8 @@ export default function Home() {
                 <section className="pe__section pe__section--alt"><div className="pe__wrap"><Reveal><div className="pe__section-head"><p className="section-head__eyebrow">TAILORED ENGAGEMENT MODELS</p><h2>Built for How You Work.</h2><p>Whether you are launching an MVP, modernizing an enterprise platform, or scaling agency bandwidth—we integrate seamlessly into your workflow</p></div></Reveal><div className="pe__audience-grid">{[["Early-Stage & High-Growth Startups", "Go to market with an institutional-grade product—without hiring a full in-house team."], ["SaaS & product teams", "Fix design-to-dev drift, modernize legacy UI, and scale with a real design system."], ["Agencies", "A reliable, discreet UX and frontend partner for client work you would rather not staff yourself."]].map(([title, text], index) => <Reveal key={title} index={index}><article className="pe__audience"><h3>{title}</h3><p>{text}</p><a className="pe__inline-link" href="/contact">Book a consultation</a></article></Reveal>)}</div></div></section>
 
                 <section className="pe__section" id="insights"><div className="pe__wrap"><Reveal><div className="pe__section-head"><p className="section-head__eyebrow">THOUGHT LEADERSHIP & FIELD NOTES</p><h2>Insights.</h2><p>Proven frameworks on UI architecture, frontend velocity, and cross-functional delivery—written for product teams, engineering leaders, and founders.</p></div></Reveal><div className="pe__insights">{articles.map(({ slug, topic, title }, index) => <Reveal key={slug} index={index}><a className="pe__article" href={`/insights/${slug}`}><span className="pe__article-topic"><TopicIcon topic={topic} />{topic}</span><h3>{title}</h3></a></Reveal>)}</div></div></section>
+
+                <section className="pe__section pe__section--alt" id="faq"><div className="pe__wrap"><Reveal><div className="pe__section-head"><p className="section-head__eyebrow">COMMON QUESTIONS</p><h2>What people ask before they reach out.</h2><p>Straight answers about how we work, what each service actually includes, and where to start if you&apos;re not sure yet.</p></div></Reveal><Faq items={homeFaqs} /></div></section>
 
                 <section className="pe__final" id="contact"><div className="pe__wrap"><div className="pe__wordmark pe__wordmark--light"><Image className="pe__logo" src="/images/pixelexact-logo-white.svg" alt="Pixel Exact" width={699} height={119} /></div><h2>Looking for a specific architectural breakdown or technical audit?</h2><p>Explore our complete library of design-system guides, frontend teardowns, and engineering frameworks.</p><a className="pe__button pe__button--accent" href="/contact">Book a consultation</a></div></section>
             </main>

@@ -14,13 +14,17 @@ type ArticlePageProps = {
     params: Promise<{ slug: string }>;
 };
 
-// "design-to-development-handoff-checklist" has its own bespoke page at
-// src/app/insights/design-to-development-handoff-checklist/page.tsx (its content
-// doesn't fit this generic flat-paragraph template) — exclude it here so this
-// route doesn't try to statically generate the same path.
+// These slugs have their own bespoke pages (their content doesn't fit this
+// generic flat-paragraph template) — exclude them here so this route doesn't
+// try to statically generate the same path twice.
+const BESPOKE_ARTICLE_SLUGS = new Set([
+    "design-to-development-handoff-checklist",
+    "how-we-deliver-projects-in-weeks-not-months",
+]);
+
 export function generateStaticParams() {
     return articles
-        .filter((entry) => entry.slug !== "design-to-development-handoff-checklist")
+        .filter((entry) => !BESPOKE_ARTICLE_SLUGS.has(entry.slug))
         .map((entry) => ({ slug: entry.slug }));
 }
 
@@ -64,7 +68,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     } : null;
 
     return (
-        <div className="service-page">
+        <div className="insight-page">
             {articleJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />}
             <Header backHref="/insights" backLabel="All insights" />
             <Breadcrumb items={[{ name: "Home", path: "/" }, { name: "Insights", path: "/insights" }, { name: entry.title, path: `/insights/${entry.slug}` }]} />
@@ -81,7 +85,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 </section>
 
                 <section className="service-page__section">
-                    <div className="service-page__wrap service-page__intro-grid">
+                    <div className="service-page__wrap">
                         <Reveal>
                             {isPublished ? (
                                 <div>{entry.body!.map((paragraph) => <p className="service-page__intro" key={paragraph}>{paragraph}</p>)}</div>
@@ -89,16 +93,21 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                                 <p className="service-page__intro">This article is in progress. The summary above reflects what it will cover; the full write-up isn&apos;t published yet.</p>
                             )}
                         </Reveal>
-                        {relatedService && (
-                            <Reveal index={1}>
+                    </div>
+                </section>
+
+                {relatedService && (
+                    <section className="service-page__section service-page__section--alt">
+                        <div className="service-page__wrap">
+                            <Reveal>
                                 <div className="service-page__outcomes">
                                     <p className="service-page__label">Related service</p>
                                     <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
                                 </div>
                             </Reveal>
-                        )}
-                    </div>
-                </section>
+                        </div>
+                    </section>
+                )}
 
                 <section className="service-page__cta"><div className="service-page__wrap"><p className="service-page__eyebrow">READY WHEN YOU ARE</p><h2>Want to talk this through?</h2><p>Tell us where the work is stuck and what better looks like.</p><Link className="service-page__button" href="/contact">Book a Consultation <ArrowUpRight aria-hidden="true" size={18} /></Link></div></section>
             </main>

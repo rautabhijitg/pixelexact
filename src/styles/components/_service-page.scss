@@ -40,8 +40,8 @@
   &__hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; & > * { min-width: 0; } }
   &__eyebrow { color: var(--color-acid); font-size: variables.$font-size-xs; font-weight: 600; letter-spacing: .14em; }
   &__hero h1 { max-width: 12ch; margin-top: 22px; font-size: variables.$font-size-display-lg; overflow-wrap: break-word; }
-  &__hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 32px; }
-  &__hero-cta .service-page__button { margin-top: 0; }
+  &__hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 0px; }
+  &__hero-cta .service-page__button { margin-top: 32px; }
   &__summary { max-width: 28ch; color: var(--color-primary); font-family: variables.$font-family-secondary; font-size: variables.$font-size-display-xs; line-height: 1.2; }
   &__hero .service-page__eyebrow,
   &__hero h1,
@@ -62,7 +62,7 @@
     &__outcomes p strong { flex-shrink: 0; white-space: nowrap; }
   }
   &__outcomes .service-page__label { color: var(--color-text-secondary); font-size: variables.$font-size-xs; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-  &__section-head { max-width: 620px; margin-bottom: 48px; }
+  &__section-head { max-width: 840px; margin-bottom: 48px; }
   &__section-head h2 { margin-top: 18px; font-size: variables.$font-size-display-md; }
   &__deliverables { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid var(--color-border); background: var(--color-border); }
   &__deliverable { min-height: 150px; padding: 24px; background: var(--color-paper); }
@@ -76,9 +76,8 @@
   &__process-step h3 { display: flex; align-items: start; gap: 10px; margin-top: 44px; color: var(--color-text); font-size: variables.$font-size-5xl; }
   &__process-step p { margin-top: 12px; color: var(--color-text-secondary); font-size: variables.$font-size-base; line-height: 1.55; }
   &__cta { padding: 96px 0; background: var(--color-primary); color: var(--color-white); }
-  &__cta h2 { max-width: 15ch; margin-top: 18px; color: var(--color-white); font-size: variables.$font-size-display-lg; }
-  &__cta > .service-page__wrap > p:not(.service-page__eyebrow) { max-width: 36ch; margin-top: 18px; color: #b7cce0; font-size: variables.$font-size-xl; }
-  a.service-page__button { @include mixins.interactive-button(var(--color-acid), var(--color-white)); max-width: 100%; min-height: 48px; margin-top: 32px; padding: 0 22px; border-radius: var(--radius-md); border: 1px solid var(--color-acid); white-space: normal; text-align: left; }
+  &__cta h2 { max-width: 18ch; margin-top: 18px; color: var(--color-white); font-size: variables.$font-size-display-lg; }
+  &__cta > .service-page__wrap > p:not(.service-page__eyebrow) { max-width: 70ch; margin-top: 18px; color: #b7cce0; font-size: variables.$font-size-xl; }
   &__button svg, &__inline-link svg { transition: transform var(--transition-fast); }
   @media (hover: hover) and (pointer: fine) {
     &__button:hover svg, &__inline-link:hover svg { transform: translate(3px, -3px); }
@@ -162,6 +161,11 @@
   &__list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; background: var(--color-acid); }
   &__checklist-block + &__checklist-block { margin-top: 40px; }
 }
+
+// Not nested under .service-page — this class is also used as a button inside
+// other page-type wrappers (e.g. .insight-page), which don't otherwise share
+// .service-page's ruleset.
+a.service-page__button { @include mixins.interactive-button(var(--color-acid), var(--color-white)); max-width: 100%; min-height: 48px; margin-top: 32px; padding: 0 22px; border-radius: var(--radius-md); border: 1px solid var(--color-acid); white-space: normal; text-align: left; }
 
 :root[data-theme="dark"] .service-page__cta { background: var(--color-primary-dark); }
 :root[data-theme="dark"] .service-page__button { border-color: #b4232a; background: #b4232a; }

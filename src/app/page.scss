@@ -78,7 +78,7 @@
   &__credibility-item span { display: block; max-width: 46ch; margin-top: 6px; color: var(--color-muted-dark); font-size: variables.$font-size-md; }
   &__section { padding: 96px 0; }
   &__section--alt { background: var(--color-paper-alt); }
-  &__section-head { max-width: 640px; margin-bottom: 56px; }
+  &__section-head { max-width: 840px; margin-bottom: 56px; }
   &__section-head h2, &__toolkit h2 { font-size: variables.$font-size-display-md; }
   &__section-head p { margin-top: 16px; color: var(--color-muted-dark); font-size: variables.$font-size-lg; }
   &__sequence { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; border: 1px solid var(--color-line); background: var(--color-line); }
@@ -119,6 +119,15 @@
   @media (hover: hover) and (pointer: fine) {
     &__article:hover { transform: translateX(4px); border-color: var(--color-red); }
   }
+  &__faqs { display: flex; flex-direction: column; gap: 1px; background: var(--color-line); border: 1px solid var(--color-line); }
+  &__faq { padding: 22px 24px; background: var(--color-paper); }
+  &__faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; color: var(--color-navy); font-family: variables.$font-family-secondary; font-weight: 600; font-size: variables.$font-size-lg; }
+  &__faq summary::-webkit-details-marker { display: none; }
+  &__faq summary::after { content: "+"; flex-shrink: 0; color: var(--color-red); font-family: variables.$font-family-display; font-size: 1.25rem; }
+  &__faq[open] summary::after { content: "\2212"; }
+  &__faq summary:focus-visible { outline: 2px solid var(--color-navy); outline-offset: 3px; }
+  &__faq p { max-width: 68ch; margin-top: 14px; color: var(--color-muted-dark); font-size: variables.$font-size-base; line-height: 1.6; }
+  &__faq p a { color: var(--color-red); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
   &__final { padding: 72px 0; background: var(--color-navy); color: var(--color-white); }
   &__final h2 { max-width: 20ch; margin-top: 28px; color: var(--color-white); font-size: clamp(1.875rem, 4vw, 3rem); }
   &__final p { max-width: 44ch; margin-top: 16px; color: #a9c0d6; font-size: variables.$font-size-lg; }

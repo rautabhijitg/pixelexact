@@ -10,9 +10,17 @@
 @use "./layout/grid";
 
 @use "./utilities/utilities";
+// Imported before _service-page.scss: .insight-page's own base rules (h1-h3
+// color, link decoration, focus outlines) have the same specificity as
+// service-page's contextual overrides (e.g. .service-page__cta h2) that
+// Insights pages also render via the shared service-page__* components —
+// importing insights first lets those later, more specific overrides win on
+// equal specificity, exactly like they already do within _service-page.scss.
+@use "./pages/insights";
 @use "./components/_service-page.scss";
 @use "./components/site";
 @use "./components/_contact.scss";
 @use "./components/_legal.scss";
 @use "./components/_visuals.scss";
+@use "./components/_back-to-top.scss";
 @use "../../src/components/Button/Button.scss";

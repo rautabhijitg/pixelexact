@@ -1,19 +1,20 @@
 import { NextResponse } from "next/server";
 import { SITE_NAME } from "@/lib/seo";
+import {
+    EMAIL_PATTERN,
+    NAME_MAX_LENGTH,
+    EMAIL_MAX_LENGTH,
+    COMPANY_MAX_LENGTH,
+    MESSAGE_MIN_LENGTH,
+    MESSAGE_MAX_LENGTH,
+} from "@/lib/contactValidation";
 
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
 const MAX_CONTENT_LENGTH_BYTES = 20_000;
 const MIN_SUBMIT_MS = 1_200; // faster than this and it's almost certainly a bot filling the form programmatically.
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1_000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
-
-const NAME_MAX_LENGTH = 100;
-const EMAIL_MAX_LENGTH = 254;
-const COMPANY_MAX_LENGTH = 100;
-const MESSAGE_MIN_LENGTH = 10;
-const MESSAGE_MAX_LENGTH = 5_000;
 
 type ContactPayload = {
     name?: unknown;
@@ -24,14 +25,21 @@ type ContactPayload = {
     startedAt?: unknown; // client-side form-render timestamp, used for a timing-based bot check
 };
 
-// In-memory, per-server-instance fixed-window limiter. Good enough as a first line of
-// defense without adding an external store; on serverless deployments with multiple
-// warm instances an attacker distributed across instances could exceed this. If that
-// becomes a real problem in practice, replace with a shared store (e.g. Upstash Redis).
+// In-memory, per-server-instance fixed-window limiter. This app runs as a single
+// persistent Node.js process (not independently-scaled serverless instances), so this
+// map is effective rather than trivially bypassable. If that deployment model ever
+// changes, replace with a shared store (e.g. Upstash Redis).
 const submissionsByIp = new Map<string, { count: number; windowStart: number }>();
 
 function isRateLimited(ip: string): boolean {
     const now = Date.now();
+
+    // Opportunistic cleanup so this map doesn't grow unbounded over the life of a
+    // long-running process — negligible cost at contact-form request volumes.
+    for (const [key, value] of submissionsByIp) {
+        if (now - value.windowStart > RATE_LIMIT_WINDOW_MS) submissionsByIp.delete(key);
+    }
+
     const entry = submissionsByIp.get(ip);
 
     if (!entry || now - entry.windowStart > RATE_LIMIT_WINDOW_MS) {

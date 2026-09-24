@@ -147,7 +147,7 @@ export default function DesignToDevelopmentHandoffChecklistPage() {
     };
 
     return (
-        <div className="service-page">
+        <div className="insight-page">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
             <Header backHref="/insights" backLabel="All insights" />
             <Breadcrumb items={[{ name: "Home", path: "/" }, { name: "Insights", path: "/insights" }, { name: entry.title, path: `/insights/${entry.slug}` }]} />
@@ -158,32 +158,25 @@ export default function DesignToDevelopmentHandoffChecklistPage() {
                         <div>
                             <p className="service-page__eyebrow">{entry.topic}</p>
                             <h1>{entry.title}</h1>
-                            <div className="service-page__hero-cta">
-                                <Link className="service-page__button" href="/contact">Talk to a Senior Architect <ArrowUpRight aria-hidden="true" size={18} /></Link>
-                                <Link className="service-page__inline-link" href="#checklist">Jump to the Checklist <ArrowDown aria-hidden="true" size={14} /></Link>
-                            </div>
+
                         </div>
                         <p className="service-page__summary">{entry.dek}</p>
+                        <div className="service-page__hero-cta">
+                            <Link className="service-page__button" href="#checklist">Jump to the Checklist <ArrowDown aria-hidden="true" size={18} /></Link>
+
+                        </div>
                     </div>
                 </section>
 
                 <section className="service-page__section">
-                    <div className="service-page__wrap service-page__intro-grid">
+                    <div className="service-page__wrap">
                         <Reveal>
                             <div>
-                                <p className="service-page__intro">The Figma canvas is pristine. Auto-layout is configured, tokens are mapped, components are organized, and stakeholder sign-off is complete. The ticket moves to &ldquo;Ready for Development.&rdquo;</p>
-                                <p className="service-page__intro">Two weeks later the staging build lands, and at a glance it looks roughly right. Then you interact with it: spacing feels loose on smaller laptops, the nav wraps awkwardly at 1080px, a secondary button swaps color with no transition, focus states are invisible, and one long customer name pushes the action button off-screen.</p>
-                                <p className="service-page__intro">The design team logs thirty visual bugs. Engineering pushes back: none of those viewport widths were drawn, the loading and error states were never mocked, and the deadline is in forty-eight hours.</p>
+                                <p className="insight-page__intro">The Figma canvas is pristine. Auto-layout is configured, tokens are mapped, components are organized, and stakeholder sign-off is complete. The ticket moves to &ldquo;Ready for Development.&rdquo;</p>
+                                <p className="insight-page__intro">Two weeks later the staging build lands, and at a glance it looks roughly right. Then you interact with it: spacing feels loose on smaller laptops, the nav wraps awkwardly at 1080px, a secondary button swaps color with no transition, focus states are invisible, and one long customer name pushes the action button off-screen.</p>
+                                <p className="insight-page__intro">The design team logs thirty visual bugs. Engineering pushes back: none of those viewport widths were drawn, the loading and error states were never mocked, and the deadline is in forty-eight hours.</p>
                             </div>
                         </Reveal>
-                        {relatedService && (
-                            <Reveal index={1}>
-                                <div className="service-page__outcomes">
-                                    <p className="service-page__label">Related service</p>
-                                    <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
-                                </div>
-                            </Reveal>
-                        )}
                     </div>
                 </section>
 
@@ -331,16 +324,29 @@ export default function DesignToDevelopmentHandoffChecklistPage() {
                 </section>
 
                 <section className="service-page__section service-page__section--alt">
-                    <div className="service-page__wrap service-page__intro-grid">
+                    <div className="service-page__wrap">
                         <Reveal>
                             <div>
-                                <p className="service-page__intro">A design-to-development handoff isn&apos;t a transaction. It isn&apos;t an email with a file attached, or a ticket marked with an asset export.</p>
-                                <p className="service-page__intro">A mature handoff is the transfer of a behavioral system: its components, states, responsive rules, and accessibility guarantees, not just its pixels.</p>
-                                <p className="service-page__intro">Design with system tokens. Account for missing and extreme data. Define interactive states upfront. Validate the result in a real browser. Do that consistently, and drift stops being something you fix in QA, because it stops happening in the first place.</p>
+                                <p className="insight-page__intro">A design-to-development handoff isn&apos;t a transaction. It isn&apos;t an email with a file attached, or a ticket marked with an asset export.</p>
+                                <p className="insight-page__intro">A mature handoff is the transfer of a behavioral system: its components, states, responsive rules, and accessibility guarantees, not just its pixels.</p>
+                                <p className="insight-page__intro">Design with system tokens. Account for missing and extreme data. Define interactive states upfront. Validate the result in a real browser. Do that consistently, and drift stops being something you fix in QA, because it stops happening in the first place.</p>
                             </div>
                         </Reveal>
                     </div>
                 </section>
+
+                {relatedService && (
+                    <section className="service-page__section">
+                        <div className="service-page__wrap">
+                            <Reveal>
+                                <div className="service-page__outcomes">
+                                    <p className="service-page__label">Related service</p>
+                                    <p><Link className="service-page__inline-link" href={`/services/${relatedService.slug}`}>{relatedService.title} <ArrowUpRight aria-hidden="true" size={14} /></Link></p>
+                                </div>
+                            </Reveal>
+                        </div>
+                    </section>
+                )}
 
                 <section className="service-page__cta">
                     <div className="service-page__wrap">

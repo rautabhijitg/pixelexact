@@ -28,8 +28,11 @@ export const articles: Article[] = [
         topic: "Velocity & AI Delivery",
         title: "How We Compress Enterprise Delivery Timelines into Weeks, Not Months",
         dek: "A breakdown of our AI-accelerated delivery pipeline: how senior-led workflows, reusable design tokens, and automated front-end scaffolding eliminate typical agency delivery bottlenecks without cutting quality.",
+        metaDescription: "How senior UX, UI, and frontend expertise, reusable design systems, decoupled architecture, and AI-accelerated workflows compress enterprise delivery into weeks instead of months.",
+        seoTitle: "Velocity & AI Delivery: Compressing Enterprise Timelines",
         relatedService: "how-we-deliver",
-        status: "coming-soon",
+        status: "published",
+        publishedAt: "2026-09-24",
     },
     {
         slug: "design-to-development-handoff-checklist",

@@ -2,16 +2,17 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { CONTACT_EMAIL } from "@/lib/seo";
+import {
+    EMAIL_PATTERN,
+    NAME_MAX_LENGTH,
+    EMAIL_MAX_LENGTH,
+    COMPANY_MAX_LENGTH,
+    MESSAGE_MIN_LENGTH,
+    MESSAGE_MAX_LENGTH,
+} from "@/lib/contactValidation";
 
 type Errors = Partial<Record<"name" | "email" | "message", string>>;
 type Status = "idle" | "submitting" | "success" | "error";
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const NAME_MAX_LENGTH = 100;
-const EMAIL_MAX_LENGTH = 254;
-const COMPANY_MAX_LENGTH = 100;
-const MESSAGE_MIN_LENGTH = 10;
-const MESSAGE_MAX_LENGTH = 5000;
 
 export default function ContactForm() {
     const [status, setStatus] = useState<Status>("idle");
