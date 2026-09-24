@@ -61,14 +61,23 @@ function isTrustedOrigin(request: Request): boolean {
     const origin = request.headers.get("origin");
     if (!origin) return true; // some proxies/clients omit it; we don't hard-fail on absence alone.
 
+    let originHost: string;
     try {
-        // Compared against the request's own Host header rather than a configured site
-        // URL, so this can't be defeated (or accidentally broken) by a missing/incorrect
-        // NEXT_PUBLIC_SITE_URL value in any given environment.
-        return new URL(origin).host === new URL(request.url).host;
+        originHost = new URL(origin).host;
     } catch {
         return false;
     }
+
+    // Compared against the incoming request's Host header — preferring
+    // X-Forwarded-Host, which a reverse proxy sets to the original public
+    // hostname — rather than request.url. Behind a reverse proxy (this app's
+    // production deployment), request.url can reflect an internal host/port
+    // instead of the domain the browser actually used, which was rejecting
+    // every legitimate submission with a 403.
+    const forwardedHost = request.headers.get("x-forwarded-host");
+    const host = forwardedHost?.split(",")[0]?.trim() || request.headers.get("host");
+
+    return host === originHost;
 }
 
 function cleanText(value: unknown, maxLength: number): string {
