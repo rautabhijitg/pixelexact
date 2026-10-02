@@ -2,7 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  reactCompiler: true,
+  // Disabled: the production build was timing out past 15 minutes on
+  // Hostinger's build runner at the "Creating an optimized production
+  // build..." step (same codebase builds fine locally), starting with the
+  // commit that added the cookie consent system and hero carousel. The
+  // React Compiler's Babel-based analysis pass is the leading suspect for
+  // that build-time blowup on a resource-constrained build container.
+  reactCompiler: false,
   async redirects() {
     return [
       { source: "/blog", destination: "/insights", permanent: true },
