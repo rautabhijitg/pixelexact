@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import Button from "@/components/Button/Button";
 import Reveal from "@/components/animations/Reveal";
 import Faq from "@/components/Faq/Faq";
 import Footer from "@/components/Footer/Footer";
+import HeroCarousel from "@/components/Home/HeroCarousel";
 import HomeChrome from "@/components/Home/HomeChrome";
-import BrowserChrome from "@/components/visuals/BrowserChrome";
 import CaseStudyArt from "@/components/visuals/CaseStudyArt";
 import ComponentSwatch, { toolkitItems } from "@/components/visuals/ComponentSwatch";
 import TopicIcon from "@/components/visuals/TopicIcon";
@@ -63,7 +62,7 @@ export default function Home() {
         <HomeChrome>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
             <main id="main-content">
-                <section className="pe__hero"><div className="pe__wrap pe__hero-grid"><div><p className="section-head__eyebrow">UX Design & FrontEnd Engineering by Senior Specialists</p><h1>Pixel-Perfect Design. Production-Ready Code.</h1><p className="pe__hero-sub">Pixel Exact designs and builds end-to-end digital products with senior engineering rigor. By integrating AI-accelerated workflows with over 40 years of combined design and frontend expertise, we ship production-grade web interfaces in weeks—not months. </p><div className="pe__hero-cta"><Button href="/contact" className="pe__button" icon={<ArrowUpRight aria-hidden="true" size={18} />}>Book a consultation</Button><Button href="#work" variant="ghost" className="pe__button" icon={<ArrowDown aria-hidden="true" size={18} />}>View case studies</Button></div></div><div className="artifact pe__ruler-frame"><BrowserChrome /><div className="pe__ruler">{["Unified Delivery: Research, UX architecture, and UI design led by one dedicated senior team.", "Zero-Fidelity Loss: Frontend engineering built to match design specifications down to the exact pixel. ", "AI-Accelerated Pipeline: AI-enabled efficiency embedded across every stage to compress delivery cycles. ", "Decoupled UI Modernization: Transform legacy frontends and design systems without disrupting your core backend architecture. "].map((label, index) => <div className="pe__ruler-line" key={label}><span className="pe__ruler-number">0{index + 1}</span><span>{label}</span></div>)}</div></div></div></section>
+                <HeroCarousel />
 
                 <section className="pe__credibility"><div className="pe__wrap pe__credibility-grid">{[["40+ Years Combined Experience", "Senior expertise spanning UX research, design systems, and modern frontend frameworks."], ["AI-Native Velocity", "Every stage of design and development is accelerated using intelligent, automated tooling."], ["Weeks, not months", "Rapid time-to-market and high deployment velocity without compromising code quality or accessibility."]].map(([stat, text], index) => <Reveal className="pe__credibility-item" key={stat} index={index}><strong>{stat}</strong><span>{text}</span></Reveal>)}</div></section>
 

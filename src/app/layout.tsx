@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Orbitron, Montserrat } from "next/font/google";
 import Script from "next/script";
 import BackToTop from "@/components/BackToTop/BackToTop";
+import CookieConsent from "@/components/CookieConsent/CookieConsent";
 import { organizationJsonLd, SITE_NAME, SITE_URL, websiteJsonLd } from "@/lib/seo";
 import "./globals.scss";
 
@@ -61,6 +62,19 @@ export default function RootLayout({
                     {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
+                        // Google Consent Mode v2: deny analytics/ad storage by default before
+                        // the tag does anything else. The consent manager (mounted below)
+                        // reads any existing choice on mount and pushes a 'consent' 'update'
+                        // immediately after — this default only matters for the brief window
+                        // before that runs, and for users who haven't decided yet.
+                        gtag('consent', 'default', {
+                            analytics_storage: 'denied',
+                            ad_storage: 'denied',
+                            ad_user_data: 'denied',
+                            ad_personalization: 'denied',
+                            functionality_storage: 'granted',
+                            security_storage: 'granted'
+                        });
                         gtag('js', new Date());
                         gtag('config', '${GA_MEASUREMENT_ID}');
                     `}
@@ -68,6 +82,7 @@ export default function RootLayout({
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }} />
                 {children}
+                <CookieConsent />
                 <BackToTop />
             </body>
         </html>

@@ -20,6 +20,7 @@ type ArticlePageProps = {
 const BESPOKE_ARTICLE_SLUGS = new Set([
     "design-to-development-handoff-checklist",
     "how-we-deliver-projects-in-weeks-not-months",
+    "modernizing-legacy-ui-without-touching-business-logic",
 ]);
 
 export function generateStaticParams() {

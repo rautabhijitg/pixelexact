@@ -4,7 +4,12 @@ export type CaseStudy = {
     slug: string;
     tag: string;
     title: string;
+    /** On-page hero summary and /work listing card blurb. */
     summary: string;
+    /** SEO meta description, distinct from the on-page summary. Falls back to summary if omitted. */
+    metaDescription?: string;
+    /** <title> tag text, distinct from the on-page h1. Falls back to title if omitted. */
+    seoTitle?: string;
     relatedService: string;
     focus: string[];
     publishedAt: string;
@@ -44,7 +49,9 @@ export const caseStudies: CaseStudy[] = [
         slug: "legacy-presentation-layer-modernization",
         tag: "Legacy modernization",
         title: "Presentation-layer modernization",
-        summary: "Modernized a legacy application's interface with a decoupled architecture.",
+        summary: "A modern, on-brand interface for a mission-critical legacy application, delivered without a backend rewrite or business disruption.",
+        metaDescription: "How a mission-critical enterprise legacy application got a modern, consistent interface without a backend rewrite: a presentation-layer modernization case study covering design systems, SCSS architecture, and incremental migration.",
+        seoTitle: "Legacy Application Modernization Case Study: Presentation-Layer Rebuild",
         relatedService: "legacy-application-modernization",
         art: "modernization",
         focus: [

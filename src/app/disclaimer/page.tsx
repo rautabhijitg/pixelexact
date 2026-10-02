@@ -13,7 +13,7 @@ export default function DisclaimerPage() {
         <LegalPage
             eyebrow="PIXEL EXACT / DISCLAIMER"
             title="Disclaimer"
-            effectiveDate="[EFFECTIVE DATE]"
+            effectiveDate="[10/01/2026]"
             intro="This page explains the terms on which the content of this website is provided. It applies to everyone who visits or uses this site."
         >
             <section>

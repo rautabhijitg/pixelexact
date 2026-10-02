@@ -14,16 +14,16 @@ export default function PrivacyPolicyPage() {
         <LegalPage
             eyebrow="PIXEL EXACT / PRIVACY POLICY"
             title="Privacy Policy"
-            effectiveDate="[EFFECTIVE DATE]"
+            effectiveDate="[10/01/2026]"
             intro="This Privacy Policy explains what information Pixel Exact collects through this website, why we collect it, and how it's handled. It covers the entire site, including the contact form, and reflects only the data practices this site actually uses."
         >
             <section>
                 <h2>Who we are</h2>
                 <p>Pixel Exact (&ldquo;Pixel Exact,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is a design and frontend development studio. This policy applies to visitors of this website and to anyone who submits our contact form.</p>
                 <ul>
-                    <li>Legal entity: [LEGAL BUSINESS NAME]</li>
-                    <li>Address: [BUSINESS ADDRESS]</li>
-                    <li>Governing jurisdiction: [JURISDICTION]</li>
+                    <li>Legal entity: Pixel Exact</li>
+                    <li>Address: Pune, Maharashtra, India</li>
+                    <li>Governing jurisdiction: Maharashtra, India</li>
                 </ul>
             </section>
 
@@ -37,12 +37,17 @@ export default function PrivacyPolicyPage() {
                     <li>Your message, describing what you&apos;re working on</li>
                 </ul>
                 <p>The form also includes a hidden field used only to detect automated spam submissions. It isn&apos;t visible to visitors and isn&apos;t used to collect information about people.</p>
-                <p>We don&apos;t use cookies, analytics tools, advertising pixels, or any tracking scripts on this website.</p>
+            </section>
+
+            <section>
+                <h2>Cookies and analytics</h2>
+                <p>This website uses Google Analytics to understand overall site traffic and usage, and a small amount of browser local storage to remember your on-site display preferences and your cookie consent choice. We don&apos;t use advertising pixels, and we don&apos;t sell or share the information these tools collect for anyone&apos;s marketing purposes.</p>
+                <p>You control which optional categories (like analytics) are active through the cookie banner shown on your first visit, or anytime afterward via <Link href="/cookie-policy">Cookie Settings</Link>. For a full breakdown of each technology, what it does, and how to manage it, see our <Link href="/cookie-policy">Cookie Policy</Link>.</p>
             </section>
 
             <section>
                 <h2>Local storage for site preferences</h2>
-                <p>This website uses your browser&apos;s local storage, not cookies, to remember two display preferences: your chosen theme (dark or light) and your preferred text size. These preferences are stored only on your own device, are never transmitted to us or anyone else, and can be cleared at any time through your browser settings.</p>
+                <p>Separately from the consent and analytics choices above, this website uses your browser&apos;s local storage, not a cookie, to remember two display preferences: your chosen theme (dark or light) and your preferred text size. These preferences are stored only on your own device, are never transmitted to us or anyone else, and can be cleared at any time through your browser settings.</p>
             </section>
 
             <section>
@@ -53,18 +58,18 @@ export default function PrivacyPolicyPage() {
             <section>
                 <h2>How your information is processed and stored</h2>
                 <p>When you submit the contact form, your message is sent as an email using Resend, a third-party transactional email delivery service, to our inbox. We don&apos;t store contact form submissions in a database.</p>
-                <p>Resend may retain transactional data, such as delivery logs, for a period defined by its own policies. [PLACEHOLDER — CONFIRM RESEND&apos;S DATA RETENTION PERIOD AND LINK TO ITS PRIVACY POLICY]</p>
-                <p>We keep the emails we receive in our own inbox for as long as reasonably necessary to handle your enquiry. [PLACEHOLDER — DATA RETENTION PERIOD]</p>
+                <p>Resend may retain transactional data, such as delivery logs, for a period defined by its own policies. Resend automatically retains email and log data for 30 days. For more information, please read the <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend Privacy Policy</a>.</p>
+                <p>We keep the emails we receive in our own inbox for as long as reasonably necessary to handle your enquiry, or up to 2 years to maintain context for ongoing customer relationships.</p>
             </section>
 
             <section>
                 <h2>Hosting</h2>
-                <p>This website is hosted by [PLACEHOLDER — HOSTING PROVIDER]. As with most web hosting, the hosting provider may automatically log basic technical information, such as IP address, browser type, and request timestamps, as part of standard server operation. We don&apos;t add any analytics layer on top of this.</p>
+                <p>This website is hosted by HOSTINGER. As with most web hosting, the hosting provider may automatically log basic technical information, such as IP address, browser type, and request timestamps, as part of standard server operation. We also use Google Analytics on top of this, as described above.</p>
             </section>
 
             <section>
                 <h2>Third-party services</h2>
-                <p>The only third-party service this website relies on to process personal information is Resend, used solely for email delivery of contact form submissions, as described above. This website doesn&apos;t integrate any analytics, advertising, social media, or customer-relationship-management tools.</p>
+                <p>This website relies on two third-party services: Resend, for email delivery of contact form submissions as described above, and Google Analytics, for site traffic and usage measurement as described above. This website doesn&apos;t integrate any advertising, social media, or customer-relationship-management tools.</p>
             </section>
 
             <section>
@@ -74,7 +79,10 @@ export default function PrivacyPolicyPage() {
 
             <section>
                 <h2>Your rights</h2>
-                <p>Depending on where you&apos;re located, you may have rights over the personal information you send us, including the right to request access to, correction of, or deletion of your information. To exercise these rights, contact us using the details below. [PLACEHOLDER — JURISDICTION-SPECIFIC RIGHTS LANGUAGE, E.G. GDPR/CCPA, IF APPLICABLE]</p>
+                <p>
+
+                    If you are a resident of the European Economic Area (EEA), your rights are protected under the <strong><a href="https://gdpr.eu/" target="_blank" rel="noopener noreferrer">General Data Protection Regulation (GDPR)</a></strong>. This includes your rights to data portability, object to processing, or request the erasure of your personal data. If you are a California resident, the <strong><a href="https://cppa.ca.gov/" target="_blank" rel="noopener noreferrer">California Consumer Privacy Act (CCPA/CPRA)</a></strong> grants you the right to opt-out of the sale or sharing of your personal information, request access to the specific pieces of data we have collected, and look up how your data is used without fear of discrimination.
+                </p>
             </section>
 
             <section>

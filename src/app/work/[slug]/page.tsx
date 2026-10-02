@@ -15,8 +15,15 @@ type CaseStudyPageProps = {
     params: Promise<{ slug: string }>;
 };
 
+// "legacy-presentation-layer-modernization" has its own bespoke page (its
+// content doesn't fit this generic flat-paragraph template) — exclude it
+// here so this route doesn't try to statically generate the same path.
+const BESPOKE_CASE_STUDY_SLUGS = new Set(["legacy-presentation-layer-modernization"]);
+
 export function generateStaticParams() {
-    return caseStudies.map((entry) => ({ slug: entry.slug }));
+    return caseStudies
+        .filter((entry) => !BESPOKE_CASE_STUDY_SLUGS.has(entry.slug))
+        .map((entry) => ({ slug: entry.slug }));
 }
 
 export async function generateMetadata({ params }: CaseStudyPageProps): Promise<Metadata> {
@@ -28,8 +35,8 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
     }
 
     return buildMetadata({
-        title: entry.title,
-        description: entry.summary,
+        title: entry.seoTitle ?? entry.title,
+        description: entry.metaDescription ?? entry.summary,
         path: `/work/${entry.slug}`,
     });
 }

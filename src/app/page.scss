@@ -70,6 +70,52 @@
   &__ruler { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 4px 24px; }
   &__ruler-line { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--color-line); font-size: variables.$font-size-md; &:last-child { border-bottom: 0; } }
   &__ruler-number { width: 22px; color: var(--color-red); font-family: variables.$font-family-display; font-size: variables.$font-size-sm; font-weight: 600; }
+
+  // Hero carousel. Slides are stacked in the same CSS Grid cell (grid-area
+  // 1/1) rather than absolutely positioned — the track's height becomes the
+  // tallest slide's natural height, so switching slides never shifts layout,
+  // without needing a hardcoded height that would clip content.
+  &__hero-carousel { position: relative; }
+  &__hero-track { display: grid; }
+  &__hero-slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+    pointer-events: none;
+  }
+  &__hero-slide--active { opacity: 1; transform: translateY(0); pointer-events: auto; z-index: 1; }
+
+  &__hero-grid--content { align-items: center; }
+  &__hero-visual { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--color-line); background: var(--color-paper-alt); }
+  &__hero-visual-image { object-fit: cover; }
+  &__hero-copy .pe__hero-sub { max-width: 44ch; }
+
+  &__hero-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 40px; }
+  &__hero-arrow {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-pill);
+    background: var(--color-paper);
+    color: var(--color-navy);
+    cursor: pointer;
+    transition: border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    &:hover { border-color: var(--color-red); color: var(--color-red); }
+    &:active { transform: scale(0.94); }
+  }
+  &__hero-dots { display: flex; align-items: center; gap: 10px; }
+  &__hero-dot {
+    width: 10px; height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-line);
+    cursor: pointer;
+    transition: width var(--transition-fast), background var(--transition-fast);
+  }
+  &__hero-dot--active { width: 28px; background: var(--color-red); }
+
   &__credibility { padding: 56px 0; border-bottom: 1px solid var(--color-line); }
   &__credibility-grid, &__work-grid, &__services, &__audience-grid, &__insights { display: grid; gap: 24px; }
   &__credibility-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
@@ -161,5 +207,16 @@
     &__section { padding: 64px 0; }
     &__sequence { grid-template-columns: 1fr; }
     &__swatches { grid-template-columns: repeat(3, 1fr); }
+    &__hero-controls { gap: 14px; margin-top: 28px; }
+  }
+}
+
+// Desktop-only: swap which side the visual sits on for a given slide. Scoped
+// above the 900px collapse so it can never reorder the mobile stack, which
+// must always show the visual before the copy regardless of desktop layout.
+@media (min-width: 901px) {
+  .pe {
+    &__hero-grid--reverse .pe__hero-visual { order: 2; }
+    &__hero-grid--reverse .pe__hero-copy { order: 1; }
   }
 }
