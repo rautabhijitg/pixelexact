@@ -34,6 +34,16 @@ const nextConfig: NextConfig = {
             // 3. Prevents browsers from guessing/sniffing the MIME type of a file
             key: 'X-Content-Type-Options',
             value: 'nosniff',
+          },
+          {
+            // 4. Limits how much referrer URL data is sent to other origins
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            // 5. This site doesn't use any of these browser APIs, so deny them outright
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           }
         ],
       },

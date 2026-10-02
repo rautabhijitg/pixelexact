@@ -16,7 +16,7 @@ import { buildMetadata } from "@/lib/seo";
 import "./page.scss";
 
 export const metadata: Metadata = buildMetadata({
-    title: "Pixel Exact | Pixel Perfect Senior-led UX, UI, and frontend development",
+    title: "Pixel Exact | Senior-led UX, UI & Frontend Development",
     description: "UX design, UI design, and frontend development from one senior, AI-enabled team. Pixel-accurate execution, design and code held together, delivered fast.",
     path: "/",
 });

@@ -37,7 +37,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: {
-        default: `${SITE_NAME} | Pixel Exact | Pixel Perfect Senior-led UX, UI, and frontend development`,
+        default: `${SITE_NAME} | Senior-led UX, UI & Frontend Development`,
         template: `%s | ${SITE_NAME}`,
     },
     description: "UX design, UI design, and frontend development from one senior, AI-enabled team. Pixel-accurate execution, design and code held together, delivered fast.",

@@ -65,6 +65,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         description: entry.dek,
         datePublished: entry.publishedAt,
         url: absoluteUrl(`/insights/${entry.slug}`),
+        author: { "@type": "Organization", name: SITE_NAME },
         publisher: { "@type": "Organization", name: SITE_NAME },
     } : null;
 

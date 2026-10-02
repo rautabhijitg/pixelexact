@@ -43,6 +43,8 @@ export function buildMetadata({ title, description, path, ogImage, noIndex }: Bu
     };
 }
 
+export const SOCIAL_PROFILES = ["https://www.linkedin.com/company/pixel-exact"];
+
 export function organizationJsonLd() {
     return {
         "@context": "https://schema.org",
@@ -52,6 +54,7 @@ export function organizationJsonLd() {
         logo: DEFAULT_OG_IMAGE,
         description: "Senior-led, AI-enabled UX, UI, and frontend development studio.",
         email: CONTACT_EMAIL,
+        sameAs: SOCIAL_PROFILES,
     };
 }
 

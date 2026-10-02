@@ -143,6 +143,7 @@ export default function DesignToDevelopmentHandoffChecklistPage() {
         description: entry.metaDescription ?? entry.dek,
         datePublished: entry.publishedAt,
         url: absoluteUrl(`/insights/${entry.slug}`),
+        author: { "@type": "Organization", name: SITE_NAME },
         publisher: { "@type": "Organization", name: SITE_NAME },
     };
 

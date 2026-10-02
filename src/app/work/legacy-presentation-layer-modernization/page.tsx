@@ -8,7 +8,7 @@ import Header from "@/components/Header/Header";
 import { servicePages } from "@/components/ServicePage/serviceData";
 import CaseStudyArt from "@/components/visuals/CaseStudyArt";
 import { caseStudies } from "@/data/caseStudies";
-import { buildMetadata } from "@/lib/seo";
+import { absoluteUrl, buildMetadata, SITE_NAME } from "@/lib/seo";
 
 const entry = caseStudies.find((item) => item.slug === "legacy-presentation-layer-modernization")!;
 const relatedService = servicePages[entry.relatedService];
@@ -18,6 +18,17 @@ export const metadata: Metadata = buildMetadata({
     description: entry.metaDescription ?? entry.summary,
     path: `/work/${entry.slug}`,
 });
+
+const caseStudyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    headline: entry.title,
+    description: entry.metaDescription ?? entry.summary,
+    datePublished: entry.publishedAt,
+    url: absoluteUrl(`/work/${entry.slug}`),
+    author: { "@type": "Organization", name: SITE_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+};
 
 const overview: [string, string][] = [
     ["Client", "Large enterprise, name withheld"],
@@ -102,6 +113,7 @@ const technologies = [
 export default function LegacyModernizationCaseStudyPage() {
     return (
         <div className="service-page">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }} />
             <Header backHref="/work" backLabel="All work" />
             <Breadcrumb items={[{ name: "Home", path: "/" }, { name: "Work", path: "/work" }, { name: entry.title, path: `/work/${entry.slug}` }]} />
 
