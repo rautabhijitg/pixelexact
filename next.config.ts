@@ -17,9 +17,13 @@ const nextConfig: NextConfig = {
         source: '/:path*',
         headers: [
           {
-            // 1. Prevents browser-side HTTPS downgrades (HSTS)
+            // 1. Prevents browser-side HTTPS downgrades (HSTS). Deliberately
+            // scoped to this domain only — no includeSubDomains, since
+            // subdomains aren't guaranteed to be served over HTTPS. (Note:
+            // includeSubDomains is also a hard requirement for HSTS preload
+            // submission, so preload is dropped too — it isn't valid without it.)
             key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
+            value: 'max-age=63072000',
           },
           {
             // 2. Prevents clickjacking by blocking other sites from framing your content
