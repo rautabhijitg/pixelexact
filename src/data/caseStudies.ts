@@ -18,18 +18,20 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
     {
-        slug: "saas-dashboard-redesign",
-        tag: "SaaS / Product redesign",
-        title: "Dashboard redesign & design system",
-        summary: "Rebuilt a legacy dashboard's UX and UI, then implemented the frontend component by component.",
-        relatedService: "ui-design-systems",
+        slug: "healthcare-self-service-portal-redesign",
+        tag: "Healthcare / Enterprise UX",
+        title: "Rebuilding Self-Service Trust in a Healthcare Records Portal",
+        summary: "A fragmented legacy portal pushed over a thousand callers a day onto the phone line. Splitting it into a no-login status tracker and a full request portal cut IVR call volume by 25% in the first month.",
+        metaDescription: "How redesigning a legacy healthcare records portal into a no-login status tracker and a full self-service request portal cut IVR call volume by 25% in the first month.",
+        seoTitle: "Healthcare Portal Redesign Case Study: 25% Fewer IVR Calls",
+        relatedService: "ux-product-design",
         art: "dashboard",
         focus: [
-            "Audit the existing dashboard's UX and identify where navigation and information density were slowing users down",
-            "Redesign the interface and extract a reusable design system from the result",
-            "Implement the new interface in production, component by component, against the same design",
+            "Make request status, expected delivery, and balances visible so users stop calling the phone line to find out",
+            "Split one overloaded portal into a lightweight no-login tracker and a full authenticated request portal",
+            "Prototype in HTML with AI-assisted tooling to cut stakeholder feedback cycles from 8–12 days to 2–3",
         ],
-        publishedAt: "2026-01-01",
+        publishedAt: "2026-10-03",
     },
     {
         slug: "startup-mvp-launch",

@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/blog", destination: "/insights", permanent: true },
       { source: "/case-studies", destination: "/work", permanent: true },
+      { source: "/work/saas-dashboard-redesign", destination: "/work/healthcare-self-service-portal-redesign", permanent: true },
       { source: "/services/frontend-development", destination: "/services/frontend-application-development", permanent: true },
     ];
   },
