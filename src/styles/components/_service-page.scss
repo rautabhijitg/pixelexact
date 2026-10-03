@@ -151,6 +151,7 @@
   // plain lists. Table scrolls horizontally on narrow screens instead of
   // forcing column widths that overflow the viewport.
   &__table-wrap { overflow-x: auto; border: 1px solid var(--color-border); }
+  &__deliverables + &__table-wrap { margin-top: 32px; }
   &__table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: variables.$font-size-base; }
   &__table th, &__table td { padding: 14px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--color-border); }
   &__table th { background: var(--color-background-secondary); color: var(--color-primary); font-family: variables.$font-family-secondary; font-weight: 600; }

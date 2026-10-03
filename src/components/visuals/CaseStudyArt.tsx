@@ -1,7 +1,7 @@
 import BrowserChrome from "./BrowserChrome";
 
 type CaseStudyArtProps = {
-    variant: "dashboard" | "mobile" | "modernization" | "aiWorkflow";
+    variant: "dashboard" | "mobile" | "modernization" | "aiWorkflow" | "onboarding";
     className?: string;
 };
 
@@ -19,6 +19,7 @@ export default function CaseStudyArt({ variant, className }: CaseStudyArtProps) 
             {variant === "mobile" && <MobileArt />}
             {variant === "modernization" && <ModernizationArt />}
             {variant === "aiWorkflow" && <AiWorkflowArt />}
+            {variant === "onboarding" && <OnboardingArt />}
         </div>
     );
 }
@@ -126,6 +127,36 @@ function AiWorkflowArt() {
             <rect x="340" y="110" width="50" height="40" rx="4" fill="var(--color-acid)" />
             <rect x="350" y="122" width="30" height="5" rx="2" fill="var(--color-primary)" />
             <rect x="350" y="133" width="22" height="5" rx="2" fill="var(--color-primary)" opacity="0.7" />
+        </svg>
+    );
+}
+
+// Abstract multi-step verification stepper — represents a unified onboarding
+// flow collapsing into one verified state, not a screenshot of any actual
+// client portal (the client's real product is confidential).
+function OnboardingArt() {
+    const steps = [60, 160, 260, 340];
+    return (
+        <svg className="artifact__canvas" viewBox="0 0 400 260" role="presentation">
+            <line x1="60" y1="130" x2="340" y2="130" stroke="var(--color-border)" strokeWidth="2" />
+            {steps.map((x, i) => {
+                const complete = i < 3;
+                return (
+                    <g key={x}>
+                        <circle cx={x} cy="130" r="22" fill={complete ? "var(--color-primary)" : "var(--color-acid)"} />
+                        {complete ? (
+                            <path d={`M${x - 9} 130 L${x - 2} 137 L${x + 10} 121`} fill="none" stroke="var(--color-white)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                        ) : (
+                            <circle cx={x} cy="130" r="6" fill="var(--color-white)" />
+                        )}
+                        <rect x={x - 26} y="166" width="52" height="7" rx="3" fill="var(--color-border)" opacity={complete ? 0.5 : 1} />
+                    </g>
+                );
+            })}
+            <rect x="150" y="30" width="100" height="34" rx="4" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" />
+            <rect x="164" y="42" width="72" height="6" rx="3" fill="var(--color-primary)" opacity="0.6" />
+            <rect x="164" y="52" width="48" height="5" rx="2.5" fill="var(--color-primary)" opacity="0.35" />
+            <path d="M150 64 L120 100 M250 64 L280 100" stroke="var(--color-border)" strokeWidth="1.5" strokeDasharray="3 5" />
         </svg>
     );
 }

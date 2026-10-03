@@ -1,4 +1,4 @@
-export type CaseStudyArtVariant = "dashboard" | "mobile" | "modernization" | "aiWorkflow";
+export type CaseStudyArtVariant = "dashboard" | "mobile" | "modernization" | "aiWorkflow" | "onboarding";
 
 export type CaseStudy = {
     slug: string;
@@ -33,17 +33,19 @@ export const caseStudies: CaseStudy[] = [
     },
     {
         slug: "startup-mvp-launch",
-        tag: "Startup / MVP",
-        title: "Research-led product launch",
-        summary: "Took an early-stage product from user research to a launch-ready, validated interface in weeks.",
+        tag: "B2B Fintech / UX Strategy",
+        title: "Transforming B2B Fintech Client Onboarding",
+        summary: "Redesigned a 20+ day, paper-based enterprise onboarding process into a unified, self-service digital experience targeting account activation in under 48 hours.",
+        metaDescription: "How a leading US fintech provider cut enterprise client onboarding from 20+ business days to under 48 hours through unified, self-service UX.",
+        seoTitle: "B2B Fintech Onboarding: From 20+ Days to 48 Hours",
         relatedService: "ux-product-design",
-        art: "mobile",
+        art: "onboarding",
         focus: [
-            "Run early research to pressure-test the product direction before committing to a build",
-            "Design and prototype the core flows, validated with usability testing",
-            "Hand off a launch-ready interface with the fidelity engineering needed to build it correctly",
+            "Replace a paper-based, multi-week onboarding process with a unified, self-service digital experience",
+            "Eliminate redundant data entry across a five-product enterprise platform with a fill-once data architecture",
+            "Design for US financial compliance (KYB, W-9, FinCEN UBO) from the start, not as a late addition",
         ],
-        publishedAt: "2026-01-01",
+        publishedAt: "2026-10-03",
     },
     {
         slug: "legacy-presentation-layer-modernization",

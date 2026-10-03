@@ -18,7 +18,7 @@ type CaseStudyPageProps = {
 // "legacy-presentation-layer-modernization" has its own bespoke page (its
 // content doesn't fit this generic flat-paragraph template) — exclude it
 // here so this route doesn't try to statically generate the same path.
-const BESPOKE_CASE_STUDY_SLUGS = new Set(["legacy-presentation-layer-modernization", "pixel-exact-ai-enabled-website"]);
+const BESPOKE_CASE_STUDY_SLUGS = new Set(["legacy-presentation-layer-modernization", "pixel-exact-ai-enabled-website", "startup-mvp-launch"]);
 
 export function generateStaticParams() {
     return caseStudies
