@@ -1,4 +1,4 @@
-export type CaseStudyArtVariant = "dashboard" | "mobile" | "modernization";
+export type CaseStudyArtVariant = "dashboard" | "mobile" | "modernization" | "aiWorkflow";
 
 export type CaseStudy = {
     slug: string;
@@ -60,5 +60,21 @@ export const caseStudies: CaseStudy[] = [
             "Ship the modernized UI incrementally, screen by screen, alongside the existing system",
         ],
         publishedAt: "2026-01-01",
+    },
+    {
+        slug: "pixel-exact-ai-enabled-website",
+        tag: "AI-Enabled Delivery",
+        title: "Our Own AI-Enabled Website Build",
+        summary: "How we used ChatGPT, Claude, and Gemini inside a senior-led delivery process to design, build, and ship pixelexact.com.",
+        metaDescription: "How Pixel Exact used ChatGPT, Claude, and Gemini inside a senior-led delivery process to design, build, and ship pixelexact.com.",
+        seoTitle: "How We Built Our Website With AI-Enabled Delivery",
+        relatedService: "how-we-deliver",
+        art: "aiWorkflow",
+        focus: [
+            "Use AI throughout strategy, design, development, content, and QA, without letting it make unreviewed decisions",
+            "Keep senior judgment accountable for architecture, accessibility, performance, and brand quality at every stage",
+            "Prove the same delivery workflow Pixel Exact offers clients, on Pixel Exact's own website",
+        ],
+        publishedAt: "2026-10-03",
     },
 ];

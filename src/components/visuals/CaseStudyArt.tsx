@@ -1,7 +1,7 @@
 import BrowserChrome from "./BrowserChrome";
 
 type CaseStudyArtProps = {
-    variant: "dashboard" | "mobile" | "modernization";
+    variant: "dashboard" | "mobile" | "modernization" | "aiWorkflow";
     className?: string;
 };
 
@@ -18,6 +18,7 @@ export default function CaseStudyArt({ variant, className }: CaseStudyArtProps) 
             {variant === "dashboard" && <DashboardArt />}
             {variant === "mobile" && <MobileArt />}
             {variant === "modernization" && <ModernizationArt />}
+            {variant === "aiWorkflow" && <AiWorkflowArt />}
         </div>
     );
 }
@@ -97,6 +98,34 @@ function ModernizationArt() {
             <rect x="224" y="168" width="156" height="8" fill="var(--color-primary)" opacity="0.35" />
 
             <path d="M192 130 L214 130 M208 123 L216 130 L208 137" fill="none" stroke="var(--color-acid)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+    );
+}
+
+// Abstract node-and-connector diagram representing an AI-assisted delivery
+// pipeline — not a screenshot of any AI tool's interface. Four input nodes
+// (the distinct AI/process inputs) converge through a central review node
+// into one output node, visualizing "multiple accelerants, one governed
+// output" without naming specific products in the artwork itself.
+function AiWorkflowArt() {
+    const inputs = [40, 100, 160, 220];
+    return (
+        <svg className="artifact__canvas" viewBox="0 0 400 260" role="presentation">
+            {inputs.map((y) => (
+                <line key={y} x1="70" y1={y} x2="190" y2="130" stroke="var(--color-border)" strokeWidth="1.5" />
+            ))}
+            <line x1="210" y1="130" x2="330" y2="130" stroke="var(--color-acid)" strokeWidth="2" />
+            {inputs.map((y, i) => (
+                <g key={y}>
+                    <rect x="20" y={y - 14} width="50" height="28" rx="4" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" opacity={i === 0 ? 1 : 0.7} />
+                    <rect x="30" y={y - 4} width="30" height="4" rx="2" fill="var(--color-primary)" opacity={i === 0 ? 1 : 0.5} />
+                </g>
+            ))}
+            <circle cx="200" cy="130" r="26" fill="var(--color-primary)" />
+            <path d="M190 130 L197 137 L211 121" fill="none" stroke="var(--color-white)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            <rect x="340" y="110" width="50" height="40" rx="4" fill="var(--color-acid)" />
+            <rect x="350" y="122" width="30" height="5" rx="2" fill="var(--color-primary)" />
+            <rect x="350" y="133" width="22" height="5" rx="2" fill="var(--color-primary)" opacity="0.7" />
         </svg>
     );
 }
