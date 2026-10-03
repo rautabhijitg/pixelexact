@@ -23,6 +23,8 @@
   a { text-decoration: none; }
   a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 3px; }
 
+  &__meta { margin-top: 14px; color: var(--color-text-secondary); font-size: variables.$font-size-sm; }
+
   .service-page{
     &__hero {
         &-grid { grid-template-columns: 1fr; gap: 24px; }

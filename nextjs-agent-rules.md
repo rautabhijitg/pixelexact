@@ -678,6 +678,8 @@ not:
 
 Do not generate low-quality or repetitive AI content solely for search traffic.
 
+**Current implementation note**: Insights articles actually live as entries in `src/data/articles.ts` (not MDX files under `content/blog/`), rendered either through the generic `src/app/insights/[slug]/page.tsx` template or a bespoke page under `src/app/insights/<slug>/page.tsx` for pieces that don't fit the generic layout. Every published article's hero must render a visible byline — publish date and author — via the shared `<ArticleMeta publishedAt={entry.publishedAt} />` component (`src/components/Insights/ArticleMeta.tsx`), placed directly under the `<h1>`. The generic template already does this for every article that uses it; any new bespoke insights page must add it explicitly. Author is always Pixel Exact (the component reads `SITE_NAME` from `src/lib/seo.ts`) — there is no per-article byline system.
+
 ---
 
 # 20. Case Studies

@@ -5,6 +5,7 @@ import Reveal from "@/components/animations/Reveal";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import ArticleMeta from "@/components/Insights/ArticleMeta";
 import { servicePages } from "@/components/ServicePage/serviceData";
 import { articles } from "@/data/articles";
 import { absoluteUrl, buildMetadata, SITE_NAME } from "@/lib/seo";
@@ -121,7 +122,7 @@ export default function HowWeDeliverArticlePage() {
                         <div>
                             <p className="service-page__eyebrow">{entry.topic}</p>
                             <h1>{entry.title}</h1>
-
+                            {entry.publishedAt && <ArticleMeta publishedAt={entry.publishedAt} />}
                         </div>
                         <p className="service-page__summary">{entry.dek}</p>
                     </div>
