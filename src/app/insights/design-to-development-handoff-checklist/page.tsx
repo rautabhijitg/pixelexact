@@ -52,7 +52,7 @@ const checklistSections: [string, string[]][] = [
         "Prop Alignment: Component properties map conceptually to frontend props (size: sm | md | lg, intent: primary | secondary | danger).",
         "Composition Over Duplication: Variations are handled through structured properties and slotted children, not one-off duplicate components.",
         "System Exceptions Reviewed: Any component with no design-system equivalent has been reviewed with engineering to decide whether it becomes a shared component or a local one.",
-        "Boundaries Defined: Components state explicitly how they interact with neighbors — for example, the card manages padding and content flows within it.",
+        "Boundaries Defined: Components state explicitly how they interact with neighbors - for example, the card manages padding and content flows within it.",
     ]],
     ["C. Responsive Behavior", [
         "Fluid vs. Fixed Rules: Containers state whether they fill available width, hug their content, or respect a maximum width.",
@@ -81,7 +81,7 @@ const checklistSections: [string, string[]][] = [
         "Reduced Motion: Large transitions and parallax have a subtler fallback when prefers-reduced-motion is set.",
     ]],
     ["G. Handoff Documentation", [
-        "Behavioral Annotations: Notes cover business logic, sorting behavior, and state triggers — not what's already visible in the file.",
+        "Behavioral Annotations: Notes cover business logic, sorting behavior, and state triggers - not what's already visible in the file.",
         "Asset Export Readiness: Vectors are cleaned, paths flattened, and SVGs stripped of anything that blocks CSS styling.",
         "Explicit Constraints: Min/max widths and z-index order are documented for anything that overlaps, like sticky headers or tooltips.",
         "Known Trade-offs: Deliberate compromises between the ideal design and the deadline are flagged directly in the spec.",
@@ -89,7 +89,7 @@ const checklistSections: [string, string[]][] = [
     ["H. Developer Implementation", [
         "Token Consumption: The frontend consumes the same token structure as the design file, not hardcoded values.",
         "Semantic Markup: Layouts use proper elements (dialog, nav, button, fieldset) instead of nested, clickable divs.",
-        "Defensive CSS: Styling anticipates changing content — text wrapping, scroll containers, and aspect-ratio handled natively.",
+        "Defensive CSS: Styling anticipates changing content - text wrapping, scroll containers, and aspect-ratio handled natively.",
         "Early Flagging: Unclear behavior or un-mocked states are raised while scaffolding the component, not discovered in final QA.",
     ]],
     ["I. Design QA and Visual Validation", [
@@ -109,7 +109,7 @@ const handoffGate: [string, string[]][] = [
     ]],
     ["Phase 2: Active Implementation", [
         "Are production components consuming design tokens instead of hardcoded values?",
-        "Are edge cases — long strings, missing assets, variable data — verified against live API responses?",
+        "Are edge cases - long strings, missing assets, variable data - verified against live API responses?",
         "Have ambiguities been raised in the ticket instead of resolved by silent assumption?",
     ]],
     ["Phase 3: Release Ready", [
@@ -133,7 +133,7 @@ const failurePatterns = [
     ["Treating the Canvas as an Absolute Spec", "Assuming a 42px gap on a 1440px canvas must be exactly 42px on every screen.", "Developers hardcode brittle layout rules that break the moment a user resizes, zooms, or opens a high-density display."],
     ["Missing Component Governance", "Shared components get detached and tweaked per-screen instead of maintained as a system.", "Engineering can't reuse components; one-off CSS overrides pile up and future design-system updates stop propagating."],
     ["Handoff as a Final Hand-Off", "Designers disengage after the handoff date instead of staying involved through implementation.", "Engineers make design decisions under deadline pressure, and the shipped product drifts from what was intended."],
-    ["Reviewing Screenshots Instead of Living Code", "Design QA compares static exports side-by-side with screenshots of staging.", "Interactive bugs — broken focus traps, clunky hover states, layout breaks on resize — ship straight to production."],
+    ["Reviewing Screenshots Instead of Living Code", "Design QA compares static exports side-by-side with screenshots of staging.", "Interactive bugs - broken focus traps, clunky hover states, layout breaks on resize - ship straight to production."],
 ] as const;
 
 export default function DesignToDevelopmentHandoffChecklistPage() {

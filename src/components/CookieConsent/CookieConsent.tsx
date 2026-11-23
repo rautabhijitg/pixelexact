@@ -33,32 +33,32 @@ const CATEGORIES: Category[] = [
         label: "Performance",
         description: trackingServices.performance.length > 0
             ? `Used for performance monitoring and technical diagnostics. Currently used for: ${trackingServices.performance.join(", ")}.`
-            : "Used for performance monitoring and technical diagnostics. No performance technology is currently active — this category is ready if one is added later.",
+            : "Used for performance monitoring and technical diagnostics. No performance technology is currently active - this category is ready if one is added later.",
     },
     {
         key: "functional",
         label: "Functional",
         description: trackingServices.functional.length > 0
             ? `Supports optional convenience features beyond core site functionality. Currently used for: ${trackingServices.functional.join(", ")}.`
-            : "Supports optional convenience features beyond core site functionality. No optional functional technology is currently active — this category is ready if one is added later.",
+            : "Supports optional convenience features beyond core site functionality. No optional functional technology is currently active - this category is ready if one is added later.",
     },
     {
         key: "marketing",
         label: "Marketing & Advertising",
         description: trackingServices.marketing.length > 0
             ? `Used for advertising and marketing measurement. Currently used for: ${trackingServices.marketing.join(", ")}.`
-            : "Used for advertising and marketing measurement. No marketing or advertising technology is currently active — this category is ready if one is added later.",
+            : "Used for advertising and marketing measurement. No marketing or advertising technology is currently active - this category is ready if one is added later.",
     },
 ];
 
 export default function CookieConsent() {
     // Intentionally start with the SSR-safe default (no banner, no stored
-    // preferences) rather than reading localStorage in a lazy initializer —
+    // preferences) rather than reading localStorage in a lazy initializer -
     // `window` doesn't exist during server rendering, so a lazy initializer
     // here would compute a different value on the server than on the client,
     // causing a real hydration mismatch (the banner could flash, or
     // incorrectly reappear for a returning visitor). The effect below reads
-    // the real, persisted state once mounted and corrects it — a legitimate
+    // the real, persisted state once mounted and corrects it - a legitimate
     // "synchronize with an external store on mount" effect, not a case that
     // could be replaced by a derived value or a different initializer.
     const [preferences, setPreferences] = useState<ConsentPreferences>(DEFAULT_PREFERENCES);

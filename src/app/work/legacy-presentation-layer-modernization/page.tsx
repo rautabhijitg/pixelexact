@@ -34,7 +34,7 @@ const overview: [string, string][] = [
     ["Client", "Large enterprise, name withheld"],
     ["Platform", "Mission-critical legacy application"],
     ["Discipline", "UX strategy, design system, frontend architecture"],
-    ["Scope", "Presentation layer only — HTML/CSS with SCSS"],
+    ["Scope", "Presentation layer only - HTML/CSS with SCSS"],
     ["Stakeholders", "CEO, CFO, CTO"],
 ];
 
@@ -53,7 +53,7 @@ const rebuildConcerns = [
 
 const designSystemPoints = [
     "Built from the ground up to replace fragmented, inconsistent UI styling.",
-    "Defined core design tokens — color, typography, spacing — alongside reusable component standards.",
+    "Defined core design tokens - color, typography, spacing - alongside reusable component standards.",
     "Established a single source of truth that keeps every screen, and every future enhancement, consistent.",
 ];
 
@@ -74,7 +74,7 @@ const scssTree: [string, string][] = [
     ["shared/", "Utilities, mixins, and helpers used across components"],
     ["components/", "Buttons, forms, tables, cards"],
     ["pages/", "Page-level layouts"],
-    ["legacy/", "Existing CSS — untouched"],
+    ["legacy/", "Existing CSS - untouched"],
 ];
 
 const migrationSteps: [string, string][] = [
@@ -86,7 +86,7 @@ const migrationSteps: [string, string][] = [
 ];
 
 const solutionHighlights: [string, string][] = [
-    ["Presentation-Layer Modernization Without Functional Changes", "The interface could be fully transformed without touching business logic or backend systems — modernization at a fraction of the cost, time, and risk of a full redevelopment."],
+    ["Presentation-Layer Modernization Without Functional Changes", "The interface could be fully transformed without touching business logic or backend systems - modernization at a fraction of the cost, time, and risk of a full redevelopment."],
     ["Parallel UI Implementation With Zero Downtime", "A parallel styling system let the old and new UI run side by side, with full backward compatibility and no breaking changes to the existing HTML or CSS."],
     ["Complete Rebranding Through a Modern Design System", "A clean, minimal interface with a softer color palette and clearer visual hierarchy established one consistent design language across every screen, while keeping workflows familiar."],
     ["Structured, Maintainable Frontend Architecture", "A scalable architecture separating global styles, shared utilities, component styles, and page-level layouts reduced technical debt and made long-term maintenance easier."],
@@ -99,13 +99,13 @@ const impact = [
     "Leadership Buy-In Through Demonstration: A working demonstration showed the UI could be modernized independently of functionality, which helped build executive confidence.",
     "A Brand-New Look for a Legacy System: Users experienced what felt like a completely new application, even though the underlying system stayed the same.",
     "Future-Ready, Scalable UI Foundation: The new presentation layer can now evolve on its own, supporting faster enhancements, easier maintenance, and long-term scalability.",
-    "Design-to-Code Consistency: Because the Figma designs, the design system, and the frontend architecture were built together, the delivered UI stayed faithful to the approved design — a foundation now in place for future work.",
+    "Design-to-Code Consistency: Because the Figma designs, the design system, and the frontend architecture were built together, the delivered UI stayed faithful to the approved design - a foundation now in place for future work.",
 ];
 
 const technologies = [
-    "Figma — visual design and design system",
+    "Figma - visual design and design system",
     "Design tokens and a reusable component library",
-    "Presentation-layer styling architecture — SCSS-based structure",
+    "Presentation-layer styling architecture - SCSS-based structure",
     "Modular design system with global, shared, and component-scoped styles",
     "Legacy-compatible HTML/CSS enhancement strategy",
 ];
@@ -132,7 +132,7 @@ export default function LegacyModernizationCaseStudyPage() {
                     <div className="service-page__wrap">
                         <Reveal>
                             <CaseStudyArt variant={entry.art} className="case-art--hero" />
-                            <p className="service-page__label service-page__art-caption">Illustrative representation of the transformation — not an actual client screenshot</p>
+                            <p className="service-page__label service-page__art-caption">Illustrative representation of the transformation - not an actual client screenshot</p>
                         </Reveal>
                     </div>
                 </section>
@@ -157,7 +157,7 @@ export default function LegacyModernizationCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">THE CHALLENGE</p>
                                 <h2>Functionally Stable. Falling Behind Visually.</h2>
-                                <p className="service-page__index-summary">The application was functionally stable — it did what it needed to do. But its interface was outdated and increasingly out of step with where the brand was headed:</p>
+                                <p className="service-page__index-summary">The application was functionally stable - it did what it needed to do. But its interface was outdated and increasingly out of step with where the brand was headed:</p>
                             </div>
                         </Reveal>
                         <Reveal>
@@ -165,7 +165,7 @@ export default function LegacyModernizationCaseStudyPage() {
                                 {problemSymptoms.map((item) => <li key={item}>{item}</li>)}
                             </ul>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary">Together, these issues were affecting usability, maintainability, and how the brand was perceived. Leadership wanted the product to feel modern and competitive — but a full redevelopment was off the table, because of:</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary">Together, these issues were affecting usability, maintainability, and how the brand was perceived. Leadership wanted the product to feel modern and competitive - but a full redevelopment was off the table, because of:</p></Reveal>
                         <Reveal index={2}>
                             <ul className="service-page__list">
                                 {rebuildConcerns.map((item) => <li key={item}>{item}</li>)}
@@ -182,7 +182,7 @@ export default function LegacyModernizationCaseStudyPage() {
                                 <p>Modernization didn&apos;t need a rebuild. It needed the right layer.</p>
                             </blockquote>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">The presentation layer — the part of the application users actually see and interact with — was the right boundary for modernization. It could be rebuilt independently, while backend logic, workflows, and legacy HTML stayed exactly as they were.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">The presentation layer - the part of the application users actually see and interact with - was the right boundary for modernization. It could be rebuilt independently, while backend logic, workflows, and legacy HTML stayed exactly as they were.</p></Reveal>
                     </div>
                 </section>
 
@@ -196,7 +196,7 @@ export default function LegacyModernizationCaseStudyPage() {
                         </Reveal>
 
                         <Reveal className="service-page__checklist-block">
-                            <h3>01 — Created a New Design System</h3>
+                            <h3>01 - Created a New Design System</h3>
                             <p className="service-page__index-summary">A new <Link className="service-page__inline-link" href="/services/ui-design-systems">design system <ArrowUpRight aria-hidden="true" size={14} /></Link> replaced fragmented, inconsistent UI styling.</p>
                             <ul className="service-page__list">
                                 {designSystemPoints.map((item) => <li key={item}>{item}</li>)}
@@ -204,15 +204,15 @@ export default function LegacyModernizationCaseStudyPage() {
                         </Reveal>
 
                         <Reveal className="service-page__checklist-block" index={1}>
-                            <h3>02 — Designed a New Visual Experience in Figma</h3>
-                            <p className="service-page__index-summary">The modernized visual direction was fully designed and validated in Figma before a single line of production code was written — the same <Link className="service-page__inline-link" href="/services/ux-product-design">UX &amp; product design <ArrowUpRight aria-hidden="true" size={14} /></Link> discipline applied to every engagement.</p>
+                            <h3>02 - Designed a New Visual Experience in Figma</h3>
+                            <p className="service-page__index-summary">The modernized visual direction was fully designed and validated in Figma before a single line of production code was written - the same <Link className="service-page__inline-link" href="/services/ux-product-design">UX &amp; product design <ArrowUpRight aria-hidden="true" size={14} /></Link> discipline applied to every engagement.</p>
                             <ul className="service-page__list">
                                 {figmaPoints.map((item) => <li key={item}>{item}</li>)}
                             </ul>
                         </Reveal>
 
                         <Reveal className="service-page__checklist-block" index={2}>
-                            <h3>03 — Set Up the Frontend Architecture</h3>
+                            <h3>03 - Set Up the Frontend Architecture</h3>
                             <p className="service-page__index-summary">The modernized UI needed a <Link className="service-page__inline-link" href="/services/frontend-application-development">frontend architecture <ArrowUpRight aria-hidden="true" size={14} /></Link> that could run alongside the legacy system rather than replace it outright.</p>
                             <ul className="service-page__list">
                                 {architecturePoints.map((item) => <li key={item}>{item}</li>)}
@@ -249,7 +249,7 @@ export default function LegacyModernizationCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">TECHNICAL ARCHITECTURE</p>
                                 <h2>A Styling Architecture Built to Run Alongside Legacy Code</h2>
-                                <p className="service-page__index-summary">The SCSS structure keeps every layer of styling — tokens, utilities, components, pages, and the untouched legacy styles — isolated and easy to reason about.</p>
+                                <p className="service-page__index-summary">The SCSS structure keeps every layer of styling - tokens, utilities, components, pages, and the untouched legacy styles - isolated and easy to reason about.</p>
                             </div>
                         </Reveal>
                         <Reveal>
@@ -307,7 +307,7 @@ export default function LegacyModernizationCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">MIGRATION STRATEGY</p>
                                 <h2>A Controlled, Component-by-Component Loop</h2>
-                                <p className="service-page__index-summary">Rather than a single cutover, each component moved through the same five-step loop — isolated, tested, and deployed on its own schedule.</p>
+                                <p className="service-page__index-summary">Rather than a single cutover, each component moved through the same five-step loop - isolated, tested, and deployed on its own schedule.</p>
                             </div>
                         </Reveal>
                         <div className="service-page__process">
@@ -327,7 +327,7 @@ export default function LegacyModernizationCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">THE SOLUTION</p>
                                 <h2>Modernize the Presentation Layer. Leave the Backend Alone.</h2>
-                                <p className="service-page__index-summary">The modernization strategy changed only the presentation layer, leaving backend logic, workflows, and legacy HTML fully intact — delivering visual and usability improvements without putting operational stability at risk.</p>
+                                <p className="service-page__index-summary">The modernization strategy changed only the presentation layer, leaving backend logic, workflows, and legacy HTML fully intact - delivering visual and usability improvements without putting operational stability at risk.</p>
                             </div>
                         </Reveal>
                         <div className="service-page__text-grid">
@@ -335,7 +335,7 @@ export default function LegacyModernizationCaseStudyPage() {
                                 const isLast = index === solutionHighlights.length - 1 && solutionHighlights.length % 2 === 1;
                                 return (
                                     <Reveal className={`service-page__text-grid-item${isLast ? " service-page__text-grid-item--wide" : ""}`} key={title} index={index}>
-                                        <h3>0{index + 1} — {title}</h3>
+                                        <h3>0{index + 1} - {title}</h3>
                                         <p>{description}</p>
                                     </Reveal>
                                 );
@@ -382,7 +382,7 @@ export default function LegacyModernizationCaseStudyPage() {
                                 );
                             })}
                         </div>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced"><strong>No backend or framework changes were required.</strong> The entire engagement stayed scoped to the presentation layer — explore the full <Link className="service-page__inline-link" href="/services/legacy-application-modernization">Legacy Application Modernization <ArrowUpRight aria-hidden="true" size={14} /></Link> service, or see how reusable components factor into faster delivery in the <Link className="service-page__inline-link" href="/services/design-toolkit">Design Toolkit <ArrowUpRight aria-hidden="true" size={14} /></Link>.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced"><strong>No backend or framework changes were required.</strong> The entire engagement stayed scoped to the presentation layer - explore the full <Link className="service-page__inline-link" href="/services/legacy-application-modernization">Legacy Application Modernization <ArrowUpRight aria-hidden="true" size={14} /></Link> service, or see how reusable components factor into faster delivery in the <Link className="service-page__inline-link" href="/services/design-toolkit">Design Toolkit <ArrowUpRight aria-hidden="true" size={14} /></Link>.</p></Reveal>
                     </div>
                 </section>
 

@@ -11,7 +11,7 @@ export type HomeFaq = {
     links?: HomeFaqLink[];
 };
 
-// Sourced from each service's own positioning and FAQs in serviceData.ts —
+// Sourced from each service's own positioning and FAQs in serviceData.ts -
 // rewritten at homepage scope (not copied verbatim) to avoid duplicate
 // content across pages, while staying factually consistent with them.
 export const homeFaqs: HomeFaq[] = [
@@ -70,7 +70,7 @@ export const homeFaqs: HomeFaq[] = [
     },
 ];
 
-/** Plain-text answer with link tokens resolved to their visible label — used for
+/** Plain-text answer with link tokens resolved to their visible label - used for
  * FAQPage JSON-LD so structured data matches rendered content exactly. */
 export function homeFaqPlainAnswer(faq: HomeFaq): string {
     let text = faq.answer;

@@ -13,7 +13,7 @@ const HIDE_AT = 24;
  * Global "back to top" control. Mounted once in the root layout so it's
  * available on every route without per-page wiring. Visibility is derived
  * purely from scroll position: if the user has scrolled past SHOW_AT, the
- * page is — by definition — tall enough to scroll, so no separate
+ * page is - by definition - tall enough to scroll, so no separate
  * scrollHeight/innerHeight check is needed and it stays correct even as
  * content height changes after mount (images, fonts, accordions, etc.).
  */
@@ -53,7 +53,7 @@ export default function BackToTop() {
     // This component is mounted once at the root and persists across
     // client-side navigations, so its visibility doesn't reset on its own.
     // Next.js scrolls new routes to the top by default, but re-check rather
-    // than assume it — a route can also land mid-page via a hash anchor.
+    // than assume it - a route can also land mid-page via a hash anchor.
     // This intentionally does NOT reuse the hysteresis-relative `evaluate`:
     // hysteresis exists to stop flicker while continuously scrolling one
     // page, but a fresh route has no such session to protect, so it's

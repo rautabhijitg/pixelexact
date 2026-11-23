@@ -12,7 +12,7 @@ export type ToolkitGalleryVariant =
 
 /**
  * Conceptual, illustrative panels for the Design Toolkit "See It In Action"
- * gallery — the same abstract, brand-colored interface-artifact language used
+ * gallery - the same abstract, brand-colored interface-artifact language used
  * everywhere else on the site (ServiceArt, CaseStudyArt), not real product
  * screenshots. There's no live component-library product to capture, so
  * these represent the *kind* of surface each row of the library covers.

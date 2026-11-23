@@ -2,7 +2,7 @@
 
 // Shared frame for every interface-artifact visual: a thin browser-chrome
 // treatment so abstract SVG compositions read as "product interface" rather
-// than decoration. Pure CSS/SVG — no raster assets, zero extra requests.
+// than decoration. Pure CSS/SVG - no raster assets, zero extra requests.
 .artifact {
   overflow: hidden;
   border: 1px solid var(--color-border);
@@ -36,7 +36,7 @@
 }
 
 // When a case-art thumbnail sits in a full-row "wide" card (odd count in a
-// 2-col grid — see service-page__service-card--wide), 4:3 stretches far too
+// 2-col grid - see service-page__service-card--wide), 4:3 stretches far too
 // tall for the doubled width. Widen it to match.
 .service-page__service-card--wide .case-art {
   aspect-ratio: 21 / 9;
@@ -118,7 +118,7 @@
   }
 }
 
-// /work index cards — thumbnail + text, distinct from the shared numbered
+// /work index cards - thumbnail + text, distinct from the shared numbered
 // service-card (used on /services, related-services, and /insights) since
 // the layouts genuinely differ once a thumbnail is involved.
 .work-card {

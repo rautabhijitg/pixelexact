@@ -10,7 +10,7 @@ html {
 }
 
 // Scroll reveal: elements start hidden only once JS has "armed" them
-// (data-reveal-state="hidden"), so content is fully visible by default —
+// (data-reveal-state="hidden"), so content is fully visible by default -
 // no-JS and pre-hydration states never hide real content.
 .reveal[data-reveal-state="hidden"] {
   opacity: 0;

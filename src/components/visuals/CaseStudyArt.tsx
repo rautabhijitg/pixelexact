@@ -7,7 +7,7 @@ type CaseStudyArtProps = {
 
 /**
  * Abstract, brand-colored interface artifacts for case-study cards.
- * Deliberately not a real screenshot — no client project exists yet to show
+ * Deliberately not a real screenshot - no client project exists yet to show
  * one, and inventing a fake one would be misleading. These represent the
  * *kind* of interface each engagement involved.
  */
@@ -104,7 +104,7 @@ function ModernizationArt() {
 }
 
 // Abstract node-and-connector diagram representing an AI-assisted delivery
-// pipeline — not a screenshot of any AI tool's interface. Four input nodes
+// pipeline - not a screenshot of any AI tool's interface. Four input nodes
 // (the distinct AI/process inputs) converge through a central review node
 // into one output node, visualizing "multiple accelerants, one governed
 // output" without naming specific products in the artwork itself.
@@ -131,7 +131,7 @@ function AiWorkflowArt() {
     );
 }
 
-// Abstract multi-step verification stepper — represents a unified onboarding
+// Abstract multi-step verification stepper - represents a unified onboarding
 // flow collapsing into one verified state, not a screenshot of any actual
 // client portal (the client's real product is confidential).
 function OnboardingArt() {

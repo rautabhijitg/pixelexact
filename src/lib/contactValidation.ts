@@ -1,6 +1,6 @@
 // Shared between the client form (src/components/ContactForm/ContactForm.tsx) and the
 // server handler (src/app/api/contact/route.ts) so the two can never silently drift apart.
-// The server always re-validates independently — these constants only keep the limits
+// The server always re-validates independently - these constants only keep the limits
 // themselves in one place, not the validation logic itself.
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

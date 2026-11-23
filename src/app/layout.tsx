@@ -65,7 +65,7 @@ export default function RootLayout({
                         // Google Consent Mode v2: deny analytics/ad storage by default before
                         // the tag does anything else. The consent manager (mounted below)
                         // reads any existing choice on mount and pushes a 'consent' 'update'
-                        // immediately after — this default only matters for the brief window
+                        // immediately after - this default only matters for the brief window
                         // before that runs, and for users who haven't decided yet.
                         gtag('consent', 'default', {
                             analytics_storage: 'denied',

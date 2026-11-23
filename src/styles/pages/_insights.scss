@@ -6,7 +6,7 @@
 // without touching the Services template. The shared content components
 // (hero, wrap, section, outcomes, table, list, process, text-grid, cta, etc.)
 // are still the same service-page__* classes defined in
-// components/_service-page.scss — those are flat BEM classes, not scoped to
+// components/_service-page.scss - those are flat BEM classes, not scoped to
 // an ancestor, so they work the same regardless of which wrapper contains
 // them. Only the container-level rules below (previously provided by
 // .service-page itself) need restating here.

@@ -11,7 +11,7 @@ const CLOSE_DELAY = 200;
 /**
  * Desktop "Services" nav item: opens on hover (with brief open/close tolerance
  * so fast mouse movement doesn't flicker it) and on click, so it never
- * depends on hover alone. Deliberately not role="menu"/"menuitem" — this is
+ * depends on hover alone. Deliberately not role="menu"/"menuitem" - this is
  * a disclosure panel of plain links, not an application menu, so it doesn't
  * need arrow-key navigation or a menu keyboard contract. Tab order just runs
  * through it naturally; links are only in the tab order while the panel is

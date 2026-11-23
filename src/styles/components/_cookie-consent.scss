@@ -1,7 +1,7 @@
 @use "../abstracts/variables";
 @use "../abstracts/mixins";
 
-// Global, page-agnostic namespace (like .back-to-top) — this renders on
+// Global, page-agnostic namespace (like .back-to-top) - this renders on
 // every page regardless of whether it's a .pe, .service-page, or
 // .insight-page route, so it can't depend on any of those wrappers' tokens.
 
@@ -53,7 +53,7 @@
   box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.1);
   animation: cookie-consent-rise var(--transition-slow) var(--ease-out) both;
 }
-// Hidden while the preference dialog is open — kept mounted (not removed)
+// Hidden while the preference dialog is open - kept mounted (not removed)
 // so the DOM node a "Customize" click focused stays valid for focus
 // restoration when the dialog closes, instead of pointing at a node that
 // no longer exists.
@@ -160,7 +160,7 @@
 .cookie-consent-category__always-on { padding: 4px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-pill); color: var(--color-text-secondary); font-size: variables.$font-size-xs; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
 .cookie-consent-category__description { max-width: 46ch; margin: 8px 0 0; color: var(--color-text-secondary); font-size: variables.$font-size-sm; line-height: 1.55; }
 
-// Toggle: a real button (role="switch"), not a bare checkbox — state is
+// Toggle: a real button (role="switch"), not a bare checkbox - state is
 // shown via position AND the "On/Off" text label, never color alone.
 .cookie-consent-toggle {
   display: inline-flex;

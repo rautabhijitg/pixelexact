@@ -72,7 +72,7 @@
   &__ruler-number { width: 22px; color: var(--color-red); font-family: variables.$font-family-display; font-size: variables.$font-size-sm; font-weight: 600; }
 
   // Hero carousel. Slides are stacked in the same CSS Grid cell (grid-area
-  // 1/1) rather than absolutely positioned — the track's height becomes the
+  // 1/1) rather than absolutely positioned - the track's height becomes the
   // tallest slide's natural height, so switching slides never shifts layout,
   // without needing a hardcoded height that would clip content.
   &__hero-carousel { position: relative; }

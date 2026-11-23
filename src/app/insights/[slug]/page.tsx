@@ -16,7 +16,7 @@ type ArticlePageProps = {
 };
 
 // These slugs have their own bespoke pages (their content doesn't fit this
-// generic flat-paragraph template) — exclude them here so this route doesn't
+// generic flat-paragraph template) - exclude them here so this route doesn't
 // try to statically generate the same path twice.
 const BESPOKE_ARTICLE_SLUGS = new Set([
     "design-to-development-handoff-checklist",
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
         title: entry.seoTitle ?? entry.title,
         description: entry.metaDescription ?? entry.dek,
         path: `/insights/${entry.slug}`,
-        // Not published yet — this is a "coming soon" stub, not real content;
+        // Not published yet - this is a "coming soon" stub, not real content;
         // keep it out of search results until the full article is written.
         noIndex: entry.status !== "published",
     });

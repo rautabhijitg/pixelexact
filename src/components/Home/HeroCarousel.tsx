@@ -16,7 +16,7 @@ type ContentSlide = {
     body: string;
     cta: { label: string; href: string };
     image: { src: string; alt: string };
-    /** Desktop only — mobile always stacks image above copy. */
+    /** Desktop only - mobile always stacks image above copy. */
     imagePosition: "left" | "right";
 };
 
@@ -34,7 +34,7 @@ const slides: Slide[] = [
         kind: "content",
         eyebrow: "Legacy Application Modernization",
         headline: "A modern experience. The same system underneath.",
-        body: "Your application works. The interface doesn’t look like it does. We modernize the presentation layer, not the business logic, the workflows, or the backend you’ve already built operations around — shipped incrementally, with the old and new interface running side by side.",
+        body: "Your application works. The interface doesn’t look like it does. We modernize the presentation layer, not the business logic, the workflows, or the backend you’ve already built operations around - shipped incrementally, with the old and new interface running side by side.",
         cta: { label: "Explore Legacy Modernization", href: "/services/legacy-application-modernization" },
         image: { src: "/images/services/Legacy_Modernisation.webp", alt: "Abstract representation of a legacy interface being modernized screen by screen" },
         imagePosition: "left",
@@ -44,7 +44,7 @@ const slides: Slide[] = [
         kind: "content",
         eyebrow: "UX, UI & Design Systems",
         headline: "Design, validated before it ships.",
-        body: "Senior-led research, interface design, and governed design systems — accelerated by AI, never automated away from judgment. Every direction gets tested with real users before it reaches production.",
+        body: "Senior-led research, interface design, and governed design systems - accelerated by AI, never automated away from judgment. Every direction gets tested with real users before it reaches production.",
         cta: { label: "Explore UX & Product Design", href: "/services/ux-product-design" },
         image: { src: "/images/services/ux_services.webp", alt: "Abstract representation of user research and interface design work" },
         imagePosition: "right",
@@ -73,7 +73,7 @@ export default function HeroCarousel() {
 
     // Only the current slide and the one coming up next ever render a real
     // <Image>, so slides 2-4 never compete with slide 1 for bandwidth on
-    // load — each image is requested just before its slide is needed, not
+    // load - each image is requested just before its slide is needed, not
     // all four up front. A previously-shown slide's image is already in the
     // browser's HTTP cache if the user navigates back to it.
     const shouldRenderImage = (index: number) => index === current || index === (current + 1) % slides.length;
@@ -93,7 +93,7 @@ export default function HeroCarousel() {
     const goPrev = useCallback(() => goTo(current - 1), [current, goTo]);
 
     // Autoplay: paused on hover/focus, and never runs at all when the user
-    // prefers reduced motion — an auto-advancing carousel is exactly the
+    // prefers reduced motion - an auto-advancing carousel is exactly the
     // kind of continuous movement that preference exists to suppress.
     useEffect(() => {
         if (paused || reducedMotion) return;
@@ -147,7 +147,7 @@ export default function HeroCarousel() {
                                     <div>
                                         <p className="section-head__eyebrow">UX Design &amp; FrontEnd Engineering by Senior Specialists</p>
                                         <h1>Pixel-Perfect Design. Production-Ready Code.</h1>
-                                        <p className="pe__hero-sub">Pixel Exact designs and builds end-to-end digital products with senior engineering rigor. By integrating AI-accelerated workflows with over 40 years of combined design and frontend expertise, we ship production-grade web interfaces in weeks—not months.</p>
+                                        <p className="pe__hero-sub">Pixel Exact designs and builds end-to-end digital products with senior engineering rigor. By integrating AI-accelerated workflows with over 40 years of combined design and frontend expertise, we ship production-grade web interfaces in weeks-not months.</p>
                                         <div className="pe__hero-cta">
                                             <Button href="/contact" className="pe__button" icon={<ArrowUpRight aria-hidden="true" size={18} />} tabIndex={isActive ? 0 : -1}>Book a consultation</Button>
                                             <Button href="#work" variant="ghost" className="pe__button" icon={<ArrowDown aria-hidden="true" size={18} />} tabIndex={isActive ? 0 : -1}>View case studies</Button>

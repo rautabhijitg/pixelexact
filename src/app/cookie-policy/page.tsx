@@ -36,7 +36,7 @@ export default function CookiePolicyPage() {
                 <p>Required for the site to function: basic technical operation, security, and remembering the consent choice you make here. This also covers a small amount of browser local storage used to remember on-site display preferences you set directly, such as dark/light theme and text size. These aren&apos;t used for tracking and can&apos;t be switched off, because the features they support wouldn&apos;t work correctly without them.</p>
 
                 <h3>Analytics</h3>
-                <p>Used to understand how visitors use the website, so we can improve content, usability, and performance. This website currently uses <strong>Google Analytics</strong> for this purpose — see the dedicated section below.</p>
+                <p>Used to understand how visitors use the website, so we can improve content, usability, and performance. This website currently uses <strong>Google Analytics</strong> for this purpose - see the dedicated section below.</p>
 
                 <h3>Performance</h3>
                 <p>Used for performance monitoring and technical diagnostics. No performance-monitoring technology is currently active on this website. This category exists so the consent system is ready if one is added in the future.</p>

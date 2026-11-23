@@ -44,11 +44,11 @@ const fitCriteria = [
 ];
 
 const faqs: [string, string][] = [
-    ["Can a legacy application be modernized without rewriting the backend?", "Yes, when the business logic underneath is still sound. Presentation-layer modernization rebuilds the user-facing interface — visual design, components, interaction patterns — while leaving backend systems, business rules, and existing workflows untouched. It's not universal: if the backend itself is the actual bottleneck, modernizing the interface alone won't solve that."],
+    ["Can a legacy application be modernized without rewriting the backend?", "Yes, when the business logic underneath is still sound. Presentation-layer modernization rebuilds the user-facing interface - visual design, components, interaction patterns - while leaving backend systems, business rules, and existing workflows untouched. It's not universal: if the backend itself is the actual bottleneck, modernizing the interface alone won't solve that."],
     ["What is presentation-layer modernization?", "The practice of substantially improving an application's user-facing interface while preserving the business logic and operational systems underneath it. Visual design, information hierarchy, components, and accessibility are open for change; backend logic, data, and existing workflows generally are not."],
-    ["Does “without touching business logic” mean no engineering work is required?", "No. It means the engineering work is scoped to the presentation layer rather than the systems beneath it. Integration points still get checked, components still get tested, and edge cases still get handled — what changes is what's deliberately left out of scope, not how much work is involved."],
-    ["Can existing workflows stay exactly the same?", "Often, yes — and that's usually the point. Users who already know how to complete a task don't benefit from relearning it on top of a visual refresh. Workflows are typically kept familiar where that familiarity is valuable, and restructured only where the existing layout was genuinely getting in the way."],
-    ["When does a full redevelopment make more sense instead?", "When the actual bottleneck isn't the interface — when the business logic itself can't support what the product needs to do next, or the backend's technical debt is putting stability at risk. In those situations, modernizing the presentation layer alone treats a symptom rather than the underlying problem."],
+    ["Does “without touching business logic” mean no engineering work is required?", "No. It means the engineering work is scoped to the presentation layer rather than the systems beneath it. Integration points still get checked, components still get tested, and edge cases still get handled - what changes is what's deliberately left out of scope, not how much work is involved."],
+    ["Can existing workflows stay exactly the same?", "Often, yes - and that's usually the point. Users who already know how to complete a task don't benefit from relearning it on top of a visual refresh. Workflows are typically kept familiar where that familiarity is valuable, and restructured only where the existing layout was genuinely getting in the way."],
+    ["When does a full redevelopment make more sense instead?", "When the actual bottleneck isn't the interface - when the business logic itself can't support what the product needs to do next, or the backend's technical debt is putting stability at risk. In those situations, modernizing the presentation layer alone treats a symptom rather than the underlying problem."],
 ];
 
 export default function ModernizingLegacyUiArticlePage() {
@@ -100,7 +100,7 @@ export default function ModernizingLegacyUiArticlePage() {
                         <Reveal>
                             <div>
                                 <p className="insight-page__intro">The application still works. It processes the transactions, runs the workflows, and holds the data integrations the rest of the business has quietly come to depend on. Nobody disputes that it&apos;s stable. What everyone agrees on, usually in the same breath, is that it looks like it&apos;s from a decade ago.</p>
-                                <p className="insight-page__intro">That&apos;s the moment a project usually goes sideways. The interface problem gets reframed as an application problem, and the conversation shifts from &ldquo;the UI needs work&rdquo; to &ldquo;we need to rebuild the system.&rdquo; A full rewrite will fix the UI — along with the budget, the timeline, and the risk tolerance of everyone who approved it.</p>
+                                <p className="insight-page__intro">That&apos;s the moment a project usually goes sideways. The interface problem gets reframed as an application problem, and the conversation shifts from &ldquo;the UI needs work&rdquo; to &ldquo;we need to rebuild the system.&rdquo; A full rewrite will fix the UI - along with the budget, the timeline, and the risk tolerance of everyone who approved it.</p>
                                 <p className="insight-page__intro">There&apos;s a narrower path that gets skipped too often: modernize the layer the user actually experiences, and leave the system underneath it alone.</p>
                             </div>
                         </Reveal>
@@ -117,9 +117,9 @@ export default function ModernizingLegacyUiArticlePage() {
                         </Reveal>
                         <Reveal>
                             <div>
-                                <p className="insight-page__intro">Enterprise software rarely ages uniformly. Business logic — the rules that calculate a price, route an approval, reconcile an account — tends to be the most durable part of a system, because it encodes years of edge cases nobody wants to re-litigate. Workflows survive because people have been trained on them and built habits around them. The data and the integrations connecting it to other systems are often the most expensive and riskiest things to touch.</p>
+                                <p className="insight-page__intro">Enterprise software rarely ages uniformly. Business logic - the rules that calculate a price, route an approval, reconcile an account - tends to be the most durable part of a system, because it encodes years of edge cases nobody wants to re-litigate. Workflows survive because people have been trained on them and built habits around them. The data and the integrations connecting it to other systems are often the most expensive and riskiest things to touch.</p>
                                 <p className="insight-page__intro">The interface is a different story. It&apos;s the layer most exposed to design trends, to outdated frameworks, to UI patterns people stopped using years ago. It&apos;s also, not coincidentally, the layer people actually look at. When someone opens an application and winces, they rarely stop to ask which specific layer is responsible. They assume the whole thing needs to go.</p>
-                                <p className="insight-page__intro">That assumption is often wrong. A legacy application is not necessarily legacy in every layer. The business logic can be sound, the workflows can be efficient, and the interface can still be the thing holding the product back. Separating those judgments is the first real decision in a modernization project — and it&apos;s the one that determines whether the next year is spent rewriting things that didn&apos;t need to change.</p>
+                                <p className="insight-page__intro">That assumption is often wrong. A legacy application is not necessarily legacy in every layer. The business logic can be sound, the workflows can be efficient, and the interface can still be the thing holding the product back. Separating those judgments is the first real decision in a modernization project - and it&apos;s the one that determines whether the next year is spent rewriting things that didn&apos;t need to change.</p>
                             </div>
                         </Reveal>
                     </div>
@@ -135,7 +135,7 @@ export default function ModernizingLegacyUiArticlePage() {
                             </div>
                         </Reveal>
                         <Reveal>
-                            <p className="insight-page__intro">In practice, that means the things a user interacts with directly are open for change: visual design, information hierarchy, the components themselves, interaction patterns, accessibility, responsive behavior, the design system as a whole. What generally stays untouched is the business logic enforcing the rules, the workflows people already know, the operational dependencies the application was built against, and — where it genuinely isn&apos;t worth disturbing — the underlying legacy HTML a screen was built on.</p>
+                            <p className="insight-page__intro">In practice, that means the things a user interacts with directly are open for change: visual design, information hierarchy, the components themselves, interaction patterns, accessibility, responsive behavior, the design system as a whole. What generally stays untouched is the business logic enforcing the rules, the workflows people already know, the operational dependencies the application was built against, and - where it genuinely isn&apos;t worth disturbing - the underlying legacy HTML a screen was built on.</p>
                         </Reveal>
                         <Reveal index={1}>
                             <div className="service-page__boundary">
@@ -152,7 +152,7 @@ export default function ModernizingLegacyUiArticlePage() {
                                 <p className="service-page__eyebrow">PRESERVED</p>
                             </div>
                         </Reveal>
-                        <Reveal index={2}><p className="service-page__index-summary service-page__index-summary--spaced">That&apos;s not a universal guarantee. Some interface changes do surface gaps in how the backend exposes data, and those get addressed on their own terms. The point isn&apos;t that the backend is permanently off-limits — it&apos;s that it doesn&apos;t get rewritten as a side effect of fixing what was actually a UI problem.</p></Reveal>
+                        <Reveal index={2}><p className="service-page__index-summary service-page__index-summary--spaced">That&apos;s not a universal guarantee. Some interface changes do surface gaps in how the backend exposes data, and those get addressed on their own terms. The point isn&apos;t that the backend is permanently off-limits - it&apos;s that it doesn&apos;t get rewritten as a side effect of fixing what was actually a UI problem.</p></Reveal>
                     </div>
                 </section>
 
@@ -162,7 +162,7 @@ export default function ModernizingLegacyUiArticlePage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">RISK, NOT RISK-FREE</p>
                                 <h2>Why This Narrows Risk Instead of Removing It</h2>
-                                <p className="service-page__index-summary">A full redevelopment puts almost everything back on the table at once: functionality rebuilt, workflows revalidated, integrations reconnected, business logic re-tested end to end — usually against a live system the business can&apos;t afford to pause. The work isn&apos;t impossible; enterprises do it successfully. But the blast radius is the entire application, and every layer of risk compounds at the same time.</p>
+                                <p className="service-page__index-summary">A full redevelopment puts almost everything back on the table at once: functionality rebuilt, workflows revalidated, integrations reconnected, business logic re-tested end to end - usually against a live system the business can&apos;t afford to pause. The work isn&apos;t impossible; enterprises do it successfully. But the blast radius is the entire application, and every layer of risk compounds at the same time.</p>
                             </div>
                         </Reveal>
                         <Reveal>
@@ -175,7 +175,7 @@ export default function ModernizingLegacyUiArticlePage() {
                                 </table>
                             </div>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">None of this makes modernization risk-free. Testing still happens. Integration points still get checked. Changing how a form looks and behaves can still expose something the backend didn&apos;t expect. What changes is the scope of what&apos;s actually being gambled on at any one point — a meaningfully different risk profile, not an absence of one.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">None of this makes modernization risk-free. Testing still happens. Integration points still get checked. Changing how a form looks and behaves can still expose something the backend didn&apos;t expect. What changes is the scope of what&apos;s actually being gambled on at any one point - a meaningfully different risk profile, not an absence of one.</p></Reveal>
                     </div>
                 </section>
 
@@ -185,7 +185,7 @@ export default function ModernizingLegacyUiArticlePage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">HOW IT SHIPS</p>
                                 <h2>Modernizing in Increments, Not in One Leap</h2>
-                                <p className="service-page__index-summary">The instinct in a lot of modernization projects is to treat the interface as one big cutover: design the whole thing, build the whole thing, ship it on a single release date. That&apos;s also where most of the risk in these projects actually lives — not in any individual component, but in the size of the leap.</p>
+                                <p className="service-page__index-summary">The instinct in a lot of modernization projects is to treat the interface as one big cutover: design the whole thing, build the whole thing, ship it on a single release date. That&apos;s also where most of the risk in these projects actually lives - not in any individual component, but in the size of the leap.</p>
                             </div>
                         </Reveal>
                         <div className="service-page__process">
@@ -196,7 +196,7 @@ export default function ModernizingLegacyUiArticlePage() {
                                 </Reveal>
                             ))}
                         </div>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">This isn&apos;t a technical nicety — it&apos;s a risk-management decision. Each component that moves through the loop is a contained unit of change, tested and shipped on its own, with the old and new interface able to run side by side until the migration is complete. If something&apos;s wrong, the blast radius is one component, not the whole release.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">This isn&apos;t a technical nicety - it&apos;s a risk-management decision. Each component that moves through the loop is a contained unit of change, tested and shipped on its own, with the old and new interface able to run side by side until the migration is complete. If something&apos;s wrong, the blast radius is one component, not the whole release.</p></Reveal>
                     </div>
                 </section>
 
@@ -223,7 +223,7 @@ export default function ModernizingLegacyUiArticlePage() {
                                 <span className="service-page__flow-step">Modernized Screens</span>
                             </div>
                         </Reveal>
-                        <Reveal index={2}><p className="service-page__index-summary service-page__index-summary--spaced">The other half of this is restraint. A modernized interface is not automatically a reorganized one. Users who already know where things are, and how a task gets done, don&apos;t benefit from relearning the product on top of getting a redesign. The strongest modernization work keeps layouts and workflows recognizable where that familiarity is actually valuable, and reserves structural change for the places where the old hierarchy was genuinely getting in the way — clarity and lower cognitive load, not novelty for its own sake.</p></Reveal>
+                        <Reveal index={2}><p className="service-page__index-summary service-page__index-summary--spaced">The other half of this is restraint. A modernized interface is not automatically a reorganized one. Users who already know where things are, and how a task gets done, don&apos;t benefit from relearning the product on top of getting a redesign. The strongest modernization work keeps layouts and workflows recognizable where that familiarity is actually valuable, and reserves structural change for the places where the old hierarchy was genuinely getting in the way - clarity and lower cognitive load, not novelty for its own sake.</p></Reveal>
                     </div>
                 </section>
 
@@ -237,8 +237,8 @@ export default function ModernizingLegacyUiArticlePage() {
                         </Reveal>
                         <Reveal>
                             <div>
-                                <p className="insight-page__intro">&ldquo;Without touching business logic&rdquo; is sometimes heard as &ldquo;without doing any real engineering,&rdquo; which isn&apos;t what it means. Modernizing the presentation layer still involves engineering decisions, integration points, and testing — it&apos;s scoped engineering work, not the absence of it.</p>
-                                <p className="insight-page__intro">What the phrase actually describes is a boundary decision: the application&apos;s core business rules, backend systems, and the logic governing how the product behaves are not being rewritten because the interface needed attention. The modernization is deliberately contained to the layer where the problem actually lives. That&apos;s a scoping discipline, not a shortcut — and it&apos;s the discipline that keeps a UI project from quietly turning into a platform rewrite.</p>
+                                <p className="insight-page__intro">&ldquo;Without touching business logic&rdquo; is sometimes heard as &ldquo;without doing any real engineering,&rdquo; which isn&apos;t what it means. Modernizing the presentation layer still involves engineering decisions, integration points, and testing - it&apos;s scoped engineering work, not the absence of it.</p>
+                                <p className="insight-page__intro">What the phrase actually describes is a boundary decision: the application&apos;s core business rules, backend systems, and the logic governing how the product behaves are not being rewritten because the interface needed attention. The modernization is deliberately contained to the layer where the problem actually lives. That&apos;s a scoping discipline, not a shortcut - and it&apos;s the discipline that keeps a UI project from quietly turning into a platform rewrite.</p>
                             </div>
                         </Reveal>
                     </div>
@@ -249,7 +249,7 @@ export default function ModernizingLegacyUiArticlePage() {
                         <Reveal>
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">THE JUDGMENT CALL</p>
-                                <h2>When This Approach Fits — and When It Doesn&apos;t</h2>
+                                <h2>When This Approach Fits - and When It Doesn&apos;t</h2>
                                 <p className="service-page__index-summary">Presentation-layer modernization is worth evaluating when the business logic underneath is still sound, the workflows are still operationally valuable, and the actual complaint is about the experience, not the functionality. It tends to apply cleanly when:</p>
                             </div>
                         </Reveal>
@@ -258,7 +258,7 @@ export default function ModernizingLegacyUiArticlePage() {
                                 {fitCriteria.map((item) => <li key={item}>{item}</li>)}
                             </ul>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">It&apos;s a worse fit when the problems aren&apos;t actually about the interface at all — when the business logic itself is the bottleneck, the architecture can&apos;t support where the product needs to go next, or the backend has accumulated enough technical debt that stability is the thing actually at risk. In those cases, a narrower presentation-layer effort doesn&apos;t remove the underlying problem — it delays the point at which it has to be addressed. Knowing which situation you&apos;re actually in matters more than the modernization technique itself.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">It&apos;s a worse fit when the problems aren&apos;t actually about the interface at all - when the business logic itself is the bottleneck, the architecture can&apos;t support where the product needs to go next, or the backend has accumulated enough technical debt that stability is the thing actually at risk. In those cases, a narrower presentation-layer effort doesn&apos;t remove the underlying problem - it delays the point at which it has to be addressed. Knowing which situation you&apos;re actually in matters more than the modernization technique itself.</p></Reveal>
                     </div>
                 </section>
 
@@ -272,9 +272,9 @@ export default function ModernizingLegacyUiArticlePage() {
                         </Reveal>
                         <Reveal>
                             <div>
-                                <p className="insight-page__intro">This isn&apos;t a theoretical framework. We applied it for a large enterprise client running a mission-critical legacy platform: functionally stable, but visually dated, inconsistent across screens, and built from fragmented UI components accumulated over years. Leadership wanted the product to feel modern and competitive — but a full redevelopment was explicitly off the table, given the risk, cost, and disruption it would have introduced to a system the business depended on daily.</p>
+                                <p className="insight-page__intro">This isn&apos;t a theoretical framework. We applied it for a large enterprise client running a mission-critical legacy platform: functionally stable, but visually dated, inconsistent across screens, and built from fragmented UI components accumulated over years. Leadership wanted the product to feel modern and competitive - but a full redevelopment was explicitly off the table, given the risk, cost, and disruption it would have introduced to a system the business depended on daily.</p>
                                 <p className="insight-page__intro">The approach modernized the presentation layer only. Backend logic, existing workflows, and the legacy HTML underneath stayed exactly as they were. A new design system replaced the fragmented styling, the modernized visual direction was validated in Figma before any production code was touched, and the new interface rolled out incrementally, component by component, running alongside the legacy UI rather than replacing it in one release.</p>
-                                <p className="insight-page__intro">The result was a genuinely new-feeling product for its users, built without rewriting the application it ran on — and a presentation layer now structured to keep evolving on its own. See the full <Link className="service-page__inline-link" href="/work/legacy-presentation-layer-modernization">legacy modernization case study <ArrowUpRight aria-hidden="true" size={14} /></Link> for how the architecture, migration strategy, and design system came together.</p>
+                                <p className="insight-page__intro">The result was a genuinely new-feeling product for its users, built without rewriting the application it ran on - and a presentation layer now structured to keep evolving on its own. See the full <Link className="service-page__inline-link" href="/work/legacy-presentation-layer-modernization">legacy modernization case study <ArrowUpRight aria-hidden="true" size={14} /></Link> for how the architecture, migration strategy, and design system came together.</p>
                             </div>
                         </Reveal>
                     </div>

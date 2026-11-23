@@ -8,7 +8,7 @@ type CookieSettingsButtonProps = {
 
 /** Reopens the global cookie preference dialog. Kept as its own tiny client
  * component so Footer (and anywhere else this is used) can stay a Server
- * Component — only this one button needs interactivity. */
+ * Component - only this one button needs interactivity. */
 export default function CookieSettingsButton({ className }: CookieSettingsButtonProps) {
     return (
         <button

@@ -4,7 +4,7 @@ import ComponentSwatch, { toolkitItems } from "./ComponentSwatch";
 type ServiceArtVariant = "ux" | "ui" | "frontend" | "website" | "consultancy" | "toolkit" | "modernization";
 
 /**
- * One distinct visual per service — never the same artifact reused across
+ * One distinct visual per service - never the same artifact reused across
  * pages. Abstract, brand-colored interface compositions rather than photos,
  * consistent with the rest of the site's geometric, precision-grid language.
  */
@@ -34,7 +34,7 @@ export default function ServiceArt({ variant }: { variant: ServiceArtVariant }) 
                 {variant === "modernization" && <ModernizationArt />}
             </div>
             {variant === "modernization" && (
-                <p className="service-art__caption">Conceptual example — illustrates the legacy-to-modern transformation, not an actual client screenshot.</p>
+                <p className="service-art__caption">Conceptual example - illustrates the legacy-to-modern transformation, not an actual client screenshot.</p>
             )}
         </>
     );

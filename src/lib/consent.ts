@@ -1,7 +1,7 @@
 // Centralized cookie/tracking consent architecture.
 //
 // Adding a new provider later should mean adding one line to
-// `trackingServices` below — not touching the banner, the storage logic, or
+// `trackingServices` below - not touching the banner, the storage logic, or
 // any unrelated component.
 
 export type ConsentCategory = "necessary" | "analytics" | "performance" | "functional" | "marketing";
@@ -20,14 +20,14 @@ export type ConsentRecord = {
     preferences: ConsentPreferences;
 };
 
-/** Bump this if the categories or their meaning change materially — a version
+/** Bump this if the categories or their meaning change materially - a version
  * mismatch is treated as "no consent on file" so the banner reappears. */
 export const CONSENT_VERSION = "1.0";
 
 const STORAGE_KEY = "pixel-exact-consent";
 
 /** Single registry of what each category actually controls. Reflects only
- * technologies that genuinely exist in this project today — do not list a
+ * technologies that genuinely exist in this project today - do not list a
  * provider here before it's actually wired in. */
 export const trackingServices: Record<Exclude<ConsentCategory, "necessary">, string[]> = {
     analytics: ["Google Analytics"],

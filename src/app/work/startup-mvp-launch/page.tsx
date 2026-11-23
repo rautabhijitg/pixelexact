@@ -36,7 +36,7 @@ const overview: [string, string][] = [
     ["Role", "Lead UX Architect & Strategy"],
     ["Domain", "B2B Fintech / Merchant Services"],
     ["Market", "United States"],
-    ["Scope", "Multi-product platform — 5 core fintech products"],
+    ["Scope", "Multi-product platform - 5 core fintech products"],
     ["Core impact", "Onboarding compressed from 20+ business days to under 48 hours, eliminating manual data entry while targeting SOC 2, IRS, and FinCEN compliance"],
 ];
 
@@ -66,7 +66,7 @@ const uxPrinciples: [string, string][] = [
     ["Contextual Pre-Filling", "CRM deal metadata seeds the onboarding workspace directly, so no client ever starts from a blank-slate form screen."],
     ["Progressive Disclosure", "Forms dynamically render only the fields relevant to whichever products a client actually selected from the five-product catalog, instead of one form trying to cover all five."],
     ["Inherited Identity & Tax Layer", "Corporate identity details, bank routing numbers, and W-9 tax data are collected once at the vendor level and inherited across every product subscription that vendor adds."],
-    ["Automated Verification", "Integrated checks — IRS TIN matching, Secretary of State registry lookups, Plaid instant bank linking, and FinCEN CTA beneficial-ownership rules — replace manual document review loops."],
+    ["Automated Verification", "Integrated checks - IRS TIN matching, Secretary of State registry lookups, Plaid instant bank linking, and FinCEN CTA beneficial-ownership rules - replace manual document review loops."],
 ];
 
 const journeyPhases: [string, string, string][] = [
@@ -85,8 +85,8 @@ const wireframeSections: [string, [string, string][]][] = [
 ];
 
 const resultStats: [string, string][] = [
-    ["90%", "reduction in time-to-value — from a 20+ business day legacy process to a sub-48-hour target state"],
-    ["0%", "data re-entry in the target state, down from 100% duplicate paper packets — a single source of truth replaces repeated submissions"],
+    ["90%", "reduction in time-to-value - from a 20+ business day legacy process to a sub-48-hour target state"],
+    ["0%", "data re-entry in the target state, down from 100% duplicate paper packets - a single source of truth replaces repeated submissions"],
     ["+32%", "improvement in completion/conversion rate, attributed to the redesigned flow"],
     ["Exceptions only", "manual data processing in the target state, down from 100% manual transcription in the legacy process"],
 ];
@@ -99,7 +99,7 @@ const resultsTable: [string, string, string, string][] = [
 ];
 
 const lessons = [
-    "Design for compliance early: embedding complex US regulatory requirements — FinCEN UBO declarations, W-9 collection — directly into the UX fabric prevented last-minute compliance redesigns.",
+    "Design for compliance early: embedding complex US regulatory requirements - FinCEN UBO declarations, W-9 collection - directly into the UX fabric prevented last-minute compliance redesigns.",
     "Progressive disclosure reduces drop-off: splitting multi-product onboarding into a modular, conditional step architecture increased completion by preventing cognitive overload.",
     "Automate verification at the source: shifting from manual document inspection to instant API validation unlocked the compression of a multi-week workflow into a sub-48-hour SLA.",
 ];
@@ -126,7 +126,7 @@ export default function B2BFintechOnboardingCaseStudyPage() {
                     <div className="service-page__wrap">
                         <Reveal>
                             <CaseStudyArt variant={entry.art} className="case-art--hero" />
-                            <p className="service-page__label service-page__art-caption">Conceptual illustration of the onboarding flow — not the client&apos;s actual product interface</p>
+                            <p className="service-page__label service-page__art-caption">Conceptual illustration of the onboarding flow - not the client&apos;s actual product interface</p>
                         </Reveal>
                     </div>
                 </section>
@@ -225,7 +225,7 @@ export default function B2BFintechOnboardingCaseStudyPage() {
                         <Reveal>
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">PERSONA</p>
-                                <h2>Rajesh Sharma — CFO, Enterprise B2B Merchant</h2>
+                                <h2>Rajesh Sharma - CFO, Enterprise B2B Merchant</h2>
                                 <p className="service-page__index-summary">A documented research persona, not a real individual, used to anchor design decisions throughout the project.</p>
                             </div>
                         </Reveal>
@@ -298,7 +298,7 @@ export default function B2BFintechOnboardingCaseStudyPage() {
                         </Reveal>
                         {uxPrinciples.map(([title, description], index) => (
                             <Reveal className="service-page__checklist-block" key={title} index={index}>
-                                <h3>0{index + 1} — {title}</h3>
+                                <h3>0{index + 1} - {title}</h3>
                                 <p className="service-page__index-summary">{description}</p>
                             </Reveal>
                         ))}
@@ -331,7 +331,7 @@ export default function B2BFintechOnboardingCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">DETAILED WIREFRAME</p>
                                 <h2>Designing the Unified Corporate &amp; Tax Experience</h2>
-                                <p className="service-page__index-summary">One representative screen from the onboarding flow — the unified corporate and tax profile step. Field values shown are illustrative sample data, not real client information.</p>
+                                <p className="service-page__index-summary">One representative screen from the onboarding flow - the unified corporate and tax profile step. Field values shown are illustrative sample data, not real client information.</p>
                             </div>
                         </Reveal>
                         {wireframeSections.map(([section, fields], index) => (
@@ -347,7 +347,7 @@ export default function B2BFintechOnboardingCaseStudyPage() {
                                 </div>
                             </Reveal>
                         ))}
-                        <Reveal index={4}><p className="service-page__index-summary service-page__index-summary--spaced">Navigation stayed simple by design: back to product selection, or save and continue to KYB/UBO — never more than one decision at a time.</p></Reveal>
+                        <Reveal index={4}><p className="service-page__index-summary service-page__index-summary--spaced">Navigation stayed simple by design: back to product selection, or save and continue to KYB/UBO - never more than one decision at a time.</p></Reveal>
                     </div>
                 </section>
 

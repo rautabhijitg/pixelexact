@@ -25,7 +25,7 @@ type FaqProps = {
 };
 
 /** Accessible, JS-free FAQ accordion (native <details>/<summary>) built from shared
- * question/answer data — reusable anywhere a section needs the same pattern. */
+ * question/answer data - reusable anywhere a section needs the same pattern. */
 export default function Faq({ items, className }: FaqProps) {
     return (
         <div className={`pe__faqs${className ? ` ${className}` : ""}`}>

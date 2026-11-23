@@ -1,5 +1,5 @@
 /**
- * About page hero visual. No team photo exists, and we won't invent one —
+ * About page hero visual. No team photo exists, and we won't invent one -
  * this reuses the exact geometry of the wordmark's logo-mark (see
  * Header/Footer `site-header__logo-mark`) as a large brand motif over the
  * same precision-grid pattern used elsewhere on the site (homepage

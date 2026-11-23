@@ -61,7 +61,7 @@ export default function ServicesPage() {
 
                             </div>
                         </div>
-                        <p className="service-page__summary">End-to-end user research, UX/UI architecture, and production frontend engineering—delivered by the same senior specialists from day one. Partner with us for a complete product lifecycle or target the exact operational bottleneck slowing you down.</p>
+                        <p className="service-page__summary">End-to-end user research, UX/UI architecture, and production frontend engineering-delivered by the same senior specialists from day one. Partner with us for a complete product lifecycle or target the exact operational bottleneck slowing you down.</p>
                     </div>
                 </section>
 

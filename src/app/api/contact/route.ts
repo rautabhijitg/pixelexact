@@ -35,7 +35,7 @@ function isRateLimited(ip: string): boolean {
     const now = Date.now();
 
     // Opportunistic cleanup so this map doesn't grow unbounded over the life of a
-    // long-running process — negligible cost at contact-form request volumes.
+    // long-running process - negligible cost at contact-form request volumes.
     for (const [key, value] of submissionsByIp) {
         if (now - value.windowStart > RATE_LIMIT_WINDOW_MS) submissionsByIp.delete(key);
     }
@@ -68,9 +68,9 @@ function isTrustedOrigin(request: Request): boolean {
         return false;
     }
 
-    // Compared against the incoming request's Host header — preferring
+    // Compared against the incoming request's Host header - preferring
     // X-Forwarded-Host, which a reverse proxy sets to the original public
-    // hostname — rather than request.url. Behind a reverse proxy (this app's
+    // hostname - rather than request.url. Behind a reverse proxy (this app's
     // production deployment), request.url can reflect an internal host/port
     // instead of the domain the browser actually used, which was rejecting
     // every legitimate submission with a 403.
@@ -247,7 +247,7 @@ export async function POST(request: Request) {
 
     const confirmationSent = await sendEmail(apiKey, fromEmail, {
         to: email,
-        subject: `We've received your message — ${SITE_NAME}`,
+        subject: `We've received your message - ${SITE_NAME}`,
         html: confirmationHtml,
         text: confirmationText,
         replyTo: toEmail,

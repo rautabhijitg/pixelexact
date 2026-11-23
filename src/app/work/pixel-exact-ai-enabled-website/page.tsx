@@ -48,11 +48,11 @@ const faqJsonLd = {
 };
 
 const overview: [string, string][] = [
-    ["Client", "Pixel Exact — this website"],
+    ["Client", "Pixel Exact - this website"],
     ["Platform", "Next.js marketing website (pixelexact.com)"],
     ["Discipline", "Strategy, UX/UI, frontend development, content, SEO, QA"],
     ["AI tools", "ChatGPT, Claude Code (VS Code agent), Google Gemini"],
-    ["Timeline", "2026-09-16 to present — 19 tracked commits across the first 17 days"],
+    ["Timeline", "2026-09-16 to present - 19 tracked commits across the first 17 days"],
 ];
 
 const challengePoints = [
@@ -66,7 +66,7 @@ const challengePoints = [
 
 const workflowStages: [string, string, string, string][] = [
     ["01", "Strategy & Structure", "ChatGPT", "Think through positioning, information architecture, and the technical approach before any code existed."],
-    ["02", "Design & Development", "Claude, in VS Code", "Implement pages, components, and functionality directly in the repository — not isolated snippets to paste in by hand."],
+    ["02", "Design & Development", "Claude, in VS Code", "Implement pages, components, and functionality directly in the repository - not isolated snippets to paste in by hand."],
     ["03", "Content", "Gemini, ChatGPT", "Draft and refine service, case-study, and insights copy for a senior review pass."],
     ["04", "Review & Refinement", "Senior practitioner", "Check every AI-produced change for accuracy, tone, and technical correctness before it moved forward."],
     ["05", "QA & Optimization", "Claude, in VS Code", "Run accessibility, performance, and SEO passes, and fix what those passes turn up."],
@@ -75,10 +75,10 @@ const workflowStages: [string, string, string, string][] = [
 
 const toolRoles: [string, string][] = [
     ["ChatGPT", "Used early, as a thinking partner rather than a content machine: exploring how to structure the site, weighing technology and architecture options, and stress-testing ideas before anything got built. It didn't make the final call on any of them."],
-    ["Claude (VS Code Agent)", "Worked directly inside this repository — creating pages and components, wiring up navigation and forms, refactoring, fixing bugs, and iterating based on review, rather than producing isolated code snippets that still needed to be integrated by hand."],
+    ["Claude (VS Code Agent)", "Worked directly inside this repository - creating pages and components, wiring up navigation and forms, refactoring, fixing bugs, and iterating based on review, rather than producing isolated code snippets that still needed to be integrated by hand."],
     ["Google Gemini", "Supported content production: drafting and refining service descriptions, case-study and insights copy, and supporting page content, with brand voice and accuracy decided by senior review afterward."],
-    ["VS Code", "The environment all of this happened in — where AI-produced changes were read, tested, and either accepted, corrected, or rejected before moving on."],
-    ["Git & GitHub", "Tracked every change as a discrete, reviewable commit. That discipline mattered more, not less, once AI could propose changes quickly — it's the control layer that makes fast iteration safe to undo."],
+    ["VS Code", "The environment all of this happened in - where AI-produced changes were read, tested, and either accepted, corrected, or rejected before moving on."],
+    ["Git & GitHub", "Tracked every change as a discrete, reviewable commit. That discipline mattered more, not less, once AI could propose changes quickly - it's the control layer that makes fast iteration safe to undo."],
 ];
 
 const reviewLoop = ["Human Direction", "AI Execution", "Human Review", "AI Refinement", "Testing", "Human Approval"];
@@ -86,17 +86,17 @@ const reviewLoop = ["Human Direction", "AI Execution", "Human Review", "AI Refin
 const promptEvolution = ["Define objective", "Provide context", "Define constraints", "Specify expected output", "Review", "Refine prompt", "Iterate"];
 
 const byTheNumbers: [string, string][] = [
-    ["25", "page and route handlers make up the site — services, case studies, insights, legal pages, and system routes like the sitemap and llms.txt"],
+    ["25", "page and route handlers make up the site - services, case studies, insights, legal pages, and system routes like the sitemap and llms.txt"],
     ["7", "services and 3 published case studies and insights entries each, all built and documented through the same workflow"],
     ["19", "commits across the first 17 days of development, each one reviewed before merging rather than generated and shipped in one pass"],
-    ["13 of 19", "commits carry a Claude Code co-authorship trailer — the clearest first-party record of where AI touched implementation directly"],
+    ["13 of 19", "commits carry a Claude Code co-authorship trailer - the clearest first-party record of where AI touched implementation directly"],
     ["9", "named AI crawlers explicitly welcomed in robots.txt, alongside a dedicated llms.txt for AI systems that read it instead of crawling the full site"],
     ["7", "distinct schema.org structured-data types in use across the site: Organization, WebSite, BreadcrumbList, FAQPage, Service, Article, and CreativeWork"],
 ];
 
 const accessibilityPoints = [
     "A sitewide skip-navigation link and a consistent, visible focus style on every interactive element, not just the ones that happened to get attention.",
-    "Motion that respects a visitor's reduced-motion preference by default — scroll-reveal animations and the homepage carousel both check for it before doing anything.",
+    "Motion that respects a visitor's reduced-motion preference by default - scroll-reveal animations and the homepage carousel both check for it before doing anything.",
     "Semantic landmarks and heading structure on every page, with ARIA used where it adds real information (live regions, expanded/collapsed state) rather than sprinkled on by habit.",
 ];
 
@@ -107,11 +107,11 @@ const performancePoints = [
 ];
 
 const lessons = [
-    "AI works best inside a structured workflow, not as a one-off tool pulled out for isolated tasks — this project ran against a persistent, versioned rules document covering architecture, accessibility, SEO, and performance standards, and that context measurably shaped output quality.",
+    "AI works best inside a structured workflow, not as a one-off tool pulled out for isolated tasks - this project ran against a persistent, versioned rules document covering architecture, accessibility, SEO, and performance standards, and that context measurably shaped output quality.",
     "Better context produces better output. The difference between a prompt and a brief is the difference between a guess and a decision.",
     "Senior review doesn't slow AI-assisted work down so much as it decides what's actually worth shipping.",
-    "Version control matters more, not less, once changes can be proposed quickly — it's what makes fast iteration reversible instead of risky.",
-    "AI's value compounds when it's part of the whole delivery process — strategy through QA — instead of bolted onto just one stage of it.",
+    "Version control matters more, not less, once changes can be proposed quickly - it's what makes fast iteration reversible instead of risky.",
+    "AI's value compounds when it's part of the whole delivery process - strategy through QA - instead of bolted onto just one stage of it.",
 ];
 
 export default function AiEnabledWebsiteCaseStudyPage() {
@@ -137,7 +137,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                     <div className="service-page__wrap">
                         <Reveal>
                             <CaseStudyArt variant={entry.art} className="case-art--hero" />
-                            <p className="service-page__label service-page__art-caption">Conceptual illustration of the workflow — not a screenshot of any AI tool or interface</p>
+                            <p className="service-page__label service-page__art-caption">Conceptual illustration of the workflow - not a screenshot of any AI tool or interface</p>
                         </Reveal>
                     </div>
                 </section>
@@ -180,7 +180,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                                 <p>What if AI could compress the execution cycle without compromising senior-level design and engineering judgment?</p>
                             </blockquote>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">That question shaped every stage of this build. AI wasn&apos;t treated as a single tool reached for occasionally — it was integrated across strategy, design, development, content, and QA. Human expertise stayed the control layer throughout: deciding what to build, directing how, reviewing what came back, and approving what actually shipped.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">That question shaped every stage of this build. AI wasn&apos;t treated as a single tool reached for occasionally - it was integrated across strategy, design, development, content, and QA. Human expertise stayed the control layer throughout: deciding what to build, directing how, reviewing what came back, and approving what actually shipped.</p></Reveal>
                     </div>
                 </section>
 
@@ -248,7 +248,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                                 ))}
                             </div>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">A concrete example: when a production build started failing on the hosting platform partway through this project, the failure was diagnosed from build logs, tested against two different hypotheses, and resolved by changing the build strategy — each step tracked as its own commit and verified before the next deploy went out. That&apos;s the loop in practice, not in theory.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">A concrete example: when a production build started failing on the hosting platform partway through this project, the failure was diagnosed from build logs, tested against two different hypotheses, and resolved by changing the build strategy - each step tracked as its own commit and verified before the next deploy went out. That&apos;s the loop in practice, not in theory.</p></Reveal>
                     </div>
                 </section>
 
@@ -286,7 +286,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">BY THE NUMBERS</p>
                                 <h2>What&apos;s Actually Verifiable</h2>
-                                <p className="service-page__index-summary">Every figure here comes directly from this site&apos;s own codebase and commit history — nothing projected or estimated.</p>
+                                <p className="service-page__index-summary">Every figure here comes directly from this site&apos;s own codebase and commit history - nothing projected or estimated.</p>
                             </div>
                         </Reveal>
                         <div className="service-page__deliverables">
@@ -306,7 +306,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">WHY FRONTEND EXPERTISE STILL MATTERS</p>
                                 <h2>AI Can Write Code Fast. It Can&apos;t Decide If That Code Is Right.</h2>
-                                <p className="service-page__index-summary">Accessibility and performance work don&apos;t happen automatically just because AI is involved — they happen because someone with frontend judgment checks for them. On this build, that meant:</p>
+                                <p className="service-page__index-summary">Accessibility and performance work don&apos;t happen automatically just because AI is involved - they happen because someone with frontend judgment checks for them. On this build, that meant:</p>
                             </div>
                         </Reveal>
                         <Reveal>
@@ -323,7 +323,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                             <div className="service-page__section-head">
                                 <p className="service-page__eyebrow">SEO, AEO &amp; AI DISCOVERABILITY</p>
                                 <h2>Built to Be Read by Search Engines and AI Systems Alike</h2>
-                                <p className="service-page__index-summary">Discoverability work ran alongside development rather than after it: structured data (Organization, WebSite, BreadcrumbList, FAQPage, Service, Article, and CreativeWork schema across different page types), a sitemap, a robots.txt that names major AI crawlers explicitly, and a dedicated llms.txt describing the site for AI systems that read it directly. None of this guarantees rankings or visibility — it removes the structural reasons a page would be hard to find or hard to parse.</p>
+                                <p className="service-page__index-summary">Discoverability work ran alongside development rather than after it: structured data (Organization, WebSite, BreadcrumbList, FAQPage, Service, Article, and CreativeWork schema across different page types), a sitemap, a robots.txt that names major AI crawlers explicitly, and a dedicated llms.txt describing the site for AI systems that read it directly. None of this guarantees rankings or visibility - it removes the structural reasons a page would be hard to find or hard to parse.</p>
                             </div>
                         </Reveal>
                     </div>
@@ -342,7 +342,7 @@ export default function AiEnabledWebsiteCaseStudyPage() {
                                 {lessons.map((item) => <p key={item}><Check aria-hidden="true" size={18} />{item}</p>)}
                             </div>
                         </Reveal>
-                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">The point isn&apos;t that AI means anything can be built instantly. It&apos;s that the same workflow — AI acceleration, senior direction, structured review, version-controlled iteration — applies directly to client engagements where speed matters but quality, accessibility, and maintainability can&apos;t be the trade-off. That&apos;s the process behind <Link className="service-page__inline-link" href="/services/how-we-deliver">How We Deliver <ArrowUpRight aria-hidden="true" size={14} /></Link>, not a separate case made just for this site.</p></Reveal>
+                        <Reveal index={1}><p className="service-page__index-summary service-page__index-summary--spaced">The point isn&apos;t that AI means anything can be built instantly. It&apos;s that the same workflow - AI acceleration, senior direction, structured review, version-controlled iteration - applies directly to client engagements where speed matters but quality, accessibility, and maintainability can&apos;t be the trade-off. That&apos;s the process behind <Link className="service-page__inline-link" href="/services/how-we-deliver">How We Deliver <ArrowUpRight aria-hidden="true" size={14} /></Link>, not a separate case made just for this site.</p></Reveal>
                     </div>
                 </section>
 

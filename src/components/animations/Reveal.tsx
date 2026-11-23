@@ -12,7 +12,7 @@ type RevealProps = {
 /**
  * Reveals content once, the first time it scrolls into view.
  * Renders fully visible with no JS (SSR/no-JS/pre-hydration never hides real
- * content) — the hidden state is only ever applied imperatively client-side,
+ * content) - the hidden state is only ever applied imperatively client-side,
  * so this can never affect crawlability. Pure DOM attribute toggling (no
  * React state) since this is presentation-only and never needs a re-render.
  */

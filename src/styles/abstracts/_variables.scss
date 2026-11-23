@@ -1,4 +1,4 @@
-// Typography — compile-time Sass variables (font-size in rem, base 16px = 1rem)
+// Typography - compile-time Sass variables (font-size in rem, base 16px = 1rem)
 // Font families are loaded once via next/font in app/layout.tsx and exposed as
 // CSS custom properties on <html>, so every stylesheet references the same load.
 $font-family-body: var(--font-body), "Inter", sans-serif;
