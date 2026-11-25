@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
 import Reveal from "@/components/animations/Reveal";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import BrandPattern from "@/components/visuals/BrandPattern";
+// import BrandPattern from "@/components/visuals/BrandPattern";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({

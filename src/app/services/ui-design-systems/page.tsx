@@ -6,7 +6,7 @@ import Reveal from "@/components/animations/Reveal";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import ServiceArt from "@/components/visuals/ServiceArt";
+// import ServiceArt from "@/components/visuals/ServiceArt";
 import { servicePages } from "@/components/ServicePage/serviceData";
 import { absoluteUrl, buildMetadata, SITE_NAME } from "@/lib/seo";
 

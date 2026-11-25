@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Check, CircleArrowRight } from "lucide-react";
+import { ArrowUpRight, Check, CircleArrowRight } from "lucide-react";
 import Reveal from "@/components/animations/Reveal";
 import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import Footer from "@/components/Footer/Footer";

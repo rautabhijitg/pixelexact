@@ -56,7 +56,7 @@ export default function CookiePolicyPage() {
                     <li><strong>Provider:</strong> Google Analytics (Google LLC)</li>
                     <li><strong>Purpose:</strong> website traffic and usage measurement</li>
                     <li><strong>Data retention period:</strong> User-level and event-level data associated with cookies, user identifiers, and advertising identifiers are automatically retained for 14 months before deletion.</li>
-                    <li><strong>Google's own privacy practices:</strong> You can review how Google processes your data by reading the official <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and find details regarding legal usage compliance via the <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer">Google Analytics Terms of Service</a>.</li>
+                    <li><strong>Google&apos;s own privacy practices:</strong> You can review how Google processes your data by reading the official <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and find details regarding legal usage compliance via the <a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank" rel="noopener noreferrer">Google Analytics Terms of Service</a>.</li>
                 </ul>
             </section>
 
